@@ -25,8 +25,9 @@ public interface CardResourceProfileExtension extends KeypleCardResourceProfileE
    * Sets a regular expression aimed to be applied to the card's ATR in order to identify it.
    *
    * @param atrRegex A not empty string.
+   * @return The object instance.
    * @throws IllegalArgumentException If the provided regular expression is null or invalid.
    * @since 2.0
    */
-  void setAtrRegex(String atrRegex);
+  CardResourceProfileExtension setAtrRegex(String atrRegex);
 }
