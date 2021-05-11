@@ -54,14 +54,17 @@ class CardResourceProfileExtensionAdapter
    * @since 2.0
    */
   @Override
-  public void setAtrRegex(String atrRegex) {
+  public CardResourceProfileExtension setAtrRegex(String atrRegex) {
     Assert.getInstance().notEmpty(atrRegex, "atrRegex");
+
     try {
       Pattern.compile(atrRegex);
     } catch (PatternSyntaxException exception) {
       throw new IllegalArgumentException("Invalid regular expression: " + atrRegex);
     }
     this.atrRegex = atrRegex;
+
+    return this;
   }
 
   /**

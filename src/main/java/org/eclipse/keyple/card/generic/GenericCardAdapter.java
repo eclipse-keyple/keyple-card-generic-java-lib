@@ -24,11 +24,21 @@ class GenericCardAdapter implements SmartCard, SmartCardSpi {
   /**
    * Creates an instance.
    *
+   * <p>Gets ATR and FCI from the {@link CardSelectionResponse} if they exist (both are optional).
+   *
    * @param cardSelectionResponse The {@link CardSelectionResponse} from the selection process.
    */
   GenericCardAdapter(CardSelectionResponse cardSelectionResponse) {
-    this.atrBytes = cardSelectionResponse.getSelectionStatus().getAtr().getBytes();
-    this.fciBytes = cardSelectionResponse.getSelectionStatus().getFci().getBytes();
+    if (cardSelectionResponse.getSelectionStatus().getAtr() != null) {
+      this.atrBytes = cardSelectionResponse.getSelectionStatus().getAtr().getBytes();
+    } else {
+      this.atrBytes = null;
+    }
+    if (cardSelectionResponse.getSelectionStatus().getFci() != null) {
+      this.fciBytes = cardSelectionResponse.getSelectionStatus().getFci().getBytes();
+    } else {
+      this.fciBytes = null;
+    }
   }
 
   /**
