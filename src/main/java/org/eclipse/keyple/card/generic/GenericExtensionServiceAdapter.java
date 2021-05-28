@@ -11,21 +11,20 @@
  ************************************************************************************** */
 package org.eclipse.keyple.card.generic;
 
-import org.eclipse.keyple.core.card.CardApiProperties;
-import org.eclipse.keyple.core.card.spi.CardExtensionSpi;
+import org.calypsonet.terminal.card.CardApiProperties;
+import org.calypsonet.terminal.reader.ReaderApiProperties;
+import org.calypsonet.terminal.reader.selection.spi.CardSelection;
+import org.calypsonet.terminal.reader.selection.spi.CardSelector;
+import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.common.CommonsApiProperties;
 import org.eclipse.keyple.core.service.Reader;
-import org.eclipse.keyple.core.service.ServiceApiProperties;
-import org.eclipse.keyple.core.service.selection.CardSelector;
-import org.eclipse.keyple.core.service.selection.spi.CardSelection;
-import org.eclipse.keyple.core.service.selection.spi.SmartCard;
 
 /**
  * Implementation of {@link GenericExtensionService}.
  *
  * @since 2.0
  */
-final class GenericExtensionServiceAdapter implements GenericExtensionService, CardExtensionSpi {
+final class GenericExtensionServiceAdapter implements GenericExtensionService {
 
   private static final GenericExtensionServiceAdapter instance =
       new GenericExtensionServiceAdapter();
@@ -65,7 +64,7 @@ final class GenericExtensionServiceAdapter implements GenericExtensionService, C
 
   @Override
   public CardResourceProfileExtension createCardResourceProfileExtension() {
-    return new CardResourceProfileExtensionAdapter();
+    return new CardResourceProfileExtension();
   }
 
   /**
@@ -84,8 +83,8 @@ final class GenericExtensionServiceAdapter implements GenericExtensionService, C
    * @since 2.0
    */
   @Override
-  public String getServiceApiVersion() {
-    return ServiceApiProperties.VERSION;
+  public String getReaderApiVersion() {
+    return ReaderApiProperties.VERSION;
   }
 
   /**

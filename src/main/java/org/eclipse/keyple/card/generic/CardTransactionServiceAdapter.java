@@ -13,9 +13,10 @@ package org.eclipse.keyple.card.generic;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.eclipse.keyple.core.card.*;
+import org.calypsonet.terminal.card.*;
+import org.calypsonet.terminal.card.spi.ApduRequestSpi;
+import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.service.Reader;
-import org.eclipse.keyple.core.service.selection.spi.SmartCard;
 import org.eclipse.keyple.core.util.ApduUtil;
 import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.ByteArrayUtil;
@@ -28,7 +29,7 @@ import org.eclipse.keyple.core.util.ByteArrayUtil;
  */
 class CardTransactionServiceAdapter implements CardTransactionService {
   private final Reader reader;
-  private final List<ApduRequest> apduRequests;
+  private final List<ApduRequestSpi> apduRequests;
   private ChannelControl channelControl;
 
   /**
@@ -43,7 +44,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
   CardTransactionServiceAdapter(Reader reader, SmartCard card) {
     Assert.getInstance().notNull(reader, "reader").notNull(card, "card");
     this.reader = reader;
-    apduRequests = new ArrayList<ApduRequest>();
+    apduRequests = new ArrayList<ApduRequestSpi>();
   }
 
   /**
@@ -70,7 +71,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
     Assert.getInstance()
         .notNull(apduCommand, "apduCommand")
         .isInRange(apduCommand.length, 5, 251, "length");
-    apduRequests.add(new ApduRequest(apduCommand));
+    apduRequests.add(new ApduRequestAdapter(apduCommand));
     return this;
   }
 
@@ -82,7 +83,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
   @Override
   public CardTransactionService prepareApdu(
       byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le) {
-    apduRequests.add(new ApduRequest(ApduUtil.build(cla, ins, p1, p2, dataIn, le)));
+    apduRequests.add(new ApduRequestAdapter(ApduUtil.build(cla, ins, p1, p2, dataIn, le)));
     return this;
   }
 
@@ -104,25 +105,25 @@ class CardTransactionServiceAdapter implements CardTransactionService {
    */
   @Override
   public List<byte[]> processApdusToByteArrays() throws TransactionException {
-    CardResponse cardResponse;
+    CardResponseApi cardResponse;
     if (apduRequests.isEmpty()) {
       return new ArrayList<byte[]>(0);
     }
     try {
       cardResponse =
-          ((ProxyReader) reader)
-              .transmitCardRequest(new CardRequest(apduRequests, false), channelControl);
-    } catch (ReaderCommunicationException e) {
+          ((ProxyReaderApi) reader)
+              .transmitCardRequest(new CardRequestAdapter(apduRequests, false), channelControl);
+    } catch (ReaderBrokenCommunicationException e) {
       throw new TransactionException("Reader communication error.", e);
-    } catch (CardCommunicationException e) {
+    } catch (CardBrokenCommunicationException e) {
       throw new TransactionException("Card communication error.", e);
-    } catch (UnexpectedStatusCodeException e) {
+    } catch (UnexpectedStatusWordException e) {
       throw new TransactionException("Apdu error.", e);
     } finally {
       apduRequests.clear();
     }
     List<byte[]> apduResponsesBytes = new ArrayList<byte[]>();
-    for (ApduResponse apduResponse : cardResponse.getApduResponses()) {
+    for (ApduResponseApi apduResponse : cardResponse.getApduResponses()) {
       apduResponsesBytes.add(apduResponse.getBytes());
     }
     return apduResponsesBytes;

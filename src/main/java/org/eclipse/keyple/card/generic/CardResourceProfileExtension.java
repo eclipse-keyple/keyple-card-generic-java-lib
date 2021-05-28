@@ -11,23 +11,90 @@
  ************************************************************************************** */
 package org.eclipse.keyple.card.generic;
 
-import org.eclipse.keyple.core.common.KeypleCardResourceProfileExtension;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+import org.calypsonet.terminal.card.ProxyReaderApi;
+import org.calypsonet.terminal.card.spi.SmartCardSpi;
+import org.calypsonet.terminal.reader.selection.CardSelectionResult;
+import org.calypsonet.terminal.reader.selection.CardSelectionService;
+import org.calypsonet.terminal.reader.selection.spi.CardSelector;
+import org.eclipse.keyple.core.service.CardSelectionServiceFactory;
+import org.eclipse.keyple.core.service.Reader;
+import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtensionSpi;
+import org.eclipse.keyple.core.util.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Generic Card Resource Profile Extension to target a card within the {@link
- * org.eclipse.keyple.core.service.resource.CardResourceService}.
+ * Implementation of {@link CardResourceProfileExtensionSpi}.
  *
  * @since 2.0
  */
-public interface CardResourceProfileExtension extends KeypleCardResourceProfileExtension {
+public class CardResourceProfileExtension implements CardResourceProfileExtensionSpi {
+
+  private static final Logger logger = LoggerFactory.getLogger(CardResourceProfileExtension.class);
+
+  private String powerOnDataRegex;
 
   /**
-   * Sets a regular expression aimed to be applied to the card's ATR in order to identify it.
+   * (private)<br>
+   * Constructor.<br>
+   * Sets an always matching power-on data regex by default.
+   */
+  CardResourceProfileExtension() {
+    this.powerOnDataRegex = ".*";
+  }
+
+  /**
+   * {@inheritDoc}
    *
-   * @param atrRegex A not empty string.
-   * @return The object instance.
-   * @throws IllegalArgumentException If the provided regular expression is null or invalid.
    * @since 2.0
    */
-  CardResourceProfileExtension setAtrRegex(String atrRegex);
+  public CardResourceProfileExtension setPowerOnDataRegex(String powerOnDataRegex) {
+    Assert.getInstance().notEmpty(powerOnDataRegex, "powerOnDataRegex");
+
+    try {
+      Pattern.compile(powerOnDataRegex);
+    } catch (PatternSyntaxException exception) {
+      throw new IllegalArgumentException("Invalid regular expression: " + powerOnDataRegex);
+    }
+    this.powerOnDataRegex = powerOnDataRegex;
+
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 2.0
+   */
+  @Override
+  public SmartCardSpi matches(ProxyReaderApi reader) {
+    if (!((Reader) reader).isCardPresent()) {
+      return null;
+    }
+
+    CardSelector cardSelector =
+        GenericCardSelectorAdapter.builder().filterByPowerOnData(powerOnDataRegex).build();
+
+    CardSelectionService cardSelectionService = CardSelectionServiceFactory.getService();
+
+    CardSelectionAdapter cardSelection = new CardSelectionAdapter(cardSelector);
+
+    cardSelectionService.prepareSelection(cardSelection);
+
+    CardSelectionResult cardSelectionResult = null;
+
+    try {
+      cardSelectionResult = cardSelectionService.processCardSelectionScenario((Reader)reader);
+    } catch (Exception e) {
+      logger.warn("An exception occurred while selecting the card: '{}'.", e.getMessage(), e);
+    }
+
+    if (cardSelectionResult != null && cardSelectionResult.hasActiveSelection()) {
+      return (SmartCardSpi) cardSelectionResult.getActiveSmartCard();
+    }
+
+    return null;
+  }
 }
