@@ -12,12 +12,12 @@
 package org.eclipse.keyple.card.generic;
 
 import org.calypsonet.terminal.card.CardApiProperties;
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.ReaderApiProperties;
 import org.calypsonet.terminal.reader.selection.spi.CardSelection;
 import org.calypsonet.terminal.reader.selection.spi.CardSelector;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.common.CommonsApiProperties;
-import org.eclipse.keyple.core.service.Reader;
 
 /**
  * Implementation of {@link GenericExtensionService}.
@@ -58,7 +58,7 @@ final class GenericExtensionServiceAdapter implements GenericExtensionService {
    * @since 2.0
    */
   @Override
-  public CardTransactionService createCardTransaction(Reader reader, SmartCard card) {
+  public CardTransactionService createCardTransaction(CardReader reader, SmartCard card) {
     return new CardTransactionServiceAdapter(reader, card);
   }
 

@@ -13,13 +13,11 @@ package org.eclipse.keyple.card.generic;
 
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
-import org.calypsonet.terminal.card.ProxyReaderApi;
-import org.calypsonet.terminal.card.spi.SmartCardSpi;
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.CardSelectionResult;
 import org.calypsonet.terminal.reader.selection.CardSelectionService;
 import org.calypsonet.terminal.reader.selection.spi.CardSelector;
-import org.eclipse.keyple.core.service.CardSelectionServiceFactory;
-import org.eclipse.keyple.core.service.Reader;
+import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtensionSpi;
 import org.eclipse.keyple.core.util.Assert;
 import org.slf4j.Logger;
@@ -69,15 +67,13 @@ public class CardResourceProfileExtension implements CardResourceProfileExtensio
    * @since 2.0
    */
   @Override
-  public SmartCardSpi matches(ProxyReaderApi reader) {
-    if (!((Reader) reader).isCardPresent()) {
+  public SmartCard matches(CardReader reader, CardSelectionService cardSelectionService) {
+    if (!reader.isCardPresent()) {
       return null;
     }
 
     CardSelector cardSelector =
         GenericCardSelectorAdapter.builder().filterByPowerOnData(powerOnDataRegex).build();
-
-    CardSelectionService cardSelectionService = CardSelectionServiceFactory.getService();
 
     CardSelectionAdapter cardSelection = new CardSelectionAdapter(cardSelector);
 
@@ -86,13 +82,13 @@ public class CardResourceProfileExtension implements CardResourceProfileExtensio
     CardSelectionResult cardSelectionResult = null;
 
     try {
-      cardSelectionResult = cardSelectionService.processCardSelectionScenario((Reader)reader);
+      cardSelectionResult = cardSelectionService.processCardSelectionScenario(reader);
     } catch (Exception e) {
       logger.warn("An exception occurred while selecting the card: '{}'.", e.getMessage(), e);
     }
 
     if (cardSelectionResult != null && cardSelectionResult.hasActiveSelection()) {
-      return (SmartCardSpi) cardSelectionResult.getActiveSmartCard();
+      return cardSelectionResult.getActiveSmartCard();
     }
 
     return null;

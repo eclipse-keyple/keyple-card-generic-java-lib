@@ -11,11 +11,11 @@
  ************************************************************************************** */
 package org.eclipse.keyple.card.generic;
 
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.spi.CardSelection;
 import org.calypsonet.terminal.reader.selection.spi.CardSelector;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.common.KeypleCardExtension;
-import org.eclipse.keyple.core.service.Reader;
 
 /**
  * Card extension service providing basic access to APDU exchange functions with a card.
@@ -41,7 +41,7 @@ public interface GenericExtensionService extends KeypleCardExtension {
    * @return A not null reference.
    * @since 2.0
    */
-  CardTransactionService createCardTransaction(Reader reader, SmartCard card);
+  CardTransactionService createCardTransaction(CardReader reader, SmartCard card);
 
   /**
    * Creates an instance of {@link CardResourceProfileExtension} to be provided to the {@link

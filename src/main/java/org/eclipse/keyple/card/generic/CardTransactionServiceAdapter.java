@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.calypsonet.terminal.card.*;
 import org.calypsonet.terminal.card.spi.ApduRequestSpi;
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
-import org.eclipse.keyple.core.service.Reader;
 import org.eclipse.keyple.core.util.ApduUtil;
 import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.ByteArrayUtil;
@@ -28,7 +28,7 @@ import org.eclipse.keyple.core.util.ByteArrayUtil;
  * @since 2.0
  */
 class CardTransactionServiceAdapter implements CardTransactionService {
-  private final Reader reader;
+  private final CardReader reader;
   private final List<ApduRequestSpi> apduRequests;
   private ChannelControl channelControl;
 
@@ -41,7 +41,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
    * @throws IllegalArgumentException If the card resource or one of its components is null.
    * @since 2.0
    */
-  CardTransactionServiceAdapter(Reader reader, SmartCard card) {
+  CardTransactionServiceAdapter(CardReader reader, SmartCard card) {
     Assert.getInstance().notNull(reader, "reader").notNull(card, "card");
     this.reader = reader;
     apduRequests = new ArrayList<ApduRequestSpi>();
