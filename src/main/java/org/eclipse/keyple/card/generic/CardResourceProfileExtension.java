@@ -73,7 +73,9 @@ public class CardResourceProfileExtension implements CardResourceProfileExtensio
     }
 
     CardSelector cardSelector =
-        GenericCardSelectorAdapter.builder().filterByPowerOnData(powerOnDataRegex).build();
+        GenericExtensionService.getInstance()
+            .createCardSelector()
+            .filterByPowerOnData(powerOnDataRegex);
 
     CardSelectionAdapter cardSelection = new CardSelectionAdapter(cardSelector);
 
