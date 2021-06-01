@@ -28,9 +28,10 @@ import org.slf4j.LoggerFactory;
  *
  * @since 2.0
  */
-public class CardResourceProfileExtension implements CardResourceProfileExtensionSpi {
+public class GenericCardResourceProfileExtension implements CardResourceProfileExtensionSpi {
 
-  private static final Logger logger = LoggerFactory.getLogger(CardResourceProfileExtension.class);
+  private static final Logger logger =
+      LoggerFactory.getLogger(GenericCardResourceProfileExtension.class);
 
   private String powerOnDataRegex;
 
@@ -39,7 +40,7 @@ public class CardResourceProfileExtension implements CardResourceProfileExtensio
    * Constructor.<br>
    * Sets an always matching power-on data regex by default.
    */
-  CardResourceProfileExtension() {
+  GenericCardResourceProfileExtension() {
     this.powerOnDataRegex = ".*";
   }
 
@@ -48,7 +49,7 @@ public class CardResourceProfileExtension implements CardResourceProfileExtensio
    *
    * @since 2.0
    */
-  public CardResourceProfileExtension setPowerOnDataRegex(String powerOnDataRegex) {
+  public GenericCardResourceProfileExtension setPowerOnDataRegex(String powerOnDataRegex) {
     Assert.getInstance().notEmpty(powerOnDataRegex, "powerOnDataRegex");
 
     try {

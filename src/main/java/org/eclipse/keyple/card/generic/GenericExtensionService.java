@@ -75,14 +75,14 @@ public final class GenericExtensionService implements KeypleCardExtension {
   }
 
   /**
-   * Creates an instance of {@link CardResourceProfileExtension} to be provided to the {@link
+   * Creates an instance of {@link GenericCardResourceProfileExtension} to be provided to the {@link
    * org.eclipse.keyple.core.service.resource.CardResourceService}.
    *
    * @return A not null reference.
    * @since 2.0
    */
-  public CardResourceProfileExtension createCardResourceProfileExtension() {
-    return new CardResourceProfileExtension();
+  public GenericCardResourceProfileExtension createCardResourceProfileExtension() {
+    return new GenericCardResourceProfileExtension();
   }
 
   /**
