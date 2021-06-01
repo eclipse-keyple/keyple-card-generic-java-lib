@@ -4,7 +4,7 @@
 
 The **Keyple Generic Extension** Java library contains interfaces and classes to manage basic operations with any type of card.
 
-This library **should be import explicitly** by the main application.
+This library **should be imported explicitly** by the main application.
 
 ## User Guide & Download Information
 
