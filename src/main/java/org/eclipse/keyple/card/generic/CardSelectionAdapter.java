@@ -11,14 +11,16 @@
  ************************************************************************************** */
 package org.eclipse.keyple.card.generic;
 
-import org.eclipse.keyple.core.card.CardSelectionRequest;
-import org.eclipse.keyple.core.card.CardSelectionResponse;
-import org.eclipse.keyple.core.card.spi.CardSelectionSpi;
-import org.eclipse.keyple.core.card.spi.SmartCardSpi;
-import org.eclipse.keyple.core.service.selection.CardSelector;
-import org.eclipse.keyple.core.service.selection.spi.CardSelection;
+import org.calypsonet.terminal.card.CardSelectionResponseApi;
+import org.calypsonet.terminal.card.spi.CardSelectionRequestSpi;
+import org.calypsonet.terminal.card.spi.CardSelectionSpi;
+import org.calypsonet.terminal.card.spi.CardSelectorSpi;
+import org.calypsonet.terminal.card.spi.SmartCardSpi;
+import org.calypsonet.terminal.reader.selection.spi.CardSelection;
+import org.calypsonet.terminal.reader.selection.spi.CardSelector;
 
 /**
+ * (package-private)<br>
  * Implementation of a generic {@link CardSelection}.
  *
  * @since 2.0
@@ -53,8 +55,8 @@ class CardSelectionAdapter implements CardSelection, CardSelectionSpi {
    * @since 2.0
    */
   @Override
-  public CardSelectionRequest getCardSelectionRequest() {
-    return new CardSelectionRequest(cardSelector);
+  public CardSelectionRequestSpi getCardSelectionRequest() {
+    return new GenericCardSelectionRequestAdapter((CardSelectorSpi) cardSelector, null);
   }
 
   /**
@@ -63,7 +65,7 @@ class CardSelectionAdapter implements CardSelection, CardSelectionSpi {
    * @since 2.0
    */
   @Override
-  public SmartCardSpi parse(CardSelectionResponse cardSelectionResponse) {
+  public SmartCardSpi parse(CardSelectionResponseApi cardSelectionResponse) {
     return new GenericCardAdapter(cardSelectionResponse);
   }
 }

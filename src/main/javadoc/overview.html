@@ -1,23 +1,29 @@
 <html>
 
 <body>
-<p>This document is the specification of the generic card extension aiming to use the Java Keyple service and Keyple plugins without targeting a specific card technology.</p>
+<p>This document is the specification of the generic card extension aiming to use the Java Keyple service and Keyple
+    plugins without targeting a specific card technology.</p>
 <h1>Overview</h1>
 <p>
-    Use {@link org.eclipse.keyple.card.generic.GenericExtensionServiceProvider#getService()} to get the unique
-    instance of the {@link org.eclipse.keyple.card.generic.GenericExtensionService} interface containing all the entry points
-    provided by the extension:
+    Use {@link org.eclipse.keyple.card.generic.GenericExtensionService#getInstance()} to retrieve the service instance
+    and all the entry points provided by the extension:
 </p>
 <ul>
     <li>
-        Creation of a selection case targeting a specific card to be provided to the <strong>Keyple Selection
-        Service</strong>.<br>
-        {@link org.eclipse.keyple.card.generic.GenericExtensionService#createCardSelection(CardSelector cardSelector)}<br>
-        A selection case targets a specific card defined by an instance of {@link org.eclipse.keyple.core.service.selection.CardSelector}.
+        Creation of a Generic Card Selector<br>
+        {@link org.eclipse.keyple.card.generic.GenericExtensionService#createCardSelector()}
+    </li>
+    <li>
+    Creation of a selection case targeting a specific card to be provided to the <strong>Keyple Selection
+    Service</strong>.<br>
+    {@link org.eclipse.keyple.card.generic.GenericExtensionService#createCardSelection(CardSelector cardSelector)}<br>
+    A selection case targets a specific card defined by an instance of {@link
+    org.calypsonet.terminal.reader.selection.spi.CardSelector}.
     </li>
     <li>
         Transaction service to perform APDU exchanges with a card.<br>
-        {@link org.eclipse.keyple.card.generic.GenericExtensionService#createCardTransaction(org.eclipse.keyple.core.service.Reader reader, SmartCard card)}
+        {@link org.eclipse.keyple.card.generic.GenericExtensionService#createCardTransaction(CardReader reader,
+        SmartCard card)}
     </li>
 </ul>
 </body>
