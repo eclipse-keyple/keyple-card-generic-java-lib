@@ -20,6 +20,7 @@ import org.calypsonet.terminal.reader.selection.spi.CardSelection;
 import org.calypsonet.terminal.reader.selection.spi.CardSelector;
 
 /**
+ * (package-private)<br>
  * Implementation of a generic {@link CardSelection}.
  *
  * @since 2.0

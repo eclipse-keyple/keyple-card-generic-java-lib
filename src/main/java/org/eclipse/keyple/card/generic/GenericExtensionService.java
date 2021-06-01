@@ -30,7 +30,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
   private static final GenericExtensionService instance = new GenericExtensionService();
 
   /** Constructor */
-  public GenericExtensionService() {}
+  private GenericExtensionService() {}
 
   /**
    * Gets the unique instance of this object.
