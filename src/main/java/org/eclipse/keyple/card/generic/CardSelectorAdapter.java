@@ -13,20 +13,18 @@ package org.eclipse.keyple.card.generic;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-import org.calypsonet.terminal.reader.selection.spi.CardSelector;
+import org.calypsonet.terminal.card.spi.CardSelectorSpi;
 import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.ByteArrayUtil;
 import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
  * (package-private)<br>
- * Implementation of {@link GenericSelector}.
+ * Implementation of {@link CardSelectorSpi}.
  *
  * @since 2.0
  */
-final class GenericSelectorAdapter implements GenericSelector {
+final class CardSelectorAdapter implements CardSelectorSpi {
 
   private static final int AID_MIN_LENGTH = 5;
   private static final int AID_MAX_LENGTH = 16;
@@ -35,17 +33,21 @@ final class GenericSelectorAdapter implements GenericSelector {
   private String cardProtocol;
   private String powerOnDataRegex;
   private byte[] aid;
-  private CardSelector.FileOccurrence fileOccurrence;
-  private CardSelector.FileControlInformation fileControlInformation;
+  private FileOccurrence fileOccurrence;
+  private FileControlInformation fileControlInformation;
   private final Set<Integer> successfulSelectionStatusWords;
 
   /**
    * (package-private)<br>
-   * Created an instance of {@link GenericSelectorAdapter}.
+   * Created an instance of {@link CardSelectorAdapter}.
+   *
+   * <p>Initialize default values.
    *
    * @since 2.0
    */
-  GenericSelectorAdapter() {
+  CardSelectorAdapter() {
+    fileOccurrence = FileOccurrence.FIRST;
+    fileControlInformation = FileControlInformation.FCI;
     successfulSelectionStatusWords = new LinkedHashSet<Integer>();
     successfulSelectionStatusWords.add(DEFAULT_SUCCESSFUL_CODE);
   }
@@ -55,8 +57,7 @@ final class GenericSelectorAdapter implements GenericSelector {
    *
    * @since 2.0
    */
-  @Override
-  public GenericSelector filterByCardProtocol(String cardProtocol) {
+  public CardSelectorSpi filterByCardProtocol(String cardProtocol) {
 
     Assert.getInstance().notEmpty(cardProtocol, "cardProtocol");
 
@@ -74,21 +75,13 @@ final class GenericSelectorAdapter implements GenericSelector {
    *
    * @since 2.0
    */
-  @Override
-  public GenericSelector filterByPowerOnData(String powerOnDataRegex) {
+  public CardSelectorSpi filterByPowerOnData(String powerOnDataRegex) {
 
     Assert.getInstance().notEmpty(powerOnDataRegex, "powerOnDataRegex");
 
     if (this.powerOnDataRegex != null) {
       throw new IllegalStateException(
           String.format("powerOnDataRegex has already been set to '%s'", this.powerOnDataRegex));
-    }
-
-    try {
-      Pattern.compile(powerOnDataRegex);
-    } catch (PatternSyntaxException exception) {
-      throw new IllegalArgumentException(
-          String.format("Invalid regular expression: '%s'.", powerOnDataRegex));
     }
 
     this.powerOnDataRegex = powerOnDataRegex;
@@ -100,8 +93,7 @@ final class GenericSelectorAdapter implements GenericSelector {
    *
    * @since 2.0
    */
-  @Override
-  public GenericSelector filterByDfName(byte[] aid) {
+  public CardSelectorSpi filterByDfName(byte[] aid) {
 
     Assert.getInstance()
         .notNull(aid, "aid")
@@ -121,8 +113,7 @@ final class GenericSelectorAdapter implements GenericSelector {
    *
    * @since 2.0
    */
-  @Override
-  public GenericSelector filterByDfName(String aid) {
+  public CardSelectorSpi filterByDfName(String aid) {
     return filterByDfName(ByteArrayUtil.fromHex(aid));
   }
 
@@ -131,8 +122,7 @@ final class GenericSelectorAdapter implements GenericSelector {
    *
    * @since 2.0
    */
-  @Override
-  public GenericSelector setFileOccurrence(CardSelector.FileOccurrence fileOccurrence) {
+  public CardSelectorSpi setFileOccurrence(FileOccurrence fileOccurrence) {
     Assert.getInstance().notNull(fileOccurrence, "fileOccurrence");
     if (this.fileOccurrence != null) {
       throw new IllegalStateException(
@@ -147,9 +137,7 @@ final class GenericSelectorAdapter implements GenericSelector {
    *
    * @since 2.0
    */
-  @Override
-  public GenericSelector setFileControlInformation(
-      CardSelector.FileControlInformation fileControlInformation) {
+  public CardSelectorSpi setFileControlInformation(FileControlInformation fileControlInformation) {
     Assert.getInstance().notNull(fileControlInformation, "fileControlInformation");
     if (this.fileControlInformation != null) {
       throw new IllegalStateException(
@@ -165,8 +153,7 @@ final class GenericSelectorAdapter implements GenericSelector {
    *
    * @since 2.0
    */
-  @Override
-  public GenericSelector addSuccessfulStatusWord(int statusWord) {
+  public CardSelectorSpi addSuccessfulStatusWord(int statusWord) {
     this.successfulSelectionStatusWords.add(statusWord);
     return this;
   }
@@ -207,7 +194,7 @@ final class GenericSelectorAdapter implements GenericSelector {
    * @since 2.0
    */
   @Override
-  public CardSelector.FileOccurrence getFileOccurrence() {
+  public FileOccurrence getFileOccurrence() {
     return fileOccurrence;
   }
 
@@ -217,7 +204,7 @@ final class GenericSelectorAdapter implements GenericSelector {
    * @since 2.0
    */
   @Override
-  public CardSelector.FileControlInformation getFileControlInformation() {
+  public FileControlInformation getFileControlInformation() {
     return fileControlInformation;
   }
 
@@ -229,20 +216,6 @@ final class GenericSelectorAdapter implements GenericSelector {
   @Override
   public Set<Integer> getSuccessfulSelectionStatusWords() {
     return successfulSelectionStatusWords;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @since 2.0
-   */
-  @Override
-  public boolean powerOnDataMatches(byte[] powerOnData) {
-    if (powerOnDataRegex != null) {
-      return ByteArrayUtil.toHex(powerOnData).matches(powerOnDataRegex);
-    } else {
-      return true;
-    }
   }
 
   @Override

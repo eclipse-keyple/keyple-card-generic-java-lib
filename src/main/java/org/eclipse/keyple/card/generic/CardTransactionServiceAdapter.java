@@ -124,7 +124,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
     }
     List<byte[]> apduResponsesBytes = new ArrayList<byte[]>();
     for (ApduResponseApi apduResponse : cardResponse.getApduResponses()) {
-      apduResponsesBytes.add(apduResponse.getBytes());
+      apduResponsesBytes.add(apduResponse.getApdu());
     }
     return apduResponsesBytes;
   }

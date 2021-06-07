@@ -18,8 +18,8 @@ import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /** Implementation of a generic {@link SmartCard}. */
 class GenericCardAdapter implements SmartCard, SmartCardSpi {
-  private final byte[] fciBytes;
-  private final byte[] powerOnData;
+  private final byte[] selectApplicationResponse;
+  private final String powerOnData;
 
   /**
    * Creates an instance.
@@ -30,16 +30,8 @@ class GenericCardAdapter implements SmartCard, SmartCardSpi {
    * @param cardSelectionResponse The {@link CardSelectionResponseApi} from the selection process.
    */
   GenericCardAdapter(CardSelectionResponseApi cardSelectionResponse) {
-    if (cardSelectionResponse.getSelectionStatus().getPowerOnData() != null) {
-      this.powerOnData = cardSelectionResponse.getSelectionStatus().getPowerOnData();
-    } else {
-      this.powerOnData = null;
-    }
-    if (cardSelectionResponse.getSelectionStatus().getFci() != null) {
-      this.fciBytes = cardSelectionResponse.getSelectionStatus().getFci().getBytes();
-    } else {
-      this.fciBytes = null;
-    }
+    this.powerOnData = cardSelectionResponse.getPowerOnData();
+    this.selectApplicationResponse = cardSelectionResponse.getSelectApplicationResponse().getApdu();
   }
 
   /**
@@ -48,38 +40,18 @@ class GenericCardAdapter implements SmartCard, SmartCardSpi {
    * @since 2.0
    */
   @Override
-  public boolean hasFci() {
-    return fciBytes != null;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @since 2.0
-   */
-  @Override
-  public byte[] getFciBytes() {
-    return fciBytes;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @since 2.0
-   */
-  @Override
-  public boolean hasPowerOnData() {
-    return powerOnData != null;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @since 2.0
-   */
-  @Override
-  public byte[] getPowerOnData() {
+  public String getPowerOnData() {
     return powerOnData;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 2.0
+   */
+  @Override
+  public byte[] getSelectApplicationResponse() {
+    return selectApplicationResponse;
   }
 
   /**

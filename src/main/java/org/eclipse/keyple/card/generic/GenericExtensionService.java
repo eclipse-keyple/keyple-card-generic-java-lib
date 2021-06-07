@@ -14,8 +14,6 @@ package org.eclipse.keyple.card.generic;
 import org.calypsonet.terminal.card.CardApiProperties;
 import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.ReaderApiProperties;
-import org.calypsonet.terminal.reader.selection.spi.CardSelection;
-import org.calypsonet.terminal.reader.selection.spi.CardSelector;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.common.CommonsApiProperties;
 import org.eclipse.keyple.core.common.KeypleCardExtension;
@@ -42,24 +40,13 @@ public final class GenericExtensionService implements KeypleCardExtension {
   }
 
   /**
-   * Creates an instance of {@link GenericSelector}.
+   * Creates an instance of {@link GenericCardSelection}.
    *
    * @return A not null reference.
    * @since 2.0
    */
-  public GenericSelector createCardSelector() {
-    return new GenericSelectorAdapter();
-  }
-
-  /**
-   * Creates an instance of {@link CardSelection}.
-   *
-   * @param cardSelector A card selector.
-   * @return A not null reference.
-   * @since 2.0
-   */
-  public CardSelection createCardSelection(CardSelector cardSelector) {
-    return new CardSelectionAdapter(cardSelector);
+  public GenericCardSelection createCardSelection() {
+    return new GenericCardSelectionAdapter();
   }
 
   /**

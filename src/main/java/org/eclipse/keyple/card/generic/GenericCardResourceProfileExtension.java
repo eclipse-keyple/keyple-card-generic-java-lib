@@ -14,21 +14,19 @@ package org.eclipse.keyple.card.generic;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.selection.CardSelectionResult;
 import org.calypsonet.terminal.reader.selection.CardSelectionService;
-import org.calypsonet.terminal.reader.selection.spi.CardSelector;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
-import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtensionSpi;
+import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.util.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Implementation of {@link CardResourceProfileExtensionSpi}.
+ * Implementation of {@link CardResourceProfileExtension}.
  *
  * @since 2.0
  */
-public class GenericCardResourceProfileExtension implements CardResourceProfileExtensionSpi {
+public class GenericCardResourceProfileExtension implements CardResourceProfileExtension {
 
   private static final Logger logger =
       LoggerFactory.getLogger(GenericCardResourceProfileExtension.class);
@@ -73,27 +71,18 @@ public class GenericCardResourceProfileExtension implements CardResourceProfileE
       return null;
     }
 
-    CardSelector cardSelector =
+    GenericCardSelection cardSelection =
         GenericExtensionService.getInstance()
-            .createCardSelector()
+            .createCardSelection()
             .filterByPowerOnData(powerOnDataRegex);
-
-    CardSelectionAdapter cardSelection = new CardSelectionAdapter(cardSelector);
 
     cardSelectionService.prepareSelection(cardSelection);
 
-    CardSelectionResult cardSelectionResult = null;
-
     try {
-      cardSelectionResult = cardSelectionService.processCardSelectionScenario(reader);
+      return cardSelectionService.processCardSelectionScenario(reader).getActiveSmartCard();
     } catch (Exception e) {
       logger.warn("An exception occurred while selecting the card: '{}'.", e.getMessage(), e);
     }
-
-    if (cardSelectionResult != null && cardSelectionResult.hasActiveSelection()) {
-      return cardSelectionResult.getActiveSmartCard();
-    }
-
     return null;
   }
 }
