@@ -15,6 +15,7 @@ import java.util.List;
 
 /** Provides basic methods to prepare and process APDU exchange with a card. */
 public interface CardTransactionService {
+
   /**
    * Prepares an APDU to be transmitted the next time {@link #processApdusToByteArrays()} is
    * invoked.

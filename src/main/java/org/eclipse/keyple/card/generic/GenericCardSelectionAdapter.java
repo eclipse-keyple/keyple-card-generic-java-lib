@@ -31,10 +31,9 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
 
   private static final int AID_MIN_LENGTH = 5;
   private static final int AID_MAX_LENGTH = 16;
-  private static final int DEFAULT_SUCCESSFUL_CODE = 0x9000;
 
-  private CardSelectorAdapter cardSelector;
-  private List<ApduRequestSpi> apduRequestSpis;
+  private final CardSelectorAdapter cardSelector;
+  private final List<ApduRequestSpi> apduRequestSpis;
 
   /**
    * (package-private) Creates an instance.
@@ -54,7 +53,8 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   @Override
   public CardSelectionRequestSpi getCardSelectionRequest() {
     return new GenericCardSelectionRequestAdapter(
-        cardSelector, new CardRequestAdapter(apduRequestSpis, false));
+        cardSelector,
+        apduRequestSpis.isEmpty() ? null : new CardRequestAdapter(apduRequestSpis, false));
   }
 
   /**
@@ -136,6 +136,9 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
    */
   @Override
   public GenericCardSelection setFileOccurrence(FileOccurrence fileOccurrence) {
+
+    Assert.getInstance().notNull(fileOccurrence, "fileOccurrence");
+
     switch (fileOccurrence) {
       case FIRST:
         cardSelector.setFileOccurrence(CardSelectorSpi.FileOccurrence.FIRST);
@@ -161,6 +164,9 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   @Override
   public GenericCardSelection setFileControlInformation(
       FileControlInformation fileControlInformation) {
+
+    Assert.getInstance().notNull(fileControlInformation, "fileControlInformation");
+
     switch (fileControlInformation) {
       case FCI:
         cardSelector.setFileControlInformation(CardSelectorSpi.FileControlInformation.FCI);

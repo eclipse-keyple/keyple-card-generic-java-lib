@@ -14,15 +14,20 @@ package org.eclipse.keyple.card.generic;
 import org.calypsonet.terminal.card.CardSelectionResponseApi;
 import org.calypsonet.terminal.card.spi.SmartCardSpi;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
-import org.eclipse.keyple.core.util.json.JsonUtil;
 
-/** Implementation of a generic {@link SmartCard}. */
-class GenericCardAdapter implements SmartCard, SmartCardSpi {
+/**
+ * (package-private)<br>
+ * Implementation of a generic {@link SmartCard}.
+ *
+ * @since 2.0
+ */
+final class GenericCardAdapter implements SmartCard, SmartCardSpi {
+
   private final byte[] selectApplicationResponse;
   private final String powerOnData;
 
   /**
-   * Creates an instance.
+   * Constructor
    *
    * <p>Gets ATR and FCI from the {@link CardSelectionResponseApi} if they exist (both are
    * optional).
@@ -52,15 +57,5 @@ class GenericCardAdapter implements SmartCard, SmartCardSpi {
   @Override
   public byte[] getSelectApplicationResponse() {
     return selectApplicationResponse;
-  }
-
-  /**
-   * Converts the content of this object into a String using the Json format.
-   *
-   * @since 2.0
-   */
-  @Override
-  public String toString() {
-    return JsonUtil.toJson(this);
   }
 }

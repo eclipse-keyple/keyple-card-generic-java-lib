@@ -14,9 +14,7 @@ package org.eclipse.keyple.card.generic;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.calypsonet.terminal.card.spi.CardSelectorSpi;
-import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.ByteArrayUtil;
-import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
  * (package-private)<br>
@@ -26,8 +24,6 @@ import org.eclipse.keyple.core.util.json.JsonUtil;
  */
 final class CardSelectorAdapter implements CardSelectorSpi {
 
-  private static final int AID_MIN_LENGTH = 5;
-  private static final int AID_MAX_LENGTH = 16;
   private static final int DEFAULT_SUCCESSFUL_CODE = 0x9000;
 
   private String cardProtocol;
@@ -53,64 +49,59 @@ final class CardSelectorAdapter implements CardSelectorSpi {
   }
 
   /**
-   * {@inheritDoc}
+   * Sets a protocol-based filtering by defining an expected card.
    *
+   * <p>If the card protocol is set, only cards using that protocol will match the card selector.
+   *
+   * @param cardProtocol A not empty String.
+   * @return The object instance.
    * @since 2.0
    */
   public CardSelectorSpi filterByCardProtocol(String cardProtocol) {
-
-    Assert.getInstance().notEmpty(cardProtocol, "cardProtocol");
-
-    if (this.cardProtocol != null) {
-      throw new IllegalStateException(
-          String.format("cardProtocol has already been set to '%s'", this.cardProtocol));
-    }
-
     this.cardProtocol = cardProtocol;
     return this;
   }
 
   /**
-   * {@inheritDoc}
+   * Sets a power-on data-based filtering by defining a regular expression that will be applied to
+   * the card's power-on data.
    *
+   * <p>If it is set, only the cards whose power-on data is recognized by the provided regular
+   * expression will match the card selector.
+   *
+   * @param powerOnDataRegex A valid regular expression
+   * @return The object instance.
    * @since 2.0
    */
   public CardSelectorSpi filterByPowerOnData(String powerOnDataRegex) {
-
-    Assert.getInstance().notEmpty(powerOnDataRegex, "powerOnDataRegex");
-
-    if (this.powerOnDataRegex != null) {
-      throw new IllegalStateException(
-          String.format("powerOnDataRegex has already been set to '%s'", this.powerOnDataRegex));
-    }
-
     this.powerOnDataRegex = powerOnDataRegex;
     return this;
   }
 
   /**
-   * {@inheritDoc}
+   * Sets a DF Name-based filtering by defining in a byte array the AID that will be included in the
+   * standard SELECT APPLICATION command sent to the card during the selection process.
    *
+   * <p>The provided AID can be a right truncated image of the target DF Name (see ISO 7816-4 4.2).
+   *
+   * @param aid A byte array containing 5 to 16 bytes.
+   * @return The object instance.
    * @since 2.0
    */
   public CardSelectorSpi filterByDfName(byte[] aid) {
-
-    Assert.getInstance()
-        .notNull(aid, "aid")
-        .isInRange(aid.length, AID_MIN_LENGTH, AID_MAX_LENGTH, "aid");
-
-    if (this.aid != null) {
-      throw new IllegalStateException(
-          String.format("aid has already been set to '%s'", ByteArrayUtil.toHex(this.aid)));
-    }
-
     this.aid = aid;
     return this;
   }
 
   /**
-   * {@inheritDoc}
+   * Sets a DF Name-based filtering by defining in a hexadecimal string the AID that will be
+   * included in the standard SELECT APPLICATION command sent to the card during the selection
+   * process.
    *
+   * <p>The provided AID can be a right truncated image of the target DF Name (see ISO 7816-4 4.2).
+   *
+   * @param aid A hexadecimal string representation of 5 to 16 bytes.
+   * @return The object instance.
    * @since 2.0
    */
   public CardSelectorSpi filterByDfName(String aid) {
@@ -118,39 +109,41 @@ final class CardSelectorAdapter implements CardSelectorSpi {
   }
 
   /**
-   * {@inheritDoc}
+   * Sets the file occurrence mode (see ISO7816-4).
    *
+   * <p>The default value is {@link FileOccurrence#FIRST}.
+   *
+   * @param fileOccurrence The {@link FileOccurrence}.
+   * @return The object instance.
    * @since 2.0
    */
   public CardSelectorSpi setFileOccurrence(FileOccurrence fileOccurrence) {
-    Assert.getInstance().notNull(fileOccurrence, "fileOccurrence");
-    if (this.fileOccurrence != null) {
-      throw new IllegalStateException(
-          String.format("fileOccurrence has already been set to '%s'", this.fileOccurrence));
-    }
     this.fileOccurrence = fileOccurrence;
     return this;
   }
 
   /**
-   * {@inheritDoc}
+   * Sets the file control mode (see ISO7816-4).
    *
+   * <p>The default value is {@link FileControlInformation#FCI}.
+   *
+   * @param fileControlInformation The {@link FileControlInformation}.
+   * @return The object instance.
    * @since 2.0
    */
   public CardSelectorSpi setFileControlInformation(FileControlInformation fileControlInformation) {
-    Assert.getInstance().notNull(fileControlInformation, "fileControlInformation");
-    if (this.fileControlInformation != null) {
-      throw new IllegalStateException(
-          String.format(
-              "fileControlInformation has already been set to '%s'", this.fileControlInformation));
-    }
     this.fileControlInformation = fileControlInformation;
     return this;
   }
 
   /**
-   * {@inheritDoc}
+   * Adds a status word to the list of those that should be considered successful for the Select
+   * Application APDU.
    *
+   * <p>Note: initially, the list contains the standard successful status word {@code 9000h}.
+   *
+   * @param statusWord A positive int &le; {@code FFFFh}.
+   * @return The object instance.
    * @since 2.0
    */
   public CardSelectorSpi addSuccessfulStatusWord(int statusWord) {
@@ -216,10 +209,5 @@ final class CardSelectorAdapter implements CardSelectorSpi {
   @Override
   public Set<Integer> getSuccessfulSelectionStatusWords() {
     return successfulSelectionStatusWords;
-  }
-
-  @Override
-  public String toString() {
-    return "CARD_SELECTOR = " + JsonUtil.toJson(this);
   }
 }

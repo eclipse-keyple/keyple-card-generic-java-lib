@@ -22,7 +22,7 @@ import org.calypsonet.terminal.reader.selection.spi.CardSelection;
 public interface GenericCardSelection extends CardSelection {
 
   /**
-   * Requests an protocol-based filtering by defining an expected card.
+   * Requests a protocol-based filtering by defining an expected card.
    *
    * <p>If the card protocol is set, only cards using that protocol will match the card selector.
    *
@@ -34,7 +34,7 @@ public interface GenericCardSelection extends CardSelection {
   GenericCardSelection filterByCardProtocol(String cardProtocol);
 
   /**
-   * Requests an power-on data-based filtering by defining a regular expression that will be applied
+   * Requests a power-on data-based filtering by defining a regular expression that will be applied
    * to the card's power-on data.
    *
    * <p>If it is set, only the cards whose power-on data is recognized by the provided regular
@@ -117,6 +117,7 @@ public interface GenericCardSelection extends CardSelection {
    * @return The object instance.
    * @throws IllegalArgumentException If apdu is null a shorter than 2 bytes or longer than 251
    *     bytes.
+   * @since 2.0
    */
   GenericCardSelection prepareApdu(byte[] apdu);
 
@@ -126,6 +127,7 @@ public interface GenericCardSelection extends CardSelection {
    * @param apdu A string containing the APDU as an hexadecimal string.
    * @return The object instance.
    * @throws IllegalArgumentException If apdu is null a shorter than 2 bytes.
+   * @since 2.0
    */
   GenericCardSelection prepareApdu(String apdu);
 

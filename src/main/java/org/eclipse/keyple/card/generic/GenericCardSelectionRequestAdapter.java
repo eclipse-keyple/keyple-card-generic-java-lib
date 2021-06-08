@@ -15,7 +15,13 @@ import org.calypsonet.terminal.card.spi.CardRequestSpi;
 import org.calypsonet.terminal.card.spi.CardSelectionRequestSpi;
 import org.calypsonet.terminal.card.spi.CardSelectorSpi;
 
-public class GenericCardSelectionRequestAdapter implements CardSelectionRequestSpi {
+/**
+ * (package-private)<br>
+ * Implementation of {@link CardSelectionRequestSpi}
+ *
+ * @since 2.0
+ */
+final class GenericCardSelectionRequestAdapter implements CardSelectionRequestSpi {
   private final CardSelectorSpi cardSelector;
   private final CardRequestSpi cardRequest;
 
@@ -27,8 +33,7 @@ public class GenericCardSelectionRequestAdapter implements CardSelectionRequestS
    * @param cardRequest The card request.
    * @since 2.0
    */
-  public GenericCardSelectionRequestAdapter(
-      CardSelectorSpi cardSelector, CardRequestSpi cardRequest) {
+  GenericCardSelectionRequestAdapter(CardSelectorSpi cardSelector, CardRequestSpi cardRequest) {
     this.cardSelector = cardSelector;
     this.cardRequest = cardRequest;
   }
