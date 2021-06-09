@@ -49,6 +49,7 @@ final class CardSelectorAdapter implements CardSelectorSpi {
   }
 
   /**
+   * (package-private)<br>
    * Sets a protocol-based filtering by defining an expected card.
    *
    * <p>If the card protocol is set, only cards using that protocol will match the card selector.
@@ -57,12 +58,13 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * @return The current instance.
    * @since 2.0
    */
-  public CardSelectorSpi filterByCardProtocol(String cardProtocol) {
+  CardSelectorSpi filterByCardProtocol(String cardProtocol) {
     this.cardProtocol = cardProtocol;
     return this;
   }
 
   /**
+   * (package-private)<br>
    * Sets a power-on data-based filtering by defining a regular expression that will be applied to
    * the card's power-on data.
    *
@@ -73,12 +75,13 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * @return The current instance.
    * @since 2.0
    */
-  public CardSelectorSpi filterByPowerOnData(String powerOnDataRegex) {
+  CardSelectorSpi filterByPowerOnData(String powerOnDataRegex) {
     this.powerOnDataRegex = powerOnDataRegex;
     return this;
   }
 
   /**
+   * (package-private)<br>
    * Sets a DF Name-based filtering by defining in a byte array the AID that will be included in the
    * standard SELECT APPLICATION command sent to the card during the selection process.
    *
@@ -88,12 +91,13 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * @return The current instance.
    * @since 2.0
    */
-  public CardSelectorSpi filterByDfName(byte[] aid) {
+  CardSelectorSpi filterByDfName(byte[] aid) {
     this.aid = aid;
     return this;
   }
 
   /**
+   * (package-private)<br>
    * Sets a DF Name-based filtering by defining in a hexadecimal string the AID that will be
    * included in the standard SELECT APPLICATION command sent to the card during the selection
    * process.
@@ -104,11 +108,12 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * @return The current instance.
    * @since 2.0
    */
-  public CardSelectorSpi filterByDfName(String aid) {
+  CardSelectorSpi filterByDfName(String aid) {
     return filterByDfName(ByteArrayUtil.fromHex(aid));
   }
 
   /**
+   * (package-private)<br>
    * Sets the file occurrence mode (see ISO7816-4).
    *
    * <p>The default value is {@link FileOccurrence#FIRST}.
@@ -117,12 +122,13 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * @return The current instance.
    * @since 2.0
    */
-  public CardSelectorSpi setFileOccurrence(FileOccurrence fileOccurrence) {
+  CardSelectorSpi setFileOccurrence(FileOccurrence fileOccurrence) {
     this.fileOccurrence = fileOccurrence;
     return this;
   }
 
   /**
+   * (package-private)<br>
    * Sets the file control mode (see ISO7816-4).
    *
    * <p>The default value is {@link FileControlInformation#FCI}.
@@ -131,12 +137,13 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * @return The current instance.
    * @since 2.0
    */
-  public CardSelectorSpi setFileControlInformation(FileControlInformation fileControlInformation) {
+  CardSelectorSpi setFileControlInformation(FileControlInformation fileControlInformation) {
     this.fileControlInformation = fileControlInformation;
     return this;
   }
 
   /**
+   * (package-private)<br>
    * Adds a status word to the list of those that should be considered successful for the Select
    * Application APDU.
    *
@@ -146,7 +153,7 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * @return The current instance.
    * @since 2.0
    */
-  public CardSelectorSpi addSuccessfulStatusWord(int statusWord) {
+  CardSelectorSpi addSuccessfulStatusWord(int statusWord) {
     this.successfulSelectionStatusWords.add(statusWord);
     return this;
   }
