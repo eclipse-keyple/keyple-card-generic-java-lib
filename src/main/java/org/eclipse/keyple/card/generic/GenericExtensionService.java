@@ -1,5 +1,5 @@
 /* **************************************************************************************
- * Copyright (c) 2021 Calypso Networks Association https://www.calypsonet-asso.org/
+ * Copyright (c) 2021 Calypso Networks Association https://calypsonet.org/
  *
  * See the NOTICE file(s) distributed with this work for additional information
  * regarding copyright ownership.
@@ -14,11 +14,10 @@ package org.eclipse.keyple.card.generic;
 import org.calypsonet.terminal.card.CardApiProperties;
 import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.ReaderApiProperties;
-import org.calypsonet.terminal.reader.selection.spi.CardSelection;
-import org.calypsonet.terminal.reader.selection.spi.CardSelector;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.common.CommonsApiProperties;
 import org.eclipse.keyple.core.common.KeypleCardExtension;
+import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 
 /**
  * Card extension service providing basic access to APDU exchange functions with a card.
@@ -42,24 +41,13 @@ public final class GenericExtensionService implements KeypleCardExtension {
   }
 
   /**
-   * Creates an instance of {@link GenericSelector}.
+   * Creates an instance of {@link GenericCardSelection}.
    *
    * @return A not null reference.
    * @since 2.0
    */
-  public GenericSelector createCardSelector() {
-    return new GenericSelectorAdapter();
-  }
-
-  /**
-   * Creates an instance of {@link CardSelection}.
-   *
-   * @param cardSelector A card selector.
-   * @return A not null reference.
-   * @since 2.0
-   */
-  public CardSelection createCardSelection(CardSelector cardSelector) {
-    return new CardSelectionAdapter(cardSelector);
+  public GenericCardSelection createCardSelection() {
+    return new GenericCardSelectionAdapter();
   }
 
   /**
@@ -75,14 +63,20 @@ public final class GenericExtensionService implements KeypleCardExtension {
   }
 
   /**
-   * Creates an instance of {@link GenericCardResourceProfileExtension} to be provided to the {@link
+   * Creates an instance of {@link CardResourceProfileExtension} to be provided to the {@link
    * org.eclipse.keyple.core.service.resource.CardResourceService}.
    *
+   * <p>The provided argument defines the selection rules to be applied to the card when detected by
+   * the card resource service.
+   *
+   * @param genericCardSelection A not null {@link GenericCardSelection}.
    * @return A not null reference.
+   * @throws IllegalArgumentException If genericCardSelection is null.
    * @since 2.0
    */
-  public GenericCardResourceProfileExtension createCardResourceProfileExtension() {
-    return new GenericCardResourceProfileExtension();
+  public CardResourceProfileExtension createCardResourceProfileExtension(
+      GenericCardSelection genericCardSelection) {
+    return new GenericCardResourceProfileExtensionAdapter(genericCardSelection);
   }
 
   /**

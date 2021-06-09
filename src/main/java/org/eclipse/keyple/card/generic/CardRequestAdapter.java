@@ -1,5 +1,5 @@
 /* **************************************************************************************
- * Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+ * Copyright (c) 2018 Calypso Networks Association https://calypsonet.org/
  *
  * See the NOTICE file(s) distributed with this work for additional information
  * regarding copyright ownership.
@@ -14,15 +14,15 @@ package org.eclipse.keyple.card.generic;
 import java.util.List;
 import org.calypsonet.terminal.card.spi.ApduRequestSpi;
 import org.calypsonet.terminal.card.spi.CardRequestSpi;
-import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
+ * (package-private)<br>
  * This POJO contains an ordered list of {@link ApduRequestSpi} and the associated status word check
  * policy.
  *
  * @since 2.0
  */
-public final class CardRequestAdapter implements CardRequestSpi {
+final class CardRequestAdapter implements CardRequestSpi {
 
   private final List<ApduRequestSpi> apduRequests;
   private final boolean stopOnUnsuccessfulStatusWord;
@@ -39,8 +39,7 @@ public final class CardRequestAdapter implements CardRequestSpi {
    *     status word is received.
    * @since 2.0
    */
-  public CardRequestAdapter(
-      List<ApduRequestSpi> apduRequests, boolean stopOnUnsuccessfulStatusWord) {
+  CardRequestAdapter(List<ApduRequestSpi> apduRequests, boolean stopOnUnsuccessfulStatusWord) {
     this.apduRequests = apduRequests;
     this.stopOnUnsuccessfulStatusWord = stopOnUnsuccessfulStatusWord;
   }
@@ -63,16 +62,5 @@ public final class CardRequestAdapter implements CardRequestSpi {
   @Override
   public boolean stopOnUnsuccessfulStatusWord() {
     return stopOnUnsuccessfulStatusWord;
-  }
-
-  /**
-   * Converts the card request into a string where the data is encoded in a json format.
-   *
-   * @return A not empty String
-   * @since 2.0
-   */
-  @Override
-  public String toString() {
-    return "CARD_REQUEST = " + JsonUtil.toJson(this);
   }
 }

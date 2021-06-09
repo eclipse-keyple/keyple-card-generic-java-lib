@@ -1,5 +1,5 @@
 /* **************************************************************************************
- * Copyright (c) 2021 Calypso Networks Association https://www.calypsonet-asso.org/
+ * Copyright (c) 2021 Calypso Networks Association https://calypsonet.org/
  *
  * See the NOTICE file(s) distributed with this work for additional information
  * regarding copyright ownership.
@@ -15,6 +15,7 @@ import java.util.List;
 
 /** Provides basic methods to prepare and process APDU exchange with a card. */
 public interface CardTransactionService {
+
   /**
    * Prepares an APDU to be transmitted the next time {@link #processApdusToByteArrays()} is
    * invoked.

@@ -10,15 +10,10 @@
 </p>
 <ul>
     <li>
-        Creation of a Generic Card Selector<br>
-        {@link org.eclipse.keyple.card.generic.GenericExtensionService#createCardSelector()}
-    </li>
-    <li>
     Creation of a selection case targeting a specific card to be provided to the <strong>Keyple Selection
     Service</strong>.<br>
-    {@link org.eclipse.keyple.card.generic.GenericExtensionService#createCardSelection(CardSelector cardSelector)}<br>
-    A selection case targets a specific card defined by an instance of {@link
-    org.calypsonet.terminal.reader.selection.spi.CardSelector}.
+    {@link org.eclipse.keyple.card.generic.GenericExtensionService#createCardSelection()}<br>
+    A selection case targets a specific card defined by various filtering options.
     </li>
     <li>
         Transaction service to perform APDU exchanges with a card.<br>

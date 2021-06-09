@@ -1,5 +1,5 @@
 /* **************************************************************************************
- * Copyright (c) 2021 Calypso Networks Association https://www.calypsonet-asso.org/
+ * Copyright (c) 2021 Calypso Networks Association https://calypsonet.org/
  *
  * See the NOTICE file(s) distributed with this work for additional information
  * regarding copyright ownership.
@@ -28,6 +28,7 @@ import org.eclipse.keyple.core.util.ByteArrayUtil;
  * @since 2.0
  */
 class CardTransactionServiceAdapter implements CardTransactionService {
+
   private final CardReader reader;
   private final List<ApduRequestSpi> apduRequests;
   private ChannelControl channelControl;
@@ -44,6 +45,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
   CardTransactionServiceAdapter(CardReader reader, SmartCard card) {
     Assert.getInstance().notNull(reader, "reader").notNull(card, "card");
     this.reader = reader;
+    channelControl = ChannelControl.KEEP_OPEN;
     apduRequests = new ArrayList<ApduRequestSpi>();
   }
 
@@ -54,9 +56,11 @@ class CardTransactionServiceAdapter implements CardTransactionService {
    */
   @Override
   public CardTransactionService prepareApdu(String apduCommand) {
+
     Assert.getInstance()
         .notEmpty(apduCommand, "apduCommand")
         .isTrue(ByteArrayUtil.isValidHexString(apduCommand), "apduCommand");
+
     prepareApdu(ByteArrayUtil.fromHex(apduCommand));
     return this;
   }
@@ -68,9 +72,11 @@ class CardTransactionServiceAdapter implements CardTransactionService {
    */
   @Override
   public CardTransactionService prepareApdu(byte[] apduCommand) {
+
     Assert.getInstance()
         .notNull(apduCommand, "apduCommand")
         .isInRange(apduCommand.length, 5, 251, "length");
+
     apduRequests.add(new ApduRequestAdapter(apduCommand));
     return this;
   }
@@ -124,7 +130,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
     }
     List<byte[]> apduResponsesBytes = new ArrayList<byte[]>();
     for (ApduResponseApi apduResponse : cardResponse.getApduResponses()) {
-      apduResponsesBytes.add(apduResponse.getBytes());
+      apduResponsesBytes.add(apduResponse.getApdu());
     }
     return apduResponsesBytes;
   }
