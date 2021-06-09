@@ -11,9 +11,8 @@
  ************************************************************************************** */
 package org.eclipse.keyple.card.generic;
 
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 import org.calypsonet.terminal.reader.CardReader;
+import org.calypsonet.terminal.reader.selection.CardSelectionResult;
 import org.calypsonet.terminal.reader.selection.CardSelectionService;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
@@ -22,42 +21,27 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Implementation of {@link CardResourceProfileExtension}.
+ * (package-private)<br>
+ * Implementation of {@link CardResourceProfileExtension} dedicated to card identification.
  *
  * @since 2.0
  */
-public class GenericCardResourceProfileExtension implements CardResourceProfileExtension {
-
+class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileExtension {
   private static final Logger logger =
-      LoggerFactory.getLogger(GenericCardResourceProfileExtension.class);
-
-  private String powerOnDataRegex;
-
-  /**
-   * (private)<br>
-   * Constructor.<br>
-   * Sets an always matching power-on data regex by default.
-   */
-  GenericCardResourceProfileExtension() {
-    this.powerOnDataRegex = ".*";
-  }
+      LoggerFactory.getLogger(GenericCardResourceProfileExtensionAdapter.class);
+  private final GenericCardSelection genericCardSelection;
 
   /**
-   * {@inheritDoc}
+   * (package-private)<br>
    *
+   * @param genericCardSelection The {@link GenericCardSelection}.
    * @since 2.0
    */
-  public GenericCardResourceProfileExtension setPowerOnDataRegex(String powerOnDataRegex) {
-    Assert.getInstance().notEmpty(powerOnDataRegex, "powerOnDataRegex");
+  GenericCardResourceProfileExtensionAdapter(GenericCardSelection genericCardSelection) {
 
-    try {
-      Pattern.compile(powerOnDataRegex);
-    } catch (PatternSyntaxException exception) {
-      throw new IllegalArgumentException("Invalid regular expression: " + powerOnDataRegex);
-    }
-    this.powerOnDataRegex = powerOnDataRegex;
+    Assert.getInstance().notNull(genericCardSelection, "genericCardSelection");
 
-    return this;
+    this.genericCardSelection = genericCardSelection;
   }
 
   /**
@@ -67,22 +51,23 @@ public class GenericCardResourceProfileExtension implements CardResourceProfileE
    */
   @Override
   public SmartCard matches(CardReader reader, CardSelectionService cardSelectionService) {
+
     if (!reader.isCardPresent()) {
       return null;
     }
 
-    GenericCardSelection cardSelection =
-        GenericExtensionService.getInstance()
-            .createCardSelection()
-            .filterByPowerOnData(powerOnDataRegex);
-
-    cardSelectionService.prepareSelection(cardSelection);
-
+    cardSelectionService.prepareSelection(genericCardSelection);
+    CardSelectionResult cardSelectionResult = null;
     try {
-      return cardSelectionService.processCardSelectionScenario(reader).getActiveSmartCard();
+      cardSelectionResult = cardSelectionService.processCardSelectionScenario(reader);
     } catch (Exception e) {
       logger.warn("An exception occurred while selecting the card: '{}'.", e.getMessage(), e);
     }
+
+    if (cardSelectionResult != null) {
+      return cardSelectionResult.getActiveSmartCard();
+    }
+
     return null;
   }
 }

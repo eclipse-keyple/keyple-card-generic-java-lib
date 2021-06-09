@@ -202,7 +202,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
    */
   @Override
   public GenericCardSelection prepareApdu(byte[] apdu) {
-    Assert.getInstance().notNull(apdu, "apdu").isInRange(apdu.length, 2, 251, "apdu length");
+    Assert.getInstance().notNull(apdu, "apdu").isInRange(apdu.length, 4, 251, "apdu length");
     apduRequestSpis.add(new ApduRequestAdapter(apdu));
     return null;
   }

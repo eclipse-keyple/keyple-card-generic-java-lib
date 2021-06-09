@@ -54,7 +54,7 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * <p>If the card protocol is set, only cards using that protocol will match the card selector.
    *
    * @param cardProtocol A not empty String.
-   * @return The object instance.
+   * @return The current instance.
    * @since 2.0
    */
   public CardSelectorSpi filterByCardProtocol(String cardProtocol) {
@@ -70,7 +70,7 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * expression will match the card selector.
    *
    * @param powerOnDataRegex A valid regular expression
-   * @return The object instance.
+   * @return The current instance.
    * @since 2.0
    */
   public CardSelectorSpi filterByPowerOnData(String powerOnDataRegex) {
@@ -85,7 +85,7 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * <p>The provided AID can be a right truncated image of the target DF Name (see ISO 7816-4 4.2).
    *
    * @param aid A byte array containing 5 to 16 bytes.
-   * @return The object instance.
+   * @return The current instance.
    * @since 2.0
    */
   public CardSelectorSpi filterByDfName(byte[] aid) {
@@ -101,7 +101,7 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * <p>The provided AID can be a right truncated image of the target DF Name (see ISO 7816-4 4.2).
    *
    * @param aid A hexadecimal string representation of 5 to 16 bytes.
-   * @return The object instance.
+   * @return The current instance.
    * @since 2.0
    */
   public CardSelectorSpi filterByDfName(String aid) {
@@ -114,7 +114,7 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * <p>The default value is {@link FileOccurrence#FIRST}.
    *
    * @param fileOccurrence The {@link FileOccurrence}.
-   * @return The object instance.
+   * @return The current instance.
    * @since 2.0
    */
   public CardSelectorSpi setFileOccurrence(FileOccurrence fileOccurrence) {
@@ -128,7 +128,7 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * <p>The default value is {@link FileControlInformation#FCI}.
    *
    * @param fileControlInformation The {@link FileControlInformation}.
-   * @return The object instance.
+   * @return The current instance.
    * @since 2.0
    */
   public CardSelectorSpi setFileControlInformation(FileControlInformation fileControlInformation) {
@@ -143,7 +143,7 @@ final class CardSelectorAdapter implements CardSelectorSpi {
    * <p>Note: initially, the list contains the standard successful status word {@code 9000h}.
    *
    * @param statusWord A positive int &le; {@code FFFFh}.
-   * @return The object instance.
+   * @return The current instance.
    * @since 2.0
    */
   public CardSelectorSpi addSuccessfulStatusWord(int statusWord) {

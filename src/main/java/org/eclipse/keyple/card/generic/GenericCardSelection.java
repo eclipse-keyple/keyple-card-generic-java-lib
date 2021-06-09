@@ -27,7 +27,7 @@ public interface GenericCardSelection extends CardSelection {
    * <p>If the card protocol is set, only cards using that protocol will match the card selector.
    *
    * @param cardProtocol A not empty String.
-   * @return The object instance.
+   * @return The current instance.
    * @throws IllegalArgumentException If the argument is null or empty.
    * @since 2.0
    */
@@ -41,7 +41,7 @@ public interface GenericCardSelection extends CardSelection {
    * expression will match the card selector.
    *
    * @param powerOnDataRegex A valid regular expression
-   * @return The object instance.
+   * @return The current instance.
    * @throws IllegalArgumentException If the provided regular expression is null, empty or invalid.
    * @since 2.0
    */
@@ -54,7 +54,7 @@ public interface GenericCardSelection extends CardSelection {
    * <p>The provided AID can be a right truncated image of the target DF Name (see ISO 7816-4 4.2).
    *
    * @param aid A byte array containing 5 to 16 bytes.
-   * @return The object instance.
+   * @return The current instance.
    * @throws IllegalArgumentException If the provided array is null or out of range.
    * @since 2.0
    */
@@ -68,7 +68,7 @@ public interface GenericCardSelection extends CardSelection {
    * <p>The provided AID can be a right truncated image of the target DF Name (see ISO 7816-4 4.2).
    *
    * @param aid A hexadecimal string representation of 5 to 16 bytes.
-   * @return The object instance.
+   * @return The current instance.
    * @throws IllegalArgumentException If the provided AID is null, invalid or out of range.
    * @since 2.0
    */
@@ -80,7 +80,7 @@ public interface GenericCardSelection extends CardSelection {
    * <p>The default value is {@link GenericCardSelection.FileOccurrence#FIRST}.
    *
    * @param fileOccurrence The {@link GenericCardSelection.FileOccurrence}.
-   * @return The object instance.
+   * @return The current instance.
    * @throws IllegalArgumentException If fileOccurrence is null.
    * @since 2.0
    */
@@ -92,7 +92,7 @@ public interface GenericCardSelection extends CardSelection {
    * <p>The default value is {@link GenericCardSelection.FileControlInformation#FCI}.
    *
    * @param fileControlInformation The {@link GenericCardSelection.FileControlInformation}.
-   * @return The object instance.
+   * @return The current instance.
    * @throws IllegalArgumentException If fileControlInformation is null.
    * @since 2.0
    */
@@ -105,7 +105,7 @@ public interface GenericCardSelection extends CardSelection {
    * <p>Note: initially, the list contains the standard successful status word {@code 9000h}.
    *
    * @param statusWord A positive int &le; {@code FFFFh}.
-   * @return The object instance.
+   * @return The current instance.
    * @since 2.0
    */
   GenericCardSelection addSuccessfulStatusWord(int statusWord);
@@ -114,8 +114,8 @@ public interface GenericCardSelection extends CardSelection {
    * Prepare an APDU to be executed after the card selection step.
    *
    * @param apdu A byte array containing the APDU.
-   * @return The object instance.
-   * @throws IllegalArgumentException If apdu is null a shorter than 2 bytes or longer than 251
+   * @return The current instance.
+   * @throws IllegalArgumentException If apdu is null a shorter than 4 or longer than 251 bytes.
    *     bytes.
    * @since 2.0
    */
@@ -125,8 +125,8 @@ public interface GenericCardSelection extends CardSelection {
    * Prepare an APDU to be executed after the card selection step.
    *
    * @param apdu A string containing the APDU as an hexadecimal string.
-   * @return The object instance.
-   * @throws IllegalArgumentException If apdu is null a shorter than 2 bytes.
+   * @return The current instance.
+   * @throws IllegalArgumentException If apdu is null a shorter than 4 or longer than 251 bytes.
    * @since 2.0
    */
   GenericCardSelection prepareApdu(String apdu);

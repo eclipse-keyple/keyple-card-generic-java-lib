@@ -17,6 +17,7 @@ import org.calypsonet.terminal.reader.ReaderApiProperties;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.common.CommonsApiProperties;
 import org.eclipse.keyple.core.common.KeypleCardExtension;
+import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 
 /**
  * Card extension service providing basic access to APDU exchange functions with a card.
@@ -62,14 +63,20 @@ public final class GenericExtensionService implements KeypleCardExtension {
   }
 
   /**
-   * Creates an instance of {@link GenericCardResourceProfileExtension} to be provided to the {@link
+   * Creates an instance of {@link CardResourceProfileExtension} to be provided to the {@link
    * org.eclipse.keyple.core.service.resource.CardResourceService}.
    *
+   * <p>The provided argument defines the selection rules to be applied to the card when detected by
+   * the card resource service.
+   *
+   * @param genericCardSelection A not null {@link GenericCardSelection}.
    * @return A not null reference.
+   * @throws IllegalArgumentException If genericCardSelection is null.
    * @since 2.0
    */
-  public GenericCardResourceProfileExtension createCardResourceProfileExtension() {
-    return new GenericCardResourceProfileExtension();
+  public CardResourceProfileExtension createCardResourceProfileExtension(
+      GenericCardSelection genericCardSelection) {
+    return new GenericCardResourceProfileExtensionAdapter(genericCardSelection);
   }
 
   /**

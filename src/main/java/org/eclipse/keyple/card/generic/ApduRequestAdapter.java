@@ -48,7 +48,7 @@ class ApduRequestAdapter implements ApduRequestSpi {
    * <p>Note: initially, the list contains the standard successful status word {@code 9000h}.
    *
    * @param successfulStatusWord A positive int &le; {@code FFFFh}.
-   * @return The object instance.
+   * @return The current instance.
    * @since 2.0
    */
   public ApduRequestAdapter addSuccessfulStatusWord(int successfulStatusWord) {
@@ -63,7 +63,7 @@ class ApduRequestAdapter implements ApduRequestSpi {
    * invoked conditionally (e.g. when log level &gt;= debug).
    *
    * @param info The request info (free text).
-   * @return The object instance.
+   * @return The current instance.
    * @since 2.0
    */
   public ApduRequestAdapter setInfo(final String info) {
