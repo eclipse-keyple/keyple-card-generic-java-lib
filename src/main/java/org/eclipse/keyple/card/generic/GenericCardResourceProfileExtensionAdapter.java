@@ -12,8 +12,8 @@
 package org.eclipse.keyple.card.generic;
 
 import org.calypsonet.terminal.reader.CardReader;
+import org.calypsonet.terminal.reader.selection.CardSelectionManager;
 import org.calypsonet.terminal.reader.selection.CardSelectionResult;
-import org.calypsonet.terminal.reader.selection.CardSelectionService;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.util.Assert;
@@ -50,16 +50,16 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
    * @since 2.0
    */
   @Override
-  public SmartCard matches(CardReader reader, CardSelectionService cardSelectionService) {
+  public SmartCard matches(CardReader reader, CardSelectionManager cardSelectionManager) {
 
     if (!reader.isCardPresent()) {
       return null;
     }
 
-    cardSelectionService.prepareSelection(genericCardSelection);
+    cardSelectionManager.prepareSelection(genericCardSelection);
     CardSelectionResult cardSelectionResult = null;
     try {
-      cardSelectionResult = cardSelectionService.processCardSelectionScenario(reader);
+      cardSelectionResult = cardSelectionManager.processCardSelectionScenario(reader);
     } catch (Exception e) {
       logger.warn("An exception occurred while selecting the card: '{}'.", e.getMessage(), e);
     }

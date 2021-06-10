@@ -51,15 +51,15 @@ public final class GenericExtensionService implements KeypleCardExtension {
   }
 
   /**
-   * Creates an instance of {@link CardTransactionService}.
+   * Creates an instance of {@link CardTransactionManager}.
    *
    * @param reader The reader through which the card communicates.
    * @param card The initial card data provided by the selection process.
    * @return A not null reference.
    * @since 2.0
    */
-  public CardTransactionService createCardTransaction(CardReader reader, SmartCard card) {
-    return new CardTransactionServiceAdapter(reader, card);
+  public CardTransactionManager createCardTransaction(CardReader reader, SmartCard card) {
+    return new CardTransactionManagerAdapter(reader, card);
   }
 
   /**

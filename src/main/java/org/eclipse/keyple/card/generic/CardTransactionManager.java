@@ -14,7 +14,7 @@ package org.eclipse.keyple.card.generic;
 import java.util.List;
 
 /** Provides basic methods to prepare and process APDU exchange with a card. */
-public interface CardTransactionService {
+public interface CardTransactionManager {
 
   /**
    * Prepares an APDU to be transmitted the next time {@link #processApdusToByteArrays()} is
@@ -24,7 +24,7 @@ public interface CardTransactionService {
    * @return This instance.
    * @since 2.0
    */
-  CardTransactionService prepareApdu(String apduCommand);
+  CardTransactionManager prepareApdu(String apduCommand);
 
   /**
    * Prepares an APDU to be transmitted the next time {@link #processApdusToByteArrays()} is
@@ -34,7 +34,7 @@ public interface CardTransactionService {
    * @return This instance.
    * @since 2.0
    */
-  CardTransactionService prepareApdu(byte[] apduCommand);
+  CardTransactionManager prepareApdu(byte[] apduCommand);
 
   /**
    * Prepares an APDU to be transmitted the next time {@link #processApdusToByteArrays()} is
@@ -50,7 +50,7 @@ public interface CardTransactionService {
    * @return This instance.
    * @since 2.0
    */
-  CardTransactionService prepareApdu(byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le);
+  CardTransactionManager prepareApdu(byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le);
 
   /**
    * Requests the closing of the physical channel after the next transmission of APDUs.
@@ -58,7 +58,7 @@ public interface CardTransactionService {
    * @return This instance.
    * @since 2.0
    */
-  CardTransactionService prepareReleaseChannel();
+  CardTransactionManager prepareReleaseChannel();
 
   /**
    * Transmits all prepared APDUs, closes the physical channel if required, and returns a list of

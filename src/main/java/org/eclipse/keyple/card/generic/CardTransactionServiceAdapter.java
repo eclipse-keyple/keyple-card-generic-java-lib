@@ -23,11 +23,11 @@ import org.eclipse.keyple.core.util.ByteArrayUtil;
 
 /**
  * (package-private)<br>
- * Implementation of {@link CardTransactionService}.
+ * Implementation of {@link CardTransactionManager}.
  *
  * @since 2.0
  */
-class CardTransactionServiceAdapter implements CardTransactionService {
+class CardTransactionManagerAdapter implements CardTransactionManager {
 
   private final CardReader reader;
   private final List<ApduRequestSpi> apduRequests;
@@ -35,14 +35,14 @@ class CardTransactionServiceAdapter implements CardTransactionService {
 
   /**
    * (package-private)<br>
-   * Creates an instance of {@link CardTransactionService}.
+   * Creates an instance of {@link CardTransactionManager}.
    *
    * @param reader The reader through which the card communicates.
    * @param card The initial card data provided by the selection process.
    * @throws IllegalArgumentException If the card resource or one of its components is null.
    * @since 2.0
    */
-  CardTransactionServiceAdapter(CardReader reader, SmartCard card) {
+  CardTransactionManagerAdapter(CardReader reader, SmartCard card) {
     Assert.getInstance().notNull(reader, "reader").notNull(card, "card");
     this.reader = reader;
     channelControl = ChannelControl.KEEP_OPEN;
@@ -55,7 +55,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
    * @since 2.0
    */
   @Override
-  public CardTransactionService prepareApdu(String apduCommand) {
+  public CardTransactionManager prepareApdu(String apduCommand) {
 
     Assert.getInstance()
         .notEmpty(apduCommand, "apduCommand")
@@ -71,7 +71,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
    * @since 2.0
    */
   @Override
-  public CardTransactionService prepareApdu(byte[] apduCommand) {
+  public CardTransactionManager prepareApdu(byte[] apduCommand) {
 
     Assert.getInstance()
         .notNull(apduCommand, "apduCommand")
@@ -87,7 +87,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
    * @since 2.0
    */
   @Override
-  public CardTransactionService prepareApdu(
+  public CardTransactionManager prepareApdu(
       byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le) {
     apduRequests.add(new ApduRequestAdapter(ApduUtil.build(cla, ins, p1, p2, dataIn, le)));
     return this;
@@ -99,7 +99,7 @@ class CardTransactionServiceAdapter implements CardTransactionService {
    * @since 2.0
    */
   @Override
-  public CardTransactionService prepareReleaseChannel() {
+  public CardTransactionManager prepareReleaseChannel() {
     channelControl = ChannelControl.CLOSE_AFTER;
     return this;
   }
