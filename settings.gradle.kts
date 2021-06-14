@@ -1,1 +1,1 @@
-rootProject.name = "keyple-java-card-generic"
+rootProject.name = "keyple-card-generic-java-lib"
