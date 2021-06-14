@@ -1,4 +1,4 @@
-url: https://github.com/eclipse/keyple-java-card-generic
+url: https://github.com/eclipse/keyple-card-generic-java-lib
 organization:
   name: Eclipse Keyple
   url: https://keyple.org/
@@ -16,9 +16,9 @@ developers:
   - name: Pierre Terrée
     email: pierre.terree@calypsonet.org
 scm:
-  connection: scm:git:git://github.com/eclipse/keyple-java-card-generic.git
-  developerConnection: scm:git:https://github.com/eclipse/keyple-java-card-generic.git
-  url: https://github.com/eclipse/keyple-java-card-generic
+  connection: scm:git:git://github.com/eclipse/keyple-card-generic-java-lib.git
+  developerConnection: scm:git:https://github.com/eclipse/keyple-card-generic-java-lib.git
+  url: https://github.com/eclipse/keyple-card-generic-java-lib
 ciManagement:
   system: Jenkins
-  url: https://ci.eclipse.org/keyple/job/Keyple/job/keyple-java-card-generic/
+  url: https://ci.eclipse.org/keyple/job/Keyple/job/keyple-card-generic-java-lib/
