@@ -29,6 +29,7 @@ import org.eclipse.keyple.core.util.ByteArrayUtil;
  */
 class CardTransactionManagerAdapter implements CardTransactionManager {
 
+  public static final String APDU_COMMAND = "apduCommand";
   private final CardReader reader;
   private final List<ApduRequestSpi> apduRequests;
   private ChannelControl channelControl;
@@ -58,8 +59,8 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   public CardTransactionManager prepareApdu(String apduCommand) {
 
     Assert.getInstance()
-        .notEmpty(apduCommand, "apduCommand")
-        .isTrue(ByteArrayUtil.isValidHexString(apduCommand), "apduCommand");
+        .notEmpty(apduCommand, APDU_COMMAND)
+        .isTrue(ByteArrayUtil.isValidHexString(apduCommand), APDU_COMMAND);
 
     prepareApdu(ByteArrayUtil.fromHex(apduCommand));
     return this;
@@ -74,7 +75,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   public CardTransactionManager prepareApdu(byte[] apduCommand) {
 
     Assert.getInstance()
-        .notNull(apduCommand, "apduCommand")
+        .notNull(apduCommand, APDU_COMMAND)
         .isInRange(apduCommand.length, 5, 251, "length");
 
     apduRequests.add(new ApduRequestAdapter(apduCommand));

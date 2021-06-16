@@ -11,8 +11,6 @@
  ************************************************************************************** */
 package org.eclipse.keyple.card.generic;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import org.calypsonet.terminal.card.CardSelectionResponseApi;
@@ -33,7 +31,6 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   private static final int AID_MAX_LENGTH = 16;
 
   private final CardSelectorAdapter cardSelector;
-  private final List<ApduRequestSpi> apduRequestSpis;
 
   /**
    * (package-private) Creates an instance.
@@ -42,7 +39,6 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
    */
   GenericCardSelectionAdapter() {
     cardSelector = new CardSelectorAdapter();
-    apduRequestSpis = new ArrayList<ApduRequestSpi>();
   }
 
   /**
