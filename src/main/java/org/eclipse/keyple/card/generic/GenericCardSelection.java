@@ -111,27 +111,6 @@ public interface GenericCardSelection extends CardSelection {
   GenericCardSelection addSuccessfulStatusWord(int statusWord);
 
   /**
-   * Prepare an APDU to be executed after the card selection step.
-   *
-   * @param apdu A byte array containing the APDU.
-   * @return The current instance.
-   * @throws IllegalArgumentException If apdu is null a shorter than 4 or longer than 251 bytes.
-   *     bytes.
-   * @since 2.0
-   */
-  GenericCardSelection prepareApdu(byte[] apdu);
-
-  /**
-   * Prepare an APDU to be executed after the card selection step.
-   *
-   * @param apdu A string containing the APDU as an hexadecimal string.
-   * @return The current instance.
-   * @throws IllegalArgumentException If apdu is null a shorter than 4 or longer than 251 bytes.
-   * @since 2.0
-   */
-  GenericCardSelection prepareApdu(String apdu);
-
-  /**
    * Navigation options through the different applications contained in the card according to the
    * ISO7816-4 standard.
    *

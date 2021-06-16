@@ -22,20 +22,18 @@ import org.calypsonet.terminal.card.spi.CardSelectorSpi;
  * @since 2.0
  */
 final class GenericCardSelectionRequestAdapter implements CardSelectionRequestSpi {
+
   private final CardSelectorSpi cardSelector;
-  private final CardRequestSpi cardRequest;
 
   /**
    * Builds a card selection request to open a logical channel with additional APDUs to be sent
    * after the selection step.
    *
    * @param cardSelector The card selector.
-   * @param cardRequest The card request.
    * @since 2.0
    */
-  GenericCardSelectionRequestAdapter(CardSelectorSpi cardSelector, CardRequestSpi cardRequest) {
+  GenericCardSelectionRequestAdapter(CardSelectorSpi cardSelector) {
     this.cardSelector = cardSelector;
-    this.cardRequest = cardRequest;
   }
 
   /**
@@ -53,6 +51,6 @@ final class GenericCardSelectionRequestAdapter implements CardSelectionRequestSp
    * @since 2.0
    */
   public CardRequestSpi getCardRequest() {
-    return cardRequest;
+    return null;
   }
 }

@@ -52,9 +52,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
    */
   @Override
   public CardSelectionRequestSpi getCardSelectionRequest() {
-    return new GenericCardSelectionRequestAdapter(
-        cardSelector,
-        apduRequestSpis.isEmpty() ? null : new CardRequestAdapter(apduRequestSpis, false));
+    return new GenericCardSelectionRequestAdapter(cardSelector);
   }
 
   /**
@@ -63,7 +61,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
    * @since 2.0
    */
   @Override
-  public SmartCardSpi parse(CardSelectionResponseApi cardSelectionResponse) {
+  public SmartCardSpi parse(CardSelectionResponseApi cardSelectionResponse) throws ParseException {
     return new GenericCardAdapter(cardSelectionResponse);
   }
 
@@ -193,27 +191,5 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   public GenericCardSelection addSuccessfulStatusWord(int statusWord) {
     cardSelector.addSuccessfulStatusWord(statusWord);
     return null;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @since 2.0
-   */
-  @Override
-  public GenericCardSelection prepareApdu(byte[] apdu) {
-    Assert.getInstance().notNull(apdu, "apdu").isInRange(apdu.length, 4, 251, "apdu length");
-    apduRequestSpis.add(new ApduRequestAdapter(apdu));
-    return null;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @since 2.0
-   */
-  @Override
-  public GenericCardSelection prepareApdu(String apdu) {
-    return prepareApdu(ByteArrayUtil.fromHex(apdu));
   }
 }
