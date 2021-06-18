@@ -14,8 +14,7 @@ package org.eclipse.keyple.card.generic;
 import org.calypsonet.terminal.reader.selection.spi.CardSelection;
 
 /**
- * Card specific {@link CardSelection} providing means to filter cards, select applications and
- * define optional commands to be executed during the selection phase.
+ * Card specific {@link CardSelection} providing means to filter cards, select applications.
  *
  * @since 2.0
  */

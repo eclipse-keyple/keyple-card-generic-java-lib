@@ -26,7 +26,7 @@ import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension
  */
 public final class GenericExtensionService implements KeypleCardExtension {
 
-  private static final GenericExtensionService instance = new GenericExtensionService();
+  private static final GenericExtensionService INSTANCE = new GenericExtensionService();
 
   /** Constructor */
   private GenericExtensionService() {}
@@ -37,7 +37,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
    * @return A not null reference.
    */
   public static GenericExtensionService getInstance() {
-    return instance;
+    return INSTANCE;
   }
 
   /**
