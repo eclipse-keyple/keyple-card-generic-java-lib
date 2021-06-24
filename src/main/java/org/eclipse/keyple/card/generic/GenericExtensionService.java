@@ -15,7 +15,7 @@ import org.calypsonet.terminal.card.CardApiProperties;
 import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.ReaderApiProperties;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
-import org.eclipse.keyple.core.common.CommonsApiProperties;
+import org.eclipse.keyple.core.common.CommonApiProperties;
 import org.eclipse.keyple.core.common.KeypleCardExtension;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 
@@ -105,7 +105,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
    * @since 2.0
    */
   @Override
-  public String getCommonsApiVersion() {
-    return CommonsApiProperties.VERSION;
+  public String getCommonApiVersion() {
+    return CommonApiProperties.VERSION;
   }
 }
