@@ -36,7 +36,10 @@ final class GenericCardAdapter implements SmartCard, SmartCardSpi {
    */
   GenericCardAdapter(CardSelectionResponseApi cardSelectionResponse) {
     this.powerOnData = cardSelectionResponse.getPowerOnData();
-    this.selectApplicationResponse = cardSelectionResponse.getSelectApplicationResponse().getApdu();
+    this.selectApplicationResponse =
+        cardSelectionResponse.getSelectApplicationResponse() != null
+            ? cardSelectionResponse.getSelectApplicationResponse().getApdu()
+            : null;
   }
 
   /**
