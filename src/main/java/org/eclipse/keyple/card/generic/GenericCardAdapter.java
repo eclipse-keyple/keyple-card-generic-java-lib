@@ -19,7 +19,7 @@ import org.calypsonet.terminal.reader.selection.spi.SmartCard;
  * (package-private)<br>
  * Implementation of a generic {@link SmartCard}.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 final class GenericCardAdapter implements SmartCard, SmartCardSpi {
 
@@ -45,7 +45,7 @@ final class GenericCardAdapter implements SmartCard, SmartCardSpi {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public String getPowerOnData() {
@@ -55,7 +55,7 @@ final class GenericCardAdapter implements SmartCard, SmartCardSpi {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public byte[] getSelectApplicationResponse() {

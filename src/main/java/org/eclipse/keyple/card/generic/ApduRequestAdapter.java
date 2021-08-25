@@ -19,7 +19,7 @@ import org.calypsonet.terminal.card.spi.ApduRequestSpi;
  * (package-private)<br>
  * Implementation of {@link ApduRequestSpi}
  *
- * @since 2.0
+ * @since 2.0.0
  */
 class ApduRequestAdapter implements ApduRequestSpi {
   private static final int DEFAULT_SUCCESSFUL_CODE = 0x9000;
@@ -34,7 +34,7 @@ class ApduRequestAdapter implements ApduRequestSpi {
    * <p>The default status words list is initialized with the standard successful code 9000h.
    *
    * @param apdu The bytes of the APDU's body.
-   * @since 2.0
+   * @since 2.0.0
    */
   public ApduRequestAdapter(byte[] apdu) {
     this.apdu = apdu;
@@ -49,7 +49,7 @@ class ApduRequestAdapter implements ApduRequestSpi {
    *
    * @param successfulStatusWord A positive int &le; {@code FFFFh}.
    * @return The current instance.
-   * @since 2.0
+   * @since 2.0.0
    */
   public ApduRequestAdapter addSuccessfulStatusWord(int successfulStatusWord) {
     this.successfulStatusWords.add(successfulStatusWord);
@@ -64,7 +64,7 @@ class ApduRequestAdapter implements ApduRequestSpi {
    *
    * @param info The request info (free text).
    * @return The current instance.
-   * @since 2.0
+   * @since 2.0.0
    */
   public ApduRequestAdapter setInfo(final String info) {
     this.info = info;
@@ -74,7 +74,7 @@ class ApduRequestAdapter implements ApduRequestSpi {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public byte[] getApdu() {
@@ -84,7 +84,7 @@ class ApduRequestAdapter implements ApduRequestSpi {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public Set<Integer> getSuccessfulStatusWords() {
@@ -94,7 +94,7 @@ class ApduRequestAdapter implements ApduRequestSpi {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public String getInfo() {

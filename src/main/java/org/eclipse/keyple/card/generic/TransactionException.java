@@ -14,7 +14,7 @@ package org.eclipse.keyple.card.generic;
 /**
  * Exception when an error or a communication failure with the card or the reader occurs.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public class TransactionException extends RuntimeException {
 
@@ -22,7 +22,7 @@ public class TransactionException extends RuntimeException {
    * Builds a new exception.
    *
    * @param message Message to identify the exception context.
-   * @since 2.0
+   * @since 2.0.0
    */
   public TransactionException(String message) {
     super(message);
@@ -33,7 +33,7 @@ public class TransactionException extends RuntimeException {
    *
    * @param message Message to identify the exception context.
    * @param cause The cause
-   * @since 2.0
+   * @since 2.0.0
    */
   public TransactionException(String message, Throwable cause) {
     super(message, cause);

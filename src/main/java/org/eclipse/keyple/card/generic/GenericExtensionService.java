@@ -22,7 +22,7 @@ import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension
 /**
  * Card extension service providing basic access to APDU exchange functions with a card.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public final class GenericExtensionService implements KeypleCardExtension {
 
@@ -44,7 +44,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
    * Creates an instance of {@link GenericCardSelection}.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   public GenericCardSelection createCardSelection() {
     return new GenericCardSelectionAdapter();
@@ -56,7 +56,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
    * @param reader The reader through which the card communicates.
    * @param card The initial card data provided by the selection process.
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   public CardTransactionManager createCardTransaction(CardReader reader, SmartCard card) {
     return new CardTransactionManagerAdapter(reader, card);
@@ -72,7 +72,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
    * @param genericCardSelection A not null {@link GenericCardSelection}.
    * @return A not null reference.
    * @throws IllegalArgumentException If genericCardSelection is null.
-   * @since 2.0
+   * @since 2.0.0
    */
   public CardResourceProfileExtension createCardResourceProfileExtension(
       GenericCardSelection genericCardSelection) {
@@ -82,7 +82,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public String getCardApiVersion() {
@@ -92,7 +92,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public String getReaderApiVersion() {
@@ -102,7 +102,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public String getCommonApiVersion() {

@@ -16,7 +16,7 @@ import org.calypsonet.terminal.reader.selection.spi.CardSelection;
 /**
  * Card specific {@link CardSelection} providing means to filter cards, select applications.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public interface GenericCardSelection extends CardSelection {
 
@@ -28,7 +28,7 @@ public interface GenericCardSelection extends CardSelection {
    * @param cardProtocol A not empty String.
    * @return The current instance.
    * @throws IllegalArgumentException If the argument is null or empty.
-   * @since 2.0
+   * @since 2.0.0
    */
   GenericCardSelection filterByCardProtocol(String cardProtocol);
 
@@ -42,7 +42,7 @@ public interface GenericCardSelection extends CardSelection {
    * @param powerOnDataRegex A valid regular expression
    * @return The current instance.
    * @throws IllegalArgumentException If the provided regular expression is null, empty or invalid.
-   * @since 2.0
+   * @since 2.0.0
    */
   GenericCardSelection filterByPowerOnData(String powerOnDataRegex);
 
@@ -55,7 +55,7 @@ public interface GenericCardSelection extends CardSelection {
    * @param aid A byte array containing 5 to 16 bytes.
    * @return The current instance.
    * @throws IllegalArgumentException If the provided array is null or out of range.
-   * @since 2.0
+   * @since 2.0.0
    */
   GenericCardSelection filterByDfName(byte[] aid);
 
@@ -69,7 +69,7 @@ public interface GenericCardSelection extends CardSelection {
    * @param aid A hexadecimal string representation of 5 to 16 bytes.
    * @return The current instance.
    * @throws IllegalArgumentException If the provided AID is null, invalid or out of range.
-   * @since 2.0
+   * @since 2.0.0
    */
   GenericCardSelection filterByDfName(String aid);
 
@@ -81,7 +81,7 @@ public interface GenericCardSelection extends CardSelection {
    * @param fileOccurrence The {@link GenericCardSelection.FileOccurrence}.
    * @return The current instance.
    * @throws IllegalArgumentException If fileOccurrence is null.
-   * @since 2.0
+   * @since 2.0.0
    */
   GenericCardSelection setFileOccurrence(FileOccurrence fileOccurrence);
 
@@ -93,7 +93,7 @@ public interface GenericCardSelection extends CardSelection {
    * @param fileControlInformation The {@link GenericCardSelection.FileControlInformation}.
    * @return The current instance.
    * @throws IllegalArgumentException If fileControlInformation is null.
-   * @since 2.0
+   * @since 2.0.0
    */
   GenericCardSelection setFileControlInformation(FileControlInformation fileControlInformation);
 
@@ -105,7 +105,7 @@ public interface GenericCardSelection extends CardSelection {
    *
    * @param statusWord A positive int &le; {@code FFFFh}.
    * @return The current instance.
-   * @since 2.0
+   * @since 2.0.0
    */
   GenericCardSelection addSuccessfulStatusWord(int statusWord);
 
@@ -113,31 +113,31 @@ public interface GenericCardSelection extends CardSelection {
    * Navigation options through the different applications contained in the card according to the
    * ISO7816-4 standard.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   enum FileOccurrence {
     /**
      * First occurrence.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     FIRST,
     /**
      * Last occurrence.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     LAST,
     /**
      * Next occurrence.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     NEXT,
     /**
      * Previous occurrence.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     PREVIOUS
   }
@@ -146,31 +146,31 @@ public interface GenericCardSelection extends CardSelection {
    * Types of templates available in return for the Select Application command, according to the
    * ISO7816-4 standard.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   enum FileControlInformation {
     /**
      * File control information.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     FCI,
     /**
      * File control parameters.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     FCP,
     /**
      * File management data.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     FMD,
     /**
      * No response expected.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     NO_RESPONSE
   }

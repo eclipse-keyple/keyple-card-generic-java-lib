@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * (package-private)<br>
  * Implementation of {@link CardResourceProfileExtension} dedicated to card identification.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileExtension {
   private static final Logger logger =
@@ -35,7 +35,7 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
    * (package-private)<br>
    *
    * @param genericCardSelection The {@link GenericCardSelection}.
-   * @since 2.0
+   * @since 2.0.0
    */
   GenericCardResourceProfileExtensionAdapter(GenericCardSelection genericCardSelection) {
 
@@ -47,7 +47,7 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public SmartCard matches(CardReader reader, CardSelectionManager cardSelectionManager) {

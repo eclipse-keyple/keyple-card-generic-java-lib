@@ -23,7 +23,7 @@ import org.eclipse.keyple.core.util.ByteArrayUtil;
  * (package-private)<br>
  * Implementation of a generic {@link CardSelection}.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 class GenericCardSelectionAdapter implements GenericCardSelection, CardSelectionSpi {
 
@@ -35,7 +35,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   /**
    * (package-private) Creates an instance.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   GenericCardSelectionAdapter() {
     cardSelector = new CardSelectorAdapter();
@@ -44,7 +44,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardSelectionRequestSpi getCardSelectionRequest() {
@@ -54,7 +54,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public SmartCardSpi parse(CardSelectionResponseApi cardSelectionResponse) throws ParseException {
@@ -64,7 +64,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public GenericCardSelection filterByCardProtocol(String cardProtocol) {
@@ -78,7 +78,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public GenericCardSelection filterByPowerOnData(String powerOnDataRegex) {
@@ -99,7 +99,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public GenericCardSelection filterByDfName(byte[] aid) {
@@ -115,7 +115,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public GenericCardSelection filterByDfName(String aid) {
@@ -126,7 +126,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public GenericCardSelection setFileOccurrence(FileOccurrence fileOccurrence) {
@@ -153,7 +153,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public GenericCardSelection setFileControlInformation(
@@ -181,7 +181,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public GenericCardSelection addSuccessfulStatusWord(int statusWord) {

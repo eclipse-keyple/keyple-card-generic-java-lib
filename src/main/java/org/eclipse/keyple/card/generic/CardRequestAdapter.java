@@ -20,7 +20,7 @@ import org.calypsonet.terminal.card.spi.CardRequestSpi;
  * This POJO contains an ordered list of {@link ApduRequestSpi} and the associated status word check
  * policy.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 final class CardRequestAdapter implements CardRequestSpi {
 
@@ -37,7 +37,7 @@ final class CardRequestAdapter implements CardRequestSpi {
    * @param apduRequests A not empty list.
    * @param stopOnUnsuccessfulStatusWord True if the transmission must be stopped when an unexpected
    *     status word is received.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardRequestAdapter(List<ApduRequestSpi> apduRequests, boolean stopOnUnsuccessfulStatusWord) {
     this.apduRequests = apduRequests;
@@ -47,7 +47,7 @@ final class CardRequestAdapter implements CardRequestSpi {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public List<ApduRequestSpi> getApduRequests() {
@@ -57,7 +57,7 @@ final class CardRequestAdapter implements CardRequestSpi {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public boolean stopOnUnsuccessfulStatusWord() {

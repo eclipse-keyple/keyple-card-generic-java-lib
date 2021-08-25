@@ -22,7 +22,7 @@ public interface CardTransactionManager {
    *
    * @param apduCommand A not empty hexadecimal string containing a raw APDU command.
    * @return This instance.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardTransactionManager prepareApdu(String apduCommand);
 
@@ -32,7 +32,7 @@ public interface CardTransactionManager {
    *
    * @param apduCommand A not empty byte arrays containing raw APDU commands.
    * @return This instance.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardTransactionManager prepareApdu(byte[] apduCommand);
 
@@ -48,7 +48,7 @@ public interface CardTransactionManager {
    * @param le The expected output length, 0 if the output length is unspecified, null if no output
    *     data is expected.
    * @return This instance.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardTransactionManager prepareApdu(byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le);
 
@@ -56,7 +56,7 @@ public interface CardTransactionManager {
    * Requests the closing of the physical channel after the next transmission of APDUs.
    *
    * @return This instance.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardTransactionManager prepareReleaseChannel();
 

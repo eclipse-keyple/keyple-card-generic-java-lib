@@ -25,7 +25,7 @@ import org.eclipse.keyple.core.util.ByteArrayUtil;
  * (package-private)<br>
  * Implementation of {@link CardTransactionManager}.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 class CardTransactionManagerAdapter implements CardTransactionManager {
 
@@ -41,7 +41,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
    * @param reader The reader through which the card communicates.
    * @param card The initial card data provided by the selection process.
    * @throws IllegalArgumentException If the card resource or one of its components is null.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardTransactionManagerAdapter(CardReader reader, SmartCard card) {
     Assert.getInstance().notNull(reader, "reader").notNull(card, "card");
@@ -53,7 +53,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardTransactionManager prepareApdu(String apduCommand) {
@@ -69,7 +69,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardTransactionManager prepareApdu(byte[] apduCommand) {
@@ -85,7 +85,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardTransactionManager prepareApdu(
@@ -97,7 +97,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardTransactionManager prepareReleaseChannel() {
@@ -108,7 +108,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public List<byte[]> processApdusToByteArrays() throws TransactionException {
@@ -139,7 +139,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public List<String> processApdusToHexStrings() throws TransactionException {
