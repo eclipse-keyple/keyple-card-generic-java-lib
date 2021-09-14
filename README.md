@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Keyple Card Generic Java Library** is an addon to allow an application using Keyple to interact with any type of card through low level APDU commands.
+The **Keyple Card Generic Java Library** is an add-on to allow an application using Keyple to interact with any type of card through low level APDU commands.
 
 ## Documentation & Contribution Guide
 
