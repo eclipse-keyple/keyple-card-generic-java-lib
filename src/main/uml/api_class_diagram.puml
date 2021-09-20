@@ -1,0 +1,128 @@
+@startuml
+title
+    Keyple 2.0 - Generic Card Extension - 2.0.0 (24/06/2021)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+legend top
+    __Colors legend__ :
+    * __External API references__ :
+    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <back:cyan>**keyple-common-java-api**</back>
+    ** <back:orange>**keyple-service-resource-java-lib**</back>
+end legend
+
+package "org.eclipse.keyple.card.generic" as generic {
+    +class "<<<back:cyan>KeypleCardExtension</back>>>\n**final** GenericExtensionService" as GenericExtensionService {
+        --
+        +{static} GenericExtensionService getInstance ()
+
+        +GenericCardSelection createCardSelection ()
+        +<back:orange>CardResourceProfileExtension</back> createCardResourceProfileExtension (GenericCardSelection genericCardSelection)
+        +CardTransactionManager createCardTransaction (<back:yellow>CardReader</back> reader, <back:yellow>SmartCard</back> card)
+
+        -- **KeypleCardExtension** --
+        +String getCommonApiVersion ()
+        +String getReaderApiVersion ()
+        +String getCardApiVersion ()
+    }
+    +interface CardTransactionManager {
+        +CardTransactionManager prepareApdu (String apduCommand)
+        +CardTransactionManager prepareApdu (byte[] apduCommand)
+        +CardTransactionManager prepareApdu (byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le)
+
+        +CardTransactionManager prepareReleaseChannel ()
+
+        +List<byte[]> processApdusToByteArrays () throws TransactionException
+        +List<String> processApdusToHexStrings () throws TransactionException
+    }
+    +interface "<<<back:yellow>CardSelection</back>>>\nGenericCardSelection" as GenericCardSelection {
+        +GenericCardSelection filterByCardProtocol (String cardProtocol)
+
+        +GenericCardSelection filterByPowerOnData (String powerOnDataRegex)
+
+        +GenericCardSelection filterByDfName (byte[] aid)
+        +GenericCardSelection filterByDfName (String aid)
+        +GenericCardSelection setFileOccurrence (FileOccurrence fileOccurrence)
+        +GenericCardSelection setFileControlInformation (FileControlInformation fileControlInformation)
+        +GenericCardSelection addSuccessfulStatusWord (int statusWord)
+    }
+    +enum FileOccurrence {
+        FIRST
+        LAST
+        NEXT
+        PREVIOUS
+    }
+    +enum FileControlInformation {
+        FCI
+        FCP
+        FMD
+        NO_RESPONSE
+    }
+    +class "<<RuntimeException>>\nTransactionException" as TransactionException {
+        +TransactionException (String message)
+        +TransactionException (String message, Throwable cause)
+    }
+}
+
+' Associations
+
+' == LAYOUT ==
+
+GenericExtensionService ..> GenericCardSelection #C_LINK : create >
+GenericExtensionService ..> CardTransactionManager #C_LINK : create >
+
+GenericCardSelection +-- FileOccurrence
+GenericCardSelection ..> FileOccurrence #C_USE : use >
+GenericCardSelection +-- FileControlInformation
+GenericCardSelection ..> FileControlInformation #C_USE : use >
+
+CardTransactionManager ..> TransactionException #C_LINK : throw >
+
+' == STYLE ==
+
+package generic #C_GREY1 {}
+
+
+@enduml
