@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple 2.0 - Generic Card Extension - 2.0.0 (24/06/2021)
+    Keyple - keyple-card-generic-java-lib - 2.0.+ (24/06/2021)
 end title
 
 ' == THEME ==
