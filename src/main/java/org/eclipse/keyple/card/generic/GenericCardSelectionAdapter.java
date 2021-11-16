@@ -186,6 +186,6 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
   @Override
   public GenericCardSelection addSuccessfulStatusWord(int statusWord) {
     cardSelector.addSuccessfulStatusWord(statusWord);
-    return null;
+    return this;
   }
 }
