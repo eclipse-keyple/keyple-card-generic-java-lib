@@ -14,6 +14,7 @@ package org.eclipse.keyple.card.generic;
 import java.util.HashSet;
 import java.util.Set;
 import org.calypsonet.terminal.card.spi.ApduRequestSpi;
+import org.eclipse.keyple.core.util.json.JsonUtil;
 
 /**
  * (package-private)<br>
@@ -99,5 +100,16 @@ class ApduRequestAdapter implements ApduRequestSpi {
   @Override
   public String getInfo() {
     return info;
+  }
+
+  /**
+   * Converts the APDU request into a string where the data is encoded in a json format.
+   *
+   * @return A not empty String
+   * @since 2.0.0
+   */
+  @Override
+  public String toString() {
+    return "APDU_REQUEST = " + JsonUtil.toJson(this);
   }
 }
