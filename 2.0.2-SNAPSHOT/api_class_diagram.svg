@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="2102.5px" preserveAspectRatio="none" style="width:2665px;height:2102px;background:#FFFFFF;" version="1.1" viewBox="0 0 2665 2102" width="2665px" zoomAndPan="magnify"><defs><filter height="1" id="b12wurjmcsukn50" width="1" x="0" y="0"><feFlood flood-color="#FFFF00" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="b12wurjmcsukn51" width="1" x="0" y="0"><feFlood flood-color="#00FFFF" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="b12wurjmcsukn52" width="1" x="0" y="0"><feFlood flood-color="#FFA500" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="45" lengthAdjust="spacing" textLength="1140" x="746.25" y="46.7139">Keyple - keyple-card-generic-java-lib - 2.0.+ (24/06/2021)</text><rect fill="#DDDDDD" height="245.1172" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:2.5;" width="720" x="955" y="76.6016"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" text-decoration="underline" textLength="220" x="970" y="125.4346">Colors legend</text><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="10" x="1200" y="125.4346">:</text><ellipse cx="983.75" cy="158.3984" fill="#000000" rx="6.25" ry="6.25" style="stroke:#000000;stroke-width:0.0;"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" text-decoration="underline" textLength="370" x="1002.5" y="169.458">External API references</text><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="10" x="1382.5" y="169.458">:</text><rect fill="#000000" height="8.75" style="stroke:#000000;stroke-width:0.0;" width="8.75" x="1022.5" y="201.1719"/><text fill="#000000" filter="url(#b12wurjmcsukn50)" font-family="sans-serif" font-size="35" font-weight="bold" lengthAdjust="spacing" textLength="625" x="1035" y="213.4814">calypsonet-terminal-reader-java-api</text><rect fill="#000000" height="8.75" style="stroke:#000000;stroke-width:0.0;" width="8.75" x="1022.5" y="245.1953"/><text fill="#000000" filter="url(#b12wurjmcsukn51)" font-family="sans-serif" font-size="35" font-weight="bold" lengthAdjust="spacing" textLength="425" x="1035" y="257.5049">keyple-common-java-api</text><rect fill="#000000" height="8.75" style="stroke:#000000;stroke-width:0.0;" width="8.75" x="1022.5" y="289.2188"/><text fill="#000000" filter="url(#b12wurjmcsukn52)" font-family="sans-serif" font-size="35" font-weight="bold" lengthAdjust="spacing" textLength="572.5" x="1035" y="301.5283">keyple-service-resource-java-lib</text><!--MD5=[875036ddd828b40c6101a9eb7a1ba899]
+cluster generic--><polygon fill="#F8F9F9" points="40,359.2188,610,359.2188,627.5,418.2422,2622.5,418.2422,2622.5,2086.7188,40,2086.7188,40,359.2188" style="stroke:#000000;stroke-width:3.75;"/><line style="stroke:#000000;stroke-width:3.75;" x1="40" x2="627.5" y1="418.2422" y2="418.2422"/><text fill="#000000" font-family="sans-serif" font-size="35" font-weight="bold" lengthAdjust="spacing" textLength="555" x="50" y="400.5518">org.eclipse.keyple.card.generic</text><!--MD5=[ed985e6df89868aa173b0e831715418f]
+class GenericExtensionService--><rect codeLine="56" fill="#FEFECE" height="496.3672" id="GenericExtensionService" style="stroke:#D4AC0D;stroke-width:3.75;" width="1440" x="677.5" y="449.2188"/><ellipse cx="1166.875" cy="499.4531" fill="#ADD1B2" rx="27.5" ry="27.5" style="stroke:#ADD1B2;stroke-width:2.5;"/><path d="M1171.875,490.7031 Q1172.3828,489.4531 1172.9688,488.8281 Q1173.5547,488.2031 1174.2188,488.2031 Q1175.3906,488.2031 1176.1328,488.9063 Q1176.875,489.6094 1176.875,491.25 L1176.875,495.1563 Q1176.875,496.7969 1176.1719,497.5 Q1175.4688,498.2031 1174.375,498.2031 Q1173.3984,498.2031 1172.7734,497.7734 Q1172.1484,497.3438 1171.875,496.2109 Q1171.7578,495.4297 1171.3281,495 Q1170.5469,494.1797 1169.1406,493.7109 Q1167.7344,493.2031 1166.3281,493.2031 Q1164.5703,493.2031 1163.0859,493.9063 Q1161.6406,494.6094 1160.5078,496.1719 Q1159.375,497.7344 1159.375,499.8828 L1159.375,502.1875 Q1159.375,504.7656 1161.4844,506.4844 Q1163.5938,508.2031 1167.3438,508.2031 Q1169.5703,508.2031 1171.1328,507.6953 Q1172.0313,507.4219 1173.0469,506.5234 Q1173.7109,506.0156 1174.0625,505.8594 Q1174.4141,505.7031 1174.8438,505.7031 Q1175.6641,505.7031 1176.25,506.3672 Q1176.875,506.9922 1176.875,507.8906 Q1176.875,508.75 1176.0156,509.7656 Q1174.7656,511.25 1172.7734,512.0703 Q1170.1563,513.2031 1166.9531,513.2031 Q1163.2031,513.2031 1160.1953,511.7188 Q1157.7734,510.5469 1156.0547,508.0078 Q1154.375,505.4688 1154.375,502.4609 L1154.375,499.7266 Q1154.375,496.6016 1155.8594,493.8672 Q1157.3828,491.1328 1160,489.6875 Q1162.6563,488.2031 1165.625,488.2031 Q1167.4219,488.2031 1168.9844,488.8281 Q1170.5469,489.4531 1171.875,490.7031 Z " fill="#000000"/><ellipse cx="1230.625" cy="498.2031" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="35" x="1268.125" y="492.8613">&lt;&lt;</text><text fill="#000000" filter="url(#b12wurjmcsukn51)" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="297.5" x="1303.125" y="492.8613">KeypleCardExtension</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="35" x="1600.625" y="492.8613">&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="60" x="1245.625" y="530.5957">final</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="345" x="1313.125" y="530.5957">GenericExtensionService</text><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="680" x2="2115" y1="549.6875" y2="549.6875"/><line style="stroke:#D4AC0D;stroke-width:2.5;" x1="680" x2="2115" y1="569.6875" y2="569.6875"/><ellipse cx="705" cy="597.1875" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" text-decoration="underline" textLength="480" x="727.5" y="608.2349">GenericExtensionService getInstance ()</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="0" x="735" y="642.8247"/><ellipse cx="705" cy="666.3672" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="542.5" x="727.5" y="677.4146">GenericCardSelection createCardSelection ()</text><ellipse cx="705" cy="700.957" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" filter="url(#b12wurjmcsukn52)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="367.5" x="727.5" y="712.0044">CardResourceProfileExtension</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="1000" x="1102.5" y="712.0044">createCardResourceProfileExtension (GenericCardSelection genericCardSelection)</text><ellipse cx="705" cy="735.5469" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="607.5" x="727.5" y="746.5942">CardTransactionManager createCardTransaction (</text><text fill="#000000" filter="url(#b12wurjmcsukn50)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="145" x="1335" y="746.5942">CardReader</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="87.5" x="1487.5" y="746.5942">reader,</text><text fill="#000000" filter="url(#b12wurjmcsukn50)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="127.5" x="1582.5" y="746.5942">SmartCard</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="65" x="1717.5" y="746.5942">card)</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="0" x="735" y="781.1841"/><ellipse cx="705" cy="849.3164" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="380" x="727.5" y="860.3638">String getCommonApiVersion ()</text><ellipse cx="705" cy="883.9063" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="365" x="727.5" y="894.9536">String getReaderApiVersion ()</text><ellipse cx="705" cy="918.4961" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="335" x="727.5" y="929.5435">String getCardApiVersion ()</text><line style="stroke:#D4AC0D;stroke-width:2.5;" x1="680" x2="1251.25" y1="814.5215" y2="814.5215"/><text fill="#000000" font-family="sans-serif" font-size="27.5" font-weight="bold" lengthAdjust="spacing" textLength="292.5" x="1251.25" y="824.5239">KeypleCardExtension</text><line style="stroke:#D4AC0D;stroke-width:2.5;" x1="1543.75" x2="2115" y1="814.5215" y2="814.5215"/><!--MD5=[92be3b4089a2693ac3db71f8eb03f488]
+class CardTransactionManager--><rect codeLine="69" fill="#FEFECE" height="396.7188" id="CardTransactionManager" style="stroke:#D4AC0D;stroke-width:3.75;" width="1240" x="80" y="1169.2188"/><ellipse cx="501.875" cy="1209.2188" fill="#B4A7E5" rx="27.5" ry="27.5" style="stroke:#B4A7E5;stroke-width:2.5;"/><path d="M504.375,1201.7188 L504.375,1216.7188 L509.375,1216.7188 L510.5859,1216.7188 L511.875,1218.2813 L511.875,1219.2188 L511.875,1220.1563 L510.5859,1221.7188 L509.375,1221.7188 L494.375,1221.7188 L493.1641,1221.7188 L491.875,1220.1563 L491.875,1219.2188 L491.875,1218.2813 L493.1641,1216.7188 L494.375,1216.7188 L499.375,1216.7188 L499.375,1201.7188 L494.375,1201.7188 L493.1641,1201.7188 L491.875,1200.1563 L491.875,1199.2188 L491.875,1198.2813 L493.1641,1196.7188 L494.375,1196.7188 L509.375,1196.7188 L510.5859,1196.7188 L511.875,1198.2813 L511.875,1199.2188 L511.875,1200.1563 L510.5859,1201.7188 L509.375,1201.7188 L504.375,1201.7188 Z " fill="#000000"/><ellipse cx="565.625" cy="1207.9688" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="347.5" x="580.625" y="1221.4941">CardTransactionManager</text><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="82.5" x2="1317.5" y1="1249.2188" y2="1249.2188"/><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="82.5" x2="1317.5" y1="1269.2188" y2="1269.2188"/><ellipse cx="107.5" cy="1296.7188" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="755" x="130" y="1307.7661">CardTransactionManager prepareApdu (String apduCommand)</text><ellipse cx="107.5" cy="1331.3086" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="752.5" x="130" y="1342.356">CardTransactionManager prepareApdu (byte[] apduCommand)</text><ellipse cx="107.5" cy="1365.8984" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="1175" x="130" y="1376.9458">CardTransactionManager prepareApdu (byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le)</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="0" x="137.5" y="1411.5356"/><ellipse cx="107.5" cy="1435.0781" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="630" x="130" y="1446.1255">CardTransactionManager prepareReleaseChannel ()</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="0" x="137.5" y="1480.7153"/><ellipse cx="107.5" cy="1504.2578" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="887.5" x="130" y="1515.3052">List&lt;byte[]&gt; processApdusToByteArrays () throws TransactionException</text><ellipse cx="107.5" cy="1538.8477" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="882.5" x="130" y="1549.895">List&lt;String&gt; processApdusToHexStrings () throws TransactionException</text><!--MD5=[2fa782290b141d1d8079d545e6a30302]
+class GenericCardSelection--><rect codeLine="79" fill="#FEFECE" height="451.7773" id="GenericCardSelection" style="stroke:#D4AC0D;stroke-width:3.75;" width="1175" x="1407.5" y="1141.7188"/><ellipse cx="1819.375" cy="1191.9531" fill="#B4A7E5" rx="27.5" ry="27.5" style="stroke:#B4A7E5;stroke-width:2.5;"/><path d="M1821.875,1184.4531 L1821.875,1199.4531 L1826.875,1199.4531 L1828.0859,1199.4531 L1829.375,1201.0156 L1829.375,1201.9531 L1829.375,1202.8906 L1828.0859,1204.4531 L1826.875,1204.4531 L1811.875,1204.4531 L1810.6641,1204.4531 L1809.375,1202.8906 L1809.375,1201.9531 L1809.375,1201.0156 L1810.6641,1199.4531 L1811.875,1199.4531 L1816.875,1199.4531 L1816.875,1184.4531 L1811.875,1184.4531 L1810.6641,1184.4531 L1809.375,1182.8906 L1809.375,1181.9531 L1809.375,1181.0156 L1810.6641,1179.4531 L1811.875,1179.4531 L1826.875,1179.4531 L1828.0859,1179.4531 L1829.375,1181.0156 L1829.375,1181.9531 L1829.375,1182.8906 L1828.0859,1184.4531 L1826.875,1184.4531 L1821.875,1184.4531 Z " fill="#000000"/><ellipse cx="1883.125" cy="1190.7031" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="35" x="1916.875" y="1185.3613">&lt;&lt;</text><text fill="#000000" filter="url(#b12wurjmcsukn50)" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="195" x="1951.875" y="1185.3613">CardSelection</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="35" x="2146.875" y="1185.3613">&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="302.5" x="1898.125" y="1223.0957">GenericCardSelection</text><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="1410" x2="2580" y1="1242.1875" y2="1242.1875"/><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="1410" x2="2580" y1="1262.1875" y2="1262.1875"/><ellipse cx="1435" cy="1289.6875" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="767.5" x="1457.5" y="1300.7349">GenericCardSelection filterByCardProtocol (String cardProtocol)</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="0" x="1465" y="1335.3247"/><ellipse cx="1435" cy="1358.8672" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="877.5" x="1457.5" y="1369.9146">GenericCardSelection filterByPowerOnData (String powerOnDataRegex)</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="0" x="1465" y="1404.5044"/><ellipse cx="1435" cy="1428.0469" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="587.5" x="1457.5" y="1439.0942">GenericCardSelection filterByDfName (byte[] aid)</text><ellipse cx="1435" cy="1462.6367" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="590" x="1457.5" y="1473.6841">GenericCardSelection filterByDfName (String aid)</text><ellipse cx="1435" cy="1497.2266" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="892.5" x="1457.5" y="1508.2739">GenericCardSelection setFileOccurrence (FileOccurrence fileOccurrence)</text><ellipse cx="1435" cy="1531.8164" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="1110" x="1457.5" y="1542.8638">GenericCardSelection setFileControlInformation (FileControlInformation fileControlInformation)</text><ellipse cx="1435" cy="1566.4063" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="797.5" x="1457.5" y="1577.4536">GenericCardSelection addSuccessfulStatusWord (int statusWord)</text><!--MD5=[986279e3cfc2043660398b1cf71c65a2]
+class FileOccurrence--><rect codeLine="90" fill="#FEFECE" height="258.3594" id="FileOccurrence" style="stroke:#D4AC0D;stroke-width:3.75;" width="315" x="1645" y="1789.2188"/><ellipse cx="1682.5" cy="1829.2188" fill="#EB937F" rx="27.5" ry="27.5" style="stroke:#EB93DF;stroke-width:2.5;"/><path d="M1678.75,1831.7188 L1678.75,1836.7188 L1688.75,1836.7188 L1688.75,1834.2188 L1688.75,1833.0078 L1690.3125,1831.7188 L1691.25,1831.7188 L1692.1875,1831.7188 L1693.75,1833.0078 L1693.75,1834.2188 L1693.75,1841.7188 L1673.75,1841.7188 L1672.5391,1841.7188 L1671.25,1840.1563 L1671.25,1839.2188 L1671.25,1838.2813 L1672.5391,1836.7188 L1673.75,1836.7188 L1673.75,1836.7188 L1673.75,1821.7188 L1673.75,1821.7188 L1672.5391,1821.7188 L1671.25,1820.1563 L1671.25,1819.2188 L1671.25,1818.2813 L1672.5391,1816.7188 L1673.75,1816.7188 L1693.75,1816.7188 L1693.75,1824.2188 L1693.75,1825.4297 L1692.1875,1826.7188 L1691.25,1826.7188 L1690.3125,1826.7188 L1688.75,1825.4297 L1688.75,1824.2188 L1688.75,1821.7188 L1678.75,1821.7188 L1678.75,1826.7188 L1681.25,1826.7188 L1681.25,1825.5078 L1681.25,1825.5078 L1682.8125,1824.2188 L1683.75,1824.2188 L1684.6875,1824.2188 L1686.25,1825.5078 L1686.25,1826.7188 L1686.25,1831.7188 L1686.25,1832.9297 L1684.6875,1834.2188 L1684.6875,1834.2188 L1683.75,1834.2188 L1682.8125,1834.2188 L1681.25,1832.9297 L1681.25,1832.9297 L1681.25,1831.7188 L1678.75,1831.7188 Z " fill="#000000"/><ellipse cx="1730" cy="1827.9688" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="207.5" x="1745" y="1841.4941">FileOccurrence</text><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="1647.5" x2="1957.5" y1="1869.2188" y2="1869.2188"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="70" x="1660" y="1907.7661">FIRST</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="67.5" x="1660" y="1942.356">LAST</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="65" x="1660" y="1976.9458">NEXT</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="127.5" x="1660" y="2011.5356">PREVIOUS</text><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="1647.5" x2="1957.5" y1="2027.5781" y2="2027.5781"/><!--MD5=[7db03ef0d09735de9c956eac87f10fc3]
+class FileControlInformation--><rect codeLine="96" fill="#FEFECE" height="258.3594" id="FileControlInformation" style="stroke:#D4AC0D;stroke-width:3.75;" width="415" x="2047.5" y="1789.2188"/><ellipse cx="2085" cy="1829.2188" fill="#EB937F" rx="27.5" ry="27.5" style="stroke:#EB93DF;stroke-width:2.5;"/><path d="M2081.25,1831.7188 L2081.25,1836.7188 L2091.25,1836.7188 L2091.25,1834.2188 L2091.25,1833.0078 L2092.8125,1831.7188 L2093.75,1831.7188 L2094.6875,1831.7188 L2096.25,1833.0078 L2096.25,1834.2188 L2096.25,1841.7188 L2076.25,1841.7188 L2075.0391,1841.7188 L2073.75,1840.1563 L2073.75,1839.2188 L2073.75,1838.2813 L2075.0391,1836.7188 L2076.25,1836.7188 L2076.25,1836.7188 L2076.25,1821.7188 L2076.25,1821.7188 L2075.0391,1821.7188 L2073.75,1820.1563 L2073.75,1819.2188 L2073.75,1818.2813 L2075.0391,1816.7188 L2076.25,1816.7188 L2096.25,1816.7188 L2096.25,1824.2188 L2096.25,1825.4297 L2094.6875,1826.7188 L2093.75,1826.7188 L2092.8125,1826.7188 L2091.25,1825.4297 L2091.25,1824.2188 L2091.25,1821.7188 L2081.25,1821.7188 L2081.25,1826.7188 L2083.75,1826.7188 L2083.75,1825.5078 L2083.75,1825.5078 L2085.3125,1824.2188 L2086.25,1824.2188 L2087.1875,1824.2188 L2088.75,1825.5078 L2088.75,1826.7188 L2088.75,1831.7188 L2088.75,1832.9297 L2087.1875,1834.2188 L2087.1875,1834.2188 L2086.25,1834.2188 L2085.3125,1834.2188 L2083.75,1832.9297 L2083.75,1832.9297 L2083.75,1831.7188 L2081.25,1831.7188 Z " fill="#000000"/><ellipse cx="2132.5" cy="1827.9688" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="307.5" x="2147.5" y="1841.4941">FileControlInformation</text><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="2050" x2="2460" y1="1869.2188" y2="1869.2188"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="37.5" x="2062.5" y="1907.7661">FCI</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="47.5" x="2062.5" y="1942.356">FCP</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="52.5" x="2062.5" y="1976.9458">FMD</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="187.5" x="2062.5" y="2011.5356">NO_RESPONSE</text><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="2050" x2="2460" y1="2027.5781" y2="2027.5781"/><!--MD5=[c0018d25ad3b9acf88262da6846af6d6]
+class TransactionException--><rect codeLine="102" fill="#FEFECE" height="209.6484" id="TransactionException" style="stroke:#D4AC0D;stroke-width:3.75;" width="767.5" x="316.25" y="1812.9688"/><ellipse cx="514.375" cy="1863.2031" fill="#ADD1B2" rx="27.5" ry="27.5" style="stroke:#ADD1B2;stroke-width:2.5;"/><path d="M519.375,1854.4531 Q519.8828,1853.2031 520.4688,1852.5781 Q521.0547,1851.9531 521.7188,1851.9531 Q522.8906,1851.9531 523.6328,1852.6563 Q524.375,1853.3594 524.375,1855 L524.375,1858.9063 Q524.375,1860.5469 523.6719,1861.25 Q522.9688,1861.9531 521.875,1861.9531 Q520.8984,1861.9531 520.2734,1861.5234 Q519.6484,1861.0938 519.375,1859.9609 Q519.2578,1859.1797 518.8281,1858.75 Q518.0469,1857.9297 516.6406,1857.4609 Q515.2344,1856.9531 513.8281,1856.9531 Q512.0703,1856.9531 510.5859,1857.6563 Q509.1406,1858.3594 508.0078,1859.9219 Q506.875,1861.4844 506.875,1863.6328 L506.875,1865.9375 Q506.875,1868.5156 508.9844,1870.2344 Q511.0938,1871.9531 514.8438,1871.9531 Q517.0703,1871.9531 518.6328,1871.4453 Q519.5313,1871.1719 520.5469,1870.2734 Q521.2109,1869.7656 521.5625,1869.6094 Q521.9141,1869.4531 522.3438,1869.4531 Q523.1641,1869.4531 523.75,1870.1172 Q524.375,1870.7422 524.375,1871.6406 Q524.375,1872.5 523.5156,1873.5156 Q522.2656,1875 520.2734,1875.8203 Q517.6563,1876.9531 514.4531,1876.9531 Q510.7031,1876.9531 507.6953,1875.4688 Q505.2734,1874.2969 503.5547,1871.7578 Q501.875,1869.2188 501.875,1866.2109 L501.875,1863.4766 Q501.875,1860.3516 503.3594,1857.6172 Q504.8828,1854.8828 507.5,1853.4375 Q510.1563,1851.9531 513.125,1851.9531 Q514.9219,1851.9531 516.4844,1852.5781 Q518.0469,1853.2031 519.375,1854.4531 Z " fill="#000000"/><ellipse cx="578.125" cy="1861.9531" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="322.5" x="593.125" y="1856.6113">&lt;&lt;RuntimeException&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="295" x="606.875" y="1894.3457">TransactionException</text><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="318.75" x2="1081.25" y1="1913.4375" y2="1913.4375"/><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="318.75" x2="1081.25" y1="1933.4375" y2="1933.4375"/><ellipse cx="343.75" cy="1960.9375" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="475" x="366.25" y="1971.9849">TransactionException (String message)</text><ellipse cx="343.75" cy="1995.5273" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="702.5" x="366.25" y="2006.5747">TransactionException (String message, Throwable cause)</text><!--MD5=[399a6a19a52bf9f5a2de73f234ef7796]
+link GenericExtensionService to GenericCardSelection--><path codeLine="112" d="M1619.1375,947.1463 C1673.36,1007.4938 1731.2225,1071.8913 1784.8875,1131.6187 " fill="none" id="GenericExtensionService-to-GenericCardSelection" style="stroke:#3498DB;stroke-width:2.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#3498DB" points="1793.4625,1141.1638,1785.8666,1117.7426,1785.1095,1131.8644,1770.9877,1131.1073,1793.4625,1141.1638" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#000000" points="1733.3544,1053.9563,1723.7064,1032.2253,1712.7759,1042.0465,1733.3544,1053.9563" style="stroke:#000000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="90" x="1747.5" y="1057.9565">create</text><!--MD5=[fa9ad0176a5473d2e6181323950faf20]
+link GenericExtensionService to CardTransactionManager--><path codeLine="113" d="M1138.7675,947.1463 C1065.3025,1017.1888 986.115,1092.6838 915.505,1160.0038 " fill="none" id="GenericExtensionService-to-CardTransactionManager" style="stroke:#3498DB;stroke-width:2.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#3498DB" points="906.0475,1169.0213,929.2327,1160.7328,915.0946,1160.3957,915.4317,1146.2575,906.0475,1169.0213" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#000000" points="1050.9529,1053.2837,1072.3892,1042.9978,1062.2493,1032.3623,1050.9529,1053.2837" style="stroke:#000000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="90" x="1082.5" y="1057.9565">create</text><!--MD5=[e7ea6c21eacd2abf2e949c3da4598ddc]
+reverse link GenericCardSelection to FileOccurrence--><path codeLine="115" d="M1839.345,1629.2337 C1834.0125,1642.5412 1829.1775,1655.9113 1825,1669.2188 C1813.105,1707.1062 1806.8675,1749.7637 1803.7525,1788.7963 " fill="none" id="GenericCardSelection-backto-FileOccurrence" style="stroke:#A80036;stroke-width:2.5;"/><ellipse cx="1846.566" cy="1612.5855" fill="#FFFFFF" rx="20" ry="20" style="stroke:#A80036;stroke-width:2.5;"/><line style="stroke:#A80036;stroke-width:2.5;" x1="1838.6095" x2="1854.5225" y1="1630.9347" y2="1594.2363"/><line style="stroke:#A80036;stroke-width:2.5;" x1="1828.2168" x2="1864.9153" y1="1604.629" y2="1620.542"/><!--MD5=[bfc4bc77c8b422c60992174a83839da8]
+link GenericCardSelection to FileOccurrence--><path codeLine="116" d="M1915.87,1594.5013 C1894.0825,1656.1863 1871.0825,1721.2963 1851.5375,1776.6313 " fill="none" id="GenericCardSelection-to-FileOccurrence" style="stroke:#27AE60;stroke-width:2.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#27AE60" points="1847.165,1789.0138,1864.0848,1771.126,1851.3262,1777.2267,1845.2255,1764.4681,1847.165,1789.0138" style="stroke:#27AE60;stroke-width:2.5;"/><polygon fill="#000000" points="1893.3368,1703.9445,1907.7959,1685.0699,1893.9403,1680.1758,1893.3368,1703.9445" style="stroke:#000000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="52.5" x="1920" y="1705.4565">use</text><!--MD5=[6d7ea8feccffe5b7788b969fe7bacbb7]
+reverse link GenericCardSelection to FileControlInformation--><path codeLine="117" d="M2043.1,1631.0613 C2052.6175,1659.8763 2063.9725,1688.1788 2077.5,1714.2188 C2091.0325,1740.2638 2108.6525,1765.6763 2127.53,1789.1938 " fill="none" id="GenericCardSelection-backto-FileControlInformation" style="stroke:#A80036;stroke-width:2.5;"/><ellipse cx="2037.7999" cy="1613.5643" fill="#FFFFFF" rx="20" ry="20" style="stroke:#A80036;stroke-width:2.5;"/><line style="stroke:#A80036;stroke-width:2.5;" x1="2043.5998" x2="2032" y1="1632.7049" y2="1594.4238"/><line style="stroke:#A80036;stroke-width:2.5;" x1="2018.6593" x2="2056.9405" y1="1619.3642" y2="1607.7644"/><!--MD5=[c22ed34f327dda29566b62244e1485af]
+link GenericCardSelection to FileControlInformation--><path codeLine="118" d="M2101.8775,1594.5013 C2131.43,1656.4463 2162.6275,1721.8438 2189.0975,1777.3288 " fill="none" id="GenericCardSelection-to-FileControlInformation" style="stroke:#27AE60;stroke-width:2.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#27AE60" points="2194.6725,1789.0138,2194.0104,1764.4005,2189.2904,1777.7318,2175.9592,1773.0118,2194.6725,1789.0138" style="stroke:#27AE60;stroke-width:2.5;"/><polygon fill="#000000" points="2172.8822,1703.4401,2169.7771,1679.8674,2156.5144,1686.1945,2172.8822,1703.4401" style="stroke:#000000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="52.5" x="2190" y="1705.4565">use</text><!--MD5=[8f2cb7cdbb9860610692897d565cd608]
+link CardTransactionManager to TransactionException--><path codeLine="120" d="M700,1567.2263 C700,1644.9763 700,1731.6612 700,1799.0963 " fill="none" id="CardTransactionManager-to-TransactionException" style="stroke:#3498DB;stroke-width:2.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#3498DB" points="700,1812.3188,710,1789.8188,700,1799.8188,690,1789.8188,700,1812.3188" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#000000" points="712.5,1704.6582,719.8473,1682.0455,705.1527,1682.0455,712.5,1704.6582" style="stroke:#000000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="77.5" x="735" y="1705.4565">throw</text><!--MD5=[a04d42bb57100d995e485b1f45201ffb]
+@startuml
+title
+    Keyple - keyple-card-generic-java-lib - 2.0.+ (24/06/2021)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+legend top
+    __Colors legend__ :
+    * __External API references__ :
+    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <back:cyan>**keyple-common-java-api**</back>
+    ** <back:orange>**keyple-service-resource-java-lib**</back>
+end legend
+
+package "org.eclipse.keyple.card.generic" as generic {
+    +class "<<<back:cyan>KeypleCardExtension</back>>>\n**final** GenericExtensionService" as GenericExtensionService {
+        - -
+        +{static} GenericExtensionService getInstance ()
+
+        +GenericCardSelection createCardSelection ()
+        +<back:orange>CardResourceProfileExtension</back> createCardResourceProfileExtension (GenericCardSelection genericCardSelection)
+        +CardTransactionManager createCardTransaction (<back:yellow>CardReader</back> reader, <back:yellow>SmartCard</back> card)
+
+        - - **KeypleCardExtension** - -
+        +String getCommonApiVersion ()
+        +String getReaderApiVersion ()
+        +String getCardApiVersion ()
+    }
+    +interface CardTransactionManager {
+        +CardTransactionManager prepareApdu (String apduCommand)
+        +CardTransactionManager prepareApdu (byte[] apduCommand)
+        +CardTransactionManager prepareApdu (byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le)
+
+        +CardTransactionManager prepareReleaseChannel ()
+
+        +List<byte[]> processApdusToByteArrays () throws TransactionException
+        +List<String> processApdusToHexStrings () throws TransactionException
+    }
+    +interface "<<<back:yellow>CardSelection</back>>>\nGenericCardSelection" as GenericCardSelection {
+        +GenericCardSelection filterByCardProtocol (String cardProtocol)
+
+        +GenericCardSelection filterByPowerOnData (String powerOnDataRegex)
+
+        +GenericCardSelection filterByDfName (byte[] aid)
+        +GenericCardSelection filterByDfName (String aid)
+        +GenericCardSelection setFileOccurrence (FileOccurrence fileOccurrence)
+        +GenericCardSelection setFileControlInformation (FileControlInformation fileControlInformation)
+        +GenericCardSelection addSuccessfulStatusWord (int statusWord)
+    }
+    +enum FileOccurrence {
+        FIRST
+        LAST
+        NEXT
+        PREVIOUS
+    }
+    +enum FileControlInformation {
+        FCI
+        FCP
+        FMD
+        NO_RESPONSE
+    }
+    +class "<<RuntimeException>>\nTransactionException" as TransactionException {
+        +TransactionException (String message)
+        +TransactionException (String message, Throwable cause)
+    }
+}
+
+' Associations
+
+' == LAYOUT ==
+
+GenericExtensionService ..> GenericCardSelection #C_LINK : create >
+GenericExtensionService ..> CardTransactionManager #C_LINK : create >
+
+GenericCardSelection +- - FileOccurrence
+GenericCardSelection ..> FileOccurrence #C_USE : use >
+GenericCardSelection +- - FileControlInformation
+GenericCardSelection ..> FileControlInformation #C_USE : use >
+
+CardTransactionManager ..> TransactionException #C_LINK : throw >
+
+' == STYLE ==
+
+package generic #C_GREY1 {}
+
+
+@enduml
+
+@startuml
+title
+    Keyple - keyple-card-generic-java-lib - 2.0.+ (24/06/2021)
+end title
+
+
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+
+legend top
+    __Colors legend__ :
+    * __External API references__ :
+    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <back:cyan>**keyple-common-java-api**</back>
+    ** <back:orange>**keyple-service-resource-java-lib**</back>
+end legend
+
+package "org.eclipse.keyple.card.generic" as generic {
+    +class "<<<back:cyan>KeypleCardExtension</back>>>\n**final** GenericExtensionService" as GenericExtensionService {
+        - -
+        +{static} GenericExtensionService getInstance ()
+
+        +GenericCardSelection createCardSelection ()
+        +<back:orange>CardResourceProfileExtension</back> createCardResourceProfileExtension (GenericCardSelection genericCardSelection)
+        +CardTransactionManager createCardTransaction (<back:yellow>CardReader</back> reader, <back:yellow>SmartCard</back> card)
+
+        - - **KeypleCardExtension** - -
+        +String getCommonApiVersion ()
+        +String getReaderApiVersion ()
+        +String getCardApiVersion ()
+    }
+    +interface CardTransactionManager {
+        +CardTransactionManager prepareApdu (String apduCommand)
+        +CardTransactionManager prepareApdu (byte[] apduCommand)
+        +CardTransactionManager prepareApdu (byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le)
+
+        +CardTransactionManager prepareReleaseChannel ()
+
+        +List<byte[]> processApdusToByteArrays () throws TransactionException
+        +List<String> processApdusToHexStrings () throws TransactionException
+    }
+    +interface "<<<back:yellow>CardSelection</back>>>\nGenericCardSelection" as GenericCardSelection {
+        +GenericCardSelection filterByCardProtocol (String cardProtocol)
+
+        +GenericCardSelection filterByPowerOnData (String powerOnDataRegex)
+
+        +GenericCardSelection filterByDfName (byte[] aid)
+        +GenericCardSelection filterByDfName (String aid)
+        +GenericCardSelection setFileOccurrence (FileOccurrence fileOccurrence)
+        +GenericCardSelection setFileControlInformation (FileControlInformation fileControlInformation)
+        +GenericCardSelection addSuccessfulStatusWord (int statusWord)
+    }
+    +enum FileOccurrence {
+        FIRST
+        LAST
+        NEXT
+        PREVIOUS
+    }
+    +enum FileControlInformation {
+        FCI
+        FCP
+        FMD
+        NO_RESPONSE
+    }
+    +class "<<RuntimeException>>\nTransactionException" as TransactionException {
+        +TransactionException (String message)
+        +TransactionException (String message, Throwable cause)
+    }
+}
+
+
+
+GenericExtensionService ..> GenericCardSelection #3498DB : create >
+GenericExtensionService ..> CardTransactionManager #3498DB : create >
+
+GenericCardSelection +- - FileOccurrence
+GenericCardSelection ..> FileOccurrence #27AE60 : use >
+GenericCardSelection +- - FileControlInformation
+GenericCardSelection ..> FileControlInformation #27AE60 : use >
+
+CardTransactionManager ..> TransactionException #3498DB : throw >
+
+
+package generic #F8F9F9 {}
+
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 14:40:07 CEST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: fr
+Country: FR
+--></g></svg>
