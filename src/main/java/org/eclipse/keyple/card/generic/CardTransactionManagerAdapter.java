@@ -19,7 +19,7 @@ import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.util.ApduUtil;
 import org.eclipse.keyple.core.util.Assert;
-import org.eclipse.keyple.core.util.ByteArrayUtil;
+import org.eclipse.keyple.core.util.HexUtil;
 
 /**
  * (package-private)<br>
@@ -60,9 +60,9 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
 
     Assert.getInstance()
         .notEmpty(apduCommand, APDU_COMMAND)
-        .isTrue(ByteArrayUtil.isValidHexString(apduCommand), APDU_COMMAND);
+        .isTrue(HexUtil.isValid(apduCommand), APDU_COMMAND);
 
-    prepareApdu(ByteArrayUtil.fromHex(apduCommand));
+    prepareApdu(HexUtil.toByteArray(apduCommand));
     return this;
   }
 
@@ -146,7 +146,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
     List<byte[]> apduResponsesBytes = processApdusToByteArrays();
     List<String> apduResponsesHex = new ArrayList<String>();
     for (byte[] bytes : apduResponsesBytes) {
-      apduResponsesHex.add(ByteArrayUtil.toHex(bytes));
+      apduResponsesHex.add(HexUtil.toHex(bytes));
     }
     return apduResponsesHex;
   }

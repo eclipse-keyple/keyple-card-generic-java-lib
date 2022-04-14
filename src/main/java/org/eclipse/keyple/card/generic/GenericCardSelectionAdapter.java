@@ -17,7 +17,7 @@ import org.calypsonet.terminal.card.CardSelectionResponseApi;
 import org.calypsonet.terminal.card.spi.*;
 import org.calypsonet.terminal.reader.selection.spi.CardSelection;
 import org.eclipse.keyple.core.util.Assert;
-import org.eclipse.keyple.core.util.ByteArrayUtil;
+import org.eclipse.keyple.core.util.HexUtil;
 
 /**
  * (package-private)<br>
@@ -119,7 +119,7 @@ class GenericCardSelectionAdapter implements GenericCardSelection, CardSelection
    */
   @Override
   public GenericCardSelection filterByDfName(String aid) {
-    this.filterByDfName(ByteArrayUtil.fromHex(aid));
+    this.filterByDfName(HexUtil.toByteArray(aid));
     return this;
   }
 
