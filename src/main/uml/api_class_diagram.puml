@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - keyple-card-generic-java-lib - 2.0.+ (24/06/2021)
+    Keyple - keyple-card-generic-java-lib - 3.0.+ (2023-06-30)
 end title
 
 ' == THEME ==
@@ -14,14 +14,21 @@ end title
 !define C_GREY6 BDC3C7
 !define C_LINK 3498DB
 !define C_USE 27AE60
+!define C_THROW 2C3E50
 
-skinparam Shadowing false
-skinparam ClassFontStyle italic
-skinparam ClassBorderColor #D4AC0D
+' -- Styles that don't work with new version of plantuml --
 skinparam stereotypeABorderColor #A9DCDF
 skinparam stereotypeIBorderColor #B4A7E5
 skinparam stereotypeCBorderColor #ADD1B2
 skinparam stereotypeEBorderColor #EB93DF
+' -- END --
+
+skinparam ClassBorderThickness 2
+skinparam ArrowThickness 2
+
+' Yellow
+skinparam ClassBackgroundColor #FEFECE
+skinparam ClassBorderColor #D4AC0D
 ' Red
 skinparam ClassBackgroundColor<<red>> #FDEDEC
 skinparam ClassBorderColor<<red>> #E74C3C
@@ -54,53 +61,57 @@ legend top
 end legend
 
 package "org.eclipse.keyple.card.generic" as generic {
-    +class "<<<back:cyan>KeypleCardExtension</back>>>\n**final** GenericExtensionService" as GenericExtensionService {
+    +class "<<<back:cyan>KeypleCardExtension</back>>>\n**final** GenericExtensionService" as GenericExtensionService <<green>> {
         --
         +{static} GenericExtensionService getInstance ()
 
-        +GenericCardSelection createCardSelection ()
+        +<color:blue><back:yellow>CardSelectionExtension</back> createCardSelectionExtension ()
         +<back:orange>CardResourceProfileExtension</back> createCardResourceProfileExtension (GenericCardSelection genericCardSelection)
-        +CardTransactionManager createCardTransaction (<back:yellow>CardReader</back> reader, <back:yellow>SmartCard</back> card)
+        +CardTransactionManager createCardTransaction (<back:yellow>CardReader</back> cardReader, <back:yellow>SmartCard</back> card)
 
         -- **KeypleCardExtension** --
         +String getCommonApiVersion ()
         +String getReaderApiVersion ()
         +String getCardApiVersion ()
     }
+    +interface "<color:red><<<back:yellow>CardSelectionExtension</back>>>\n<color:red>GenericCardSelection" as GenericCardSelection {
+        +<color:red>GenericCardSelection filterByCardProtocol (String cardProtocol)
+
+        +<color:red>GenericCardSelection filterByPowerOnData (String powerOnDataRegex)
+
+        +<color:red>GenericCardSelection filterByDfName (byte[] aid)
+        +<color:red>GenericCardSelection filterByDfName (String aid)
+        +<color:red>GenericCardSelection setFileOccurrence (FileOccurrence fileOccurrence)
+        +<color:red>GenericCardSelection setFileControlInformation (FileControlInformation fileControlInformation)
+        +<color:red>GenericCardSelection addSuccessfulStatusWord (int statusWord)
+    }
+    +enum "<color:red>FileOccurrence" as FileOccurrence <<green>> {
+        <color:red>FIRST
+        <color:red>LAST
+        <color:red>NEXT
+        <color:red>PREVIOUS
+    }
+    +enum "<color:red>FileControlInformation" as FileControlInformation <<green>> {
+        <color:red>FCI
+        <color:red>FCP
+        <color:red>FMD
+        <color:red>NO_RESPONSE
+    }
     +interface CardTransactionManager {
         +CardTransactionManager prepareApdu (String apduCommand)
         +CardTransactionManager prepareApdu (byte[] apduCommand)
         +CardTransactionManager prepareApdu (byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le)
 
-        +CardTransactionManager prepareReleaseChannel ()
+        +<color:red>CardTransactionManager prepareReleaseChannel ()
 
-        +List<byte[]> processApdusToByteArrays () throws TransactionException
-        +List<String> processApdusToHexStrings () throws TransactionException
+        +List<byte[]> processApdusToByteArrays (<color:blue>ChannelControl channelControl</color>) throws TransactionException
+        +List<String> processApdusToHexStrings (<color:blue>ChannelControl channelControl</color>) throws TransactionException
     }
-    +interface "<<<back:yellow>CardSelection</back>>>\nGenericCardSelection" as GenericCardSelection {
-        +GenericCardSelection filterByCardProtocol (String cardProtocol)
-
-        +GenericCardSelection filterByPowerOnData (String powerOnDataRegex)
-
-        +GenericCardSelection filterByDfName (byte[] aid)
-        +GenericCardSelection filterByDfName (String aid)
-        +GenericCardSelection setFileOccurrence (FileOccurrence fileOccurrence)
-        +GenericCardSelection setFileControlInformation (FileControlInformation fileControlInformation)
-        +GenericCardSelection addSuccessfulStatusWord (int statusWord)
+    +enum "<color:blue>ChannelControl" as ChannelControl <<green>> {
+        <color:blue>KEEP_OPEN
+        <color:blue>CLOSE_AFTER
     }
-    +enum FileOccurrence {
-        FIRST
-        LAST
-        NEXT
-        PREVIOUS
-    }
-    +enum FileControlInformation {
-        FCI
-        FCP
-        FMD
-        NO_RESPONSE
-    }
-    +class "<<RuntimeException>>\nTransactionException" as TransactionException {
+    +class "<<RuntimeException>>\n**final** TransactionException" as TransactionException {
         +TransactionException (String message)
         +TransactionException (String message, Throwable cause)
     }
@@ -118,7 +129,8 @@ GenericCardSelection ..> FileOccurrence #C_USE : use >
 GenericCardSelection +-- FileControlInformation
 GenericCardSelection ..> FileControlInformation #C_USE : use >
 
-CardTransactionManager ..> TransactionException #C_LINK : throw >
+CardTransactionManager ..> ChannelControl #C_USE : use >
+CardTransactionManager ..> TransactionException #C_THROW : throw >
 
 ' == STYLE ==
 
