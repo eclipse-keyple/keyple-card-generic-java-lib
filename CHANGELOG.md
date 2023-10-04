@@ -5,12 +5,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+:warning: Major version! Following the migration of the "Calypsonet Terminal" APIs to the
+[Eclipse Keypop project](https://keypop.org), this library now implements Keypop interfaces.
 ### Added
 - Added project status badges on `README.md` file.
+### Changed
+- Class renamed:
+  - `GenericCardSelection` -> `GenericCardSelectionExtension`
+- Methods renamed and signatures refactored:
+  - `GenericCardSelection createCardSelection ()` -> `GenericCardSelectionExtension createGenericCardSelectionExtension()`
+  - `processApdusToByteArrays ()` -> `processApdusToByteArrays (ChannelControl channelControl)`
+    and `processApdusToHexStrings ()` -> `processApdusToHexStrings (ChannelControl channelControl)
+    The enum `ChannelControl` has been created for this purpose.
+### Removed
+- Removed methods from `GenericCardSelectionExtension` (now available from Keyple core service):
+  - `filterByCardProtocol(...)`
+  - `filterByPowerOnData(...)`
+  - `filterByDfName(...)`
+  - `setFileOccurrence(...)`
+  - `setFileControlInformation(...)`
+- Removed enumerations:
+  - `FileOccurrence`
+  - `FileControlInformation`
+- Removed method from `GenericExtensionService`:
+  - `prepareReleaseChannel()`
 ### Fixed
 - CI: code coverage report when releasing.
 ### Upgraded
-- "Keyple Util Library" to version `2.1.0` by removing the use of deprecated methods.
+- "Keyple Util Library" to version `2.3.1` by removing the use of deprecated methods.
+- "Keyple Service Resource Library" to version `3.0.0`
 
 ## [2.0.2] - 2021-12-17
 ### Fixed

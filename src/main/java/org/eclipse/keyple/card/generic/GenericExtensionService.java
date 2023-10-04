@@ -11,13 +11,14 @@
  ************************************************************************************** */
 package org.eclipse.keyple.card.generic;
 
-import org.calypsonet.terminal.card.CardApiProperties;
-import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.ReaderApiProperties;
-import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.common.CommonApiProperties;
 import org.eclipse.keyple.core.common.KeypleCardExtension;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
+import org.eclipse.keypop.card.CardApiProperties;
+import org.eclipse.keypop.reader.CardReader;
+import org.eclipse.keypop.reader.ReaderApiProperties;
+import org.eclipse.keypop.reader.selection.spi.CardSelectionExtension;
+import org.eclipse.keypop.reader.selection.spi.SmartCard;
 
 /**
  * Card extension service providing basic access to APDU exchange functions with a card.
@@ -41,13 +42,13 @@ public final class GenericExtensionService implements KeypleCardExtension {
   }
 
   /**
-   * Creates an instance of {@link GenericCardSelection}.
+   * Creates an instance of {@link CardSelectionExtension}.
    *
    * @return A not null reference.
    * @since 2.0.0
    */
-  public GenericCardSelection createCardSelection() {
-    return new GenericCardSelectionAdapter();
+  public GenericCardSelectionExtension createGenericCardSelectionExtension() {
+    return new GenericCardSelectionExtensionAdapter();
   }
 
   /**
@@ -69,14 +70,14 @@ public final class GenericExtensionService implements KeypleCardExtension {
    * <p>The provided argument defines the selection rules to be applied to the card when detected by
    * the card resource service.
    *
-   * @param genericCardSelection A not null {@link GenericCardSelection}.
+   * @param genericCardSelectionExtension A not null {@link GenericCardSelectionExtension}.
    * @return A not null reference.
-   * @throws IllegalArgumentException If genericCardSelection is null.
+   * @throws IllegalArgumentException If genericCardSelectionExtension is null.
    * @since 2.0.0
    */
   public CardResourceProfileExtension createCardResourceProfileExtension(
-      GenericCardSelection genericCardSelection) {
-    return new GenericCardResourceProfileExtensionAdapter(genericCardSelection);
+      GenericCardSelectionExtension genericCardSelectionExtension) {
+    return new GenericCardResourceProfileExtensionAdapter(genericCardSelectionExtension);
   }
 
   /**

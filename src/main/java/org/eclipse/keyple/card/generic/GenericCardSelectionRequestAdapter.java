@@ -11,29 +11,36 @@
  ************************************************************************************** */
 package org.eclipse.keyple.card.generic;
 
-import org.calypsonet.terminal.card.spi.CardRequestSpi;
-import org.calypsonet.terminal.card.spi.CardSelectionRequestSpi;
-import org.calypsonet.terminal.card.spi.CardSelectorSpi;
+import java.util.Set;
+import org.eclipse.keypop.card.spi.CardRequestSpi;
+import org.eclipse.keypop.card.spi.CardSelectionRequestSpi;
 
 /**
- * (package-private)<br>
  * Implementation of {@link CardSelectionRequestSpi}
  *
  * @since 2.0.0
  */
 final class GenericCardSelectionRequestAdapter implements CardSelectionRequestSpi {
-
-  private final CardSelectorSpi cardSelector;
+  private final Set<Integer> successfulSelectionStatusWords;
 
   /**
    * Builds a card selection request to open a logical channel with additional APDUs to be sent
    * after the selection step.
    *
-   * @param cardSelector The card selector.
    * @since 2.0.0
    */
-  GenericCardSelectionRequestAdapter(CardSelectorSpi cardSelector) {
-    this.cardSelector = cardSelector;
+  GenericCardSelectionRequestAdapter(Set<Integer> successfulSelectionStatusWords) {
+    this.successfulSelectionStatusWords = successfulSelectionStatusWords;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 3.0.0
+   */
+  @Override
+  public Set<Integer> getSuccessfulSelectionStatusWords() {
+    return successfulSelectionStatusWords;
   }
 
   /**
@@ -41,16 +48,9 @@ final class GenericCardSelectionRequestAdapter implements CardSelectionRequestSp
    *
    * @since 2.0.0
    */
-  public CardSelectorSpi getCardSelector() {
-    return cardSelector;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @since 2.0.0
-   */
+  @Override
   public CardRequestSpi getCardRequest() {
+    // no additional command following the card selection in this extension
     return null;
   }
 }

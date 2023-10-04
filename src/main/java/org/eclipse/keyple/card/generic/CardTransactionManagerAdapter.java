@@ -13,16 +13,15 @@ package org.eclipse.keyple.card.generic;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.calypsonet.terminal.card.*;
-import org.calypsonet.terminal.card.spi.ApduRequestSpi;
-import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.util.ApduUtil;
 import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.HexUtil;
+import org.eclipse.keypop.card.*;
+import org.eclipse.keypop.card.spi.ApduRequestSpi;
+import org.eclipse.keypop.reader.CardReader;
+import org.eclipse.keypop.reader.selection.spi.SmartCard;
 
 /**
- * (package-private)<br>
  * Implementation of {@link CardTransactionManager}.
  *
  * @since 2.0.0
@@ -32,10 +31,8 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   public static final String APDU_COMMAND = "apduCommand";
   private final CardReader reader;
   private final List<ApduRequestSpi> apduRequests;
-  private ChannelControl channelControl;
 
   /**
-   * (package-private)<br>
    * Creates an instance of {@link CardTransactionManager}.
    *
    * @param reader The reader through which the card communicates.
@@ -46,7 +43,6 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   CardTransactionManagerAdapter(CardReader reader, SmartCard card) {
     Assert.getInstance().notNull(reader, "reader").notNull(card, "card");
     this.reader = reader;
-    channelControl = ChannelControl.KEEP_OPEN;
     apduRequests = new ArrayList<ApduRequestSpi>();
   }
 
@@ -100,18 +96,8 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
    * @since 2.0.0
    */
   @Override
-  public CardTransactionManager prepareReleaseChannel() {
-    channelControl = ChannelControl.CLOSE_AFTER;
-    return this;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @since 2.0.0
-   */
-  @Override
-  public List<byte[]> processApdusToByteArrays() throws TransactionException {
+  public List<byte[]> processApdusToByteArrays(ChannelControl channelControl)
+      throws TransactionException {
     CardResponseApi cardResponse;
     if (apduRequests.isEmpty()) {
       return new ArrayList<byte[]>(0);
@@ -119,7 +105,11 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
     try {
       cardResponse =
           ((ProxyReaderApi) reader)
-              .transmitCardRequest(new CardRequestAdapter(apduRequests, false), channelControl);
+              .transmitCardRequest(
+                  new CardRequestAdapter(apduRequests, false),
+                  channelControl == ChannelControl.CLOSE_AFTER
+                      ? org.eclipse.keypop.card.ChannelControl.CLOSE_AFTER
+                      : org.eclipse.keypop.card.ChannelControl.KEEP_OPEN);
     } catch (ReaderBrokenCommunicationException e) {
       throw new TransactionException("Reader communication error.", e);
     } catch (CardBrokenCommunicationException e) {
@@ -142,8 +132,9 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
    * @since 2.0.0
    */
   @Override
-  public List<String> processApdusToHexStrings() throws TransactionException {
-    List<byte[]> apduResponsesBytes = processApdusToByteArrays();
+  public List<String> processApdusToHexStrings(ChannelControl channelControl)
+      throws TransactionException {
+    List<byte[]> apduResponsesBytes = processApdusToByteArrays(channelControl);
     List<String> apduResponsesHex = new ArrayList<String>();
     for (byte[] bytes : apduResponsesBytes) {
       apduResponsesHex.add(HexUtil.toHex(bytes));

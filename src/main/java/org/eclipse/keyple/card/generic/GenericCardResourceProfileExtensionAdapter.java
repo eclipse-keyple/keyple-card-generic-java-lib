@@ -11,17 +11,18 @@
  ************************************************************************************** */
 package org.eclipse.keyple.card.generic;
 
-import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.selection.CardSelectionManager;
-import org.calypsonet.terminal.reader.selection.CardSelectionResult;
-import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.util.Assert;
+import org.eclipse.keypop.reader.CardReader;
+import org.eclipse.keypop.reader.ReaderApiFactory;
+import org.eclipse.keypop.reader.selection.CardSelectionManager;
+import org.eclipse.keypop.reader.selection.CardSelectionResult;
+import org.eclipse.keypop.reader.selection.IsoCardSelector;
+import org.eclipse.keypop.reader.selection.spi.SmartCard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * (package-private)<br>
  * Implementation of {@link CardResourceProfileExtension} dedicated to card identification.
  *
  * @since 2.0.0
@@ -29,19 +30,19 @@ import org.slf4j.LoggerFactory;
 class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileExtension {
   private static final Logger logger =
       LoggerFactory.getLogger(GenericCardResourceProfileExtensionAdapter.class);
-  private final GenericCardSelection genericCardSelection;
+  private final GenericCardSelectionExtensionAdapter genericCardSelection;
 
   /**
-   * (package-private)<br>
-   *
-   * @param genericCardSelection The {@link GenericCardSelection}.
+   * @param genericCardSelectionExtension The generic card selection extension.
    * @since 2.0.0
    */
-  GenericCardResourceProfileExtensionAdapter(GenericCardSelection genericCardSelection) {
+  GenericCardResourceProfileExtensionAdapter(
+      GenericCardSelectionExtension genericCardSelectionExtension) {
 
-    Assert.getInstance().notNull(genericCardSelection, "genericCardSelection");
+    Assert.getInstance().notNull(genericCardSelectionExtension, "genericCardSelectionExtension");
 
-    this.genericCardSelection = genericCardSelection;
+    this.genericCardSelection =
+        (GenericCardSelectionExtensionAdapter) genericCardSelectionExtension;
   }
 
   /**
@@ -50,22 +51,24 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
    * @since 2.0.0
    */
   @Override
-  public SmartCard matches(CardReader reader, CardSelectionManager cardSelectionManager) {
+  public SmartCard matches(CardReader reader, ReaderApiFactory readerApiFactory) {
 
     if (!reader.isCardPresent()) {
       return null;
     }
-
-    cardSelectionManager.prepareSelection(genericCardSelection);
-    CardSelectionResult cardSelectionResult = null;
+    IsoCardSelector cardSelector = readerApiFactory.createIsoCardSelector();
+    CardSelectionManager genericCardSelectionManager =
+        readerApiFactory.createCardSelectionManager();
+    genericCardSelectionManager.prepareSelection(cardSelector, genericCardSelection);
+    CardSelectionResult genericCardSelectionResult = null;
     try {
-      cardSelectionResult = cardSelectionManager.processCardSelectionScenario(reader);
+      genericCardSelectionResult = genericCardSelectionManager.processCardSelectionScenario(reader);
     } catch (Exception e) {
       logger.warn("An exception occurred while selecting the card: '{}'.", e.getMessage(), e);
     }
 
-    if (cardSelectionResult != null) {
-      return cardSelectionResult.getActiveSmartCard();
+    if (genericCardSelectionResult != null) {
+      return genericCardSelectionResult.getActiveSmartCard();
     }
 
     return null;
