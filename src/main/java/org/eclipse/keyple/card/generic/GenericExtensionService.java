@@ -17,6 +17,8 @@ import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension
 import org.eclipse.keypop.card.CardApiProperties;
 import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.ReaderApiProperties;
+import org.eclipse.keypop.reader.selection.CardSelector;
+import org.eclipse.keypop.reader.selection.IsoCardSelector;
 import org.eclipse.keypop.reader.selection.spi.CardSelectionExtension;
 import org.eclipse.keypop.reader.selection.spi.SmartCard;
 
@@ -70,14 +72,17 @@ public final class GenericExtensionService implements KeypleCardExtension {
    * <p>The provided argument defines the selection rules to be applied to the card when detected by
    * the card resource service.
    *
-   * @param genericCardSelectionExtension A not null {@link GenericCardSelectionExtension}.
+   * @param cardSelector The ISO card selector targeting the expected card profile.
+   * @param genericCardSelectionExtension A not null generic card extension.
    * @return A not null reference.
    * @throws IllegalArgumentException If genericCardSelectionExtension is null.
    * @since 2.0.0
    */
   public CardResourceProfileExtension createCardResourceProfileExtension(
+      CardSelector<IsoCardSelector> cardSelector,
       GenericCardSelectionExtension genericCardSelectionExtension) {
-    return new GenericCardResourceProfileExtensionAdapter(genericCardSelectionExtension);
+    return new GenericCardResourceProfileExtensionAdapter(
+        cardSelector, genericCardSelectionExtension);
   }
 
   /**

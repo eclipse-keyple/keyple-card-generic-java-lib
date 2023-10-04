@@ -55,7 +55,7 @@ hide <<grey>> stereotype
 legend top
     __Colors legend__ :
     * __External API references__ :
-    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <color:blue><back:yellow>**keypop-reader-java-api**</back>
     ** <back:cyan>**keyple-common-java-api**</back>
     ** <back:orange>**keyple-service-resource-java-lib**</back>
 end legend
@@ -66,7 +66,7 @@ package "org.eclipse.keyple.card.generic" as generic {
         +{static} GenericExtensionService getInstance ()
 
         +<color:blue>GenericCardSelectionExtension createGenericCardSelectionExtension ()
-        +<back:orange>CardResourceProfileExtension</back> createCardResourceProfileExtension (GenericCardSelectionExtension genericCardSelectionExtension)
+        +<back:orange>CardResourceProfileExtension</back> createCardResourceProfileExtension (<color:blue><back:yellow>CardSelector<IsoCardSelector> cardSelector</back></color>, GenericCardSelectionExtension genericCardSelectionExtension)
         +CardTransactionManager createCardTransaction (<back:yellow>CardReader</back> cardReader, <back:yellow>SmartCard</back> card)
 
         -- **KeypleCardExtension** --

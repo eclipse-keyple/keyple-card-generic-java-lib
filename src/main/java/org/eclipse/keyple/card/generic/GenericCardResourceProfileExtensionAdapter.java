@@ -17,13 +17,15 @@ import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.ReaderApiFactory;
 import org.eclipse.keypop.reader.selection.CardSelectionManager;
 import org.eclipse.keypop.reader.selection.CardSelectionResult;
+import org.eclipse.keypop.reader.selection.CardSelector;
 import org.eclipse.keypop.reader.selection.IsoCardSelector;
 import org.eclipse.keypop.reader.selection.spi.SmartCard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Implementation of {@link CardResourceProfileExtension} dedicated to card identification.
+ * Implementation of {@link CardResourceProfileExtension} that provides the capability to filter
+ * cards of any type.
  *
  * @since 2.0.0
  */
@@ -31,16 +33,20 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
   private static final Logger logger =
       LoggerFactory.getLogger(GenericCardResourceProfileExtensionAdapter.class);
   private final GenericCardSelectionExtensionAdapter genericCardSelection;
+  private final CardSelector<IsoCardSelector> cardSelector;
 
   /**
+   * @param cardSelector An ISO card selector.
    * @param genericCardSelectionExtension The generic card selection extension.
    * @since 2.0.0
    */
   GenericCardResourceProfileExtensionAdapter(
+      CardSelector<IsoCardSelector> cardSelector,
       GenericCardSelectionExtension genericCardSelectionExtension) {
 
     Assert.getInstance().notNull(genericCardSelectionExtension, "genericCardSelectionExtension");
 
+    this.cardSelector = cardSelector;
     this.genericCardSelection =
         (GenericCardSelectionExtensionAdapter) genericCardSelectionExtension;
   }
@@ -56,7 +62,6 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
     if (!reader.isCardPresent()) {
       return null;
     }
-    IsoCardSelector cardSelector = readerApiFactory.createIsoCardSelector();
     CardSelectionManager genericCardSelectionManager =
         readerApiFactory.createCardSelectionManager();
     genericCardSelectionManager.prepareSelection(cardSelector, genericCardSelection);
