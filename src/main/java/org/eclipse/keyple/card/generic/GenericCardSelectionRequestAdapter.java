@@ -12,6 +12,7 @@
 package org.eclipse.keyple.card.generic;
 
 import java.util.Set;
+import org.eclipse.keyple.core.util.json.JsonUtil;
 import org.eclipse.keypop.card.spi.CardRequestSpi;
 import org.eclipse.keypop.card.spi.CardSelectionRequestSpi;
 
@@ -52,5 +53,15 @@ final class GenericCardSelectionRequestAdapter implements CardSelectionRequestSp
   public CardRequestSpi getCardRequest() {
     // no additional command following the card selection in this extension
     return null;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 3.0.0
+   */
+  @Override
+  public String toString() {
+    return "CARD_SELECTION_REQUEST = " + JsonUtil.toJson(this);
   }
 }
