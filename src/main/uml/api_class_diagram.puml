@@ -75,34 +75,12 @@ package "org.eclipse.keyple.card.generic" as generic {
         +String getCardApiVersion ()
     }
     +interface "<color:blue><<<back:yellow>CardSelectionExtension</back>>>\n<color:blue>GenericCardSelectionExtension" as GenericCardSelectionExtension {
-        +<color:red>GenericCardSelection filterByCardProtocol (String cardProtocol)
-
-        +<color:red>GenericCardSelection filterByPowerOnData (String powerOnDataRegex)
-
-        +<color:red>GenericCardSelection filterByDfName (byte[] aid)
-        +<color:red>GenericCardSelection filterByDfName (String aid)
-        +<color:red>GenericCardSelection setFileOccurrence (FileOccurrence fileOccurrence)
-        +<color:red>GenericCardSelection setFileControlInformation (FileControlInformation fileControlInformation)
         +GenericCardSelectionExtension addSuccessfulStatusWord (int statusWord)
-    }
-    +enum "<color:red>FileOccurrence" as FileOccurrence <<green>> {
-        <color:red>FIRST
-        <color:red>LAST
-        <color:red>NEXT
-        <color:red>PREVIOUS
-    }
-    +enum "<color:red>FileControlInformation" as FileControlInformation <<green>> {
-        <color:red>FCI
-        <color:red>FCP
-        <color:red>FMD
-        <color:red>NO_RESPONSE
     }
     +interface CardTransactionManager {
         +CardTransactionManager prepareApdu (String apduCommand)
         +CardTransactionManager prepareApdu (byte[] apduCommand)
         +CardTransactionManager prepareApdu (byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le)
-
-        +<color:red>CardTransactionManager prepareReleaseChannel ()
 
         +List<byte[]> processApdusToByteArrays (<color:blue>ChannelControl channelControl</color>) throws TransactionException
         +List<String> processApdusToHexStrings (<color:blue>ChannelControl channelControl</color>) throws TransactionException
@@ -111,7 +89,7 @@ package "org.eclipse.keyple.card.generic" as generic {
         <color:blue>KEEP_OPEN
         <color:blue>CLOSE_AFTER
     }
-    +class "<<RuntimeException>>\n**final** TransactionException" as TransactionException {
+    +class "<<RuntimeException>>\n**final** TransactionException" as TransactionException <<green>> {
         +TransactionException (String message)
         +TransactionException (String message, Throwable cause)
     }
@@ -123,11 +101,6 @@ package "org.eclipse.keyple.card.generic" as generic {
 
 GenericExtensionService ..> GenericCardSelectionExtension #C_LINK : create >
 GenericExtensionService ..> CardTransactionManager #C_LINK : create >
-
-GenericCardSelectionExtension +-- FileOccurrence
-GenericCardSelectionExtension ..> FileOccurrence #C_USE : use >
-GenericCardSelectionExtension +-- FileControlInformation
-GenericCardSelectionExtension ..> FileControlInformation #C_USE : use >
 
 CardTransactionManager ..> ChannelControl #C_USE : use >
 CardTransactionManager ..> TransactionException #C_THROW : throw >
