@@ -17,8 +17,8 @@ import java.util.List;
 public interface CardTransactionManager {
 
   /**
-   * Prepares an APDU to be transmitted the next time {@link #processApdusToByteArrays()} is
-   * invoked.
+   * Prepares an APDU to be transmitted the next time {@link
+   * #processApdusToByteArrays(ChannelControl)} is invoked.
    *
    * @param apduCommand A not empty hexadecimal string containing a raw APDU command.
    * @return This instance.
@@ -27,8 +27,8 @@ public interface CardTransactionManager {
   CardTransactionManager prepareApdu(String apduCommand);
 
   /**
-   * Prepares an APDU to be transmitted the next time {@link #processApdusToByteArrays()} is
-   * invoked.
+   * Prepares an APDU to be transmitted the next time {@link
+   * #processApdusToByteArrays(ChannelControl)} is invoked.
    *
    * @param apduCommand A not empty byte arrays containing raw APDU commands.
    * @return This instance.
@@ -37,8 +37,8 @@ public interface CardTransactionManager {
   CardTransactionManager prepareApdu(byte[] apduCommand);
 
   /**
-   * Prepares an APDU to be transmitted the next time {@link #processApdusToByteArrays()} is
-   * invoked.
+   * Prepares an APDU to be transmitted the next time {@link
+   * #processApdusToByteArrays(ChannelControl)} is invoked.
    *
    * @param cla The class byte.
    * @param ins The instruction byte.
@@ -53,14 +53,6 @@ public interface CardTransactionManager {
   CardTransactionManager prepareApdu(byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le);
 
   /**
-   * Requests the closing of the physical channel after the next transmission of APDUs.
-   *
-   * @return This instance.
-   * @since 2.0.0
-   */
-  CardTransactionManager prepareReleaseChannel();
-
-  /**
    * Transmits all prepared APDUs, closes the physical channel if required, and returns a list of
    * responses to the APDUs in the form of list of of byte arrays.
    *
@@ -68,10 +60,12 @@ public interface CardTransactionManager {
    *
    * <p>The prepared APDU list is cleared after this method has been invoked.
    *
+   * @param channelControl Policy for managing the physical channel after executing commands to the
+   *     card.
    * @return A not null reference.
    * @throws TransactionException If the communication with the card or the reader has failed.
    */
-  List<byte[]> processApdusToByteArrays() throws TransactionException;
+  List<byte[]> processApdusToByteArrays(ChannelControl channelControl) throws TransactionException;
 
   /**
    * Transmits all prepared APDUs, closes the physical channel if required, and returns a list of
@@ -81,8 +75,10 @@ public interface CardTransactionManager {
    *
    * <p>The prepared APDU list is cleared after this method has been invoked.
    *
+   * @param channelControl Policy for managing the physical channel after executing commands to the
+   *     card.
    * @return A not null reference.
    * @throws TransactionException If the communication with the card or the reader has failed.
    */
-  List<String> processApdusToHexStrings() throws TransactionException;
+  List<String> processApdusToHexStrings(ChannelControl channelControl) throws TransactionException;
 }

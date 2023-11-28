@@ -12,11 +12,10 @@
 package org.eclipse.keyple.card.generic;
 
 import java.util.List;
-import org.calypsonet.terminal.card.spi.ApduRequestSpi;
-import org.calypsonet.terminal.card.spi.CardRequestSpi;
+import org.eclipse.keypop.card.spi.ApduRequestSpi;
+import org.eclipse.keypop.card.spi.CardRequestSpi;
 
 /**
- * (package-private)<br>
  * This POJO contains an ordered list of {@link ApduRequestSpi} and the associated status word check
  * policy.
  *

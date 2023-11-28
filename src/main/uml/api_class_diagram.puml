@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - keyple-card-generic-java-lib - 2.0.+ (24/06/2021)
+    Keyple - keyple-card-generic-java-lib - 3.0.+ (2023-10-04)
 end title
 
 ' == THEME ==
@@ -14,14 +14,21 @@ end title
 !define C_GREY6 BDC3C7
 !define C_LINK 3498DB
 !define C_USE 27AE60
+!define C_THROW 2C3E50
 
-skinparam Shadowing false
-skinparam ClassFontStyle italic
-skinparam ClassBorderColor #D4AC0D
+' -- Styles that don't work with new version of plantuml --
 skinparam stereotypeABorderColor #A9DCDF
 skinparam stereotypeIBorderColor #B4A7E5
 skinparam stereotypeCBorderColor #ADD1B2
 skinparam stereotypeEBorderColor #EB93DF
+' -- END --
+
+skinparam ClassBorderThickness 2
+skinparam ArrowThickness 2
+
+' Yellow
+skinparam ClassBackgroundColor #FEFECE
+skinparam ClassBorderColor #D4AC0D
 ' Red
 skinparam ClassBackgroundColor<<red>> #FDEDEC
 skinparam ClassBorderColor<<red>> #E74C3C
@@ -48,59 +55,41 @@ hide <<grey>> stereotype
 legend top
     __Colors legend__ :
     * __External API references__ :
-    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <color:blue><back:yellow>**keypop-reader-java-api**</back>
     ** <back:cyan>**keyple-common-java-api**</back>
     ** <back:orange>**keyple-service-resource-java-lib**</back>
 end legend
 
 package "org.eclipse.keyple.card.generic" as generic {
-    +class "<<<back:cyan>KeypleCardExtension</back>>>\n**final** GenericExtensionService" as GenericExtensionService {
+    +class "<<<back:cyan>KeypleCardExtension</back>>>\n**final** GenericExtensionService" as GenericExtensionService <<green>> {
         --
         +{static} GenericExtensionService getInstance ()
 
-        +GenericCardSelection createCardSelection ()
-        +<back:orange>CardResourceProfileExtension</back> createCardResourceProfileExtension (GenericCardSelection genericCardSelection)
-        +CardTransactionManager createCardTransaction (<back:yellow>CardReader</back> reader, <back:yellow>SmartCard</back> card)
+        +<color:blue>GenericCardSelectionExtension createGenericCardSelectionExtension ()
+        +<back:orange>CardResourceProfileExtension</back> createCardResourceProfileExtension (<color:blue><back:yellow>CardSelector<IsoCardSelector> cardSelector</back></color>, GenericCardSelectionExtension genericCardSelectionExtension)
+        +CardTransactionManager createCardTransaction (<back:yellow>CardReader</back> cardReader, <back:yellow>SmartCard</back> card)
 
         -- **KeypleCardExtension** --
         +String getCommonApiVersion ()
         +String getReaderApiVersion ()
         +String getCardApiVersion ()
     }
+    +interface "<color:blue><<<back:yellow>CardSelectionExtension</back>>>\n<color:blue>GenericCardSelectionExtension" as GenericCardSelectionExtension {
+        +GenericCardSelectionExtension addSuccessfulStatusWord (int statusWord)
+    }
     +interface CardTransactionManager {
         +CardTransactionManager prepareApdu (String apduCommand)
         +CardTransactionManager prepareApdu (byte[] apduCommand)
         +CardTransactionManager prepareApdu (byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le)
 
-        +CardTransactionManager prepareReleaseChannel ()
-
-        +List<byte[]> processApdusToByteArrays () throws TransactionException
-        +List<String> processApdusToHexStrings () throws TransactionException
+        +List<byte[]> processApdusToByteArrays (<color:blue>ChannelControl channelControl</color>) throws TransactionException
+        +List<String> processApdusToHexStrings (<color:blue>ChannelControl channelControl</color>) throws TransactionException
     }
-    +interface "<<<back:yellow>CardSelection</back>>>\nGenericCardSelection" as GenericCardSelection {
-        +GenericCardSelection filterByCardProtocol (String cardProtocol)
-
-        +GenericCardSelection filterByPowerOnData (String powerOnDataRegex)
-
-        +GenericCardSelection filterByDfName (byte[] aid)
-        +GenericCardSelection filterByDfName (String aid)
-        +GenericCardSelection setFileOccurrence (FileOccurrence fileOccurrence)
-        +GenericCardSelection setFileControlInformation (FileControlInformation fileControlInformation)
-        +GenericCardSelection addSuccessfulStatusWord (int statusWord)
+    +enum "<color:blue>ChannelControl" as ChannelControl <<green>> {
+        <color:blue>KEEP_OPEN
+        <color:blue>CLOSE_AFTER
     }
-    +enum FileOccurrence {
-        FIRST
-        LAST
-        NEXT
-        PREVIOUS
-    }
-    +enum FileControlInformation {
-        FCI
-        FCP
-        FMD
-        NO_RESPONSE
-    }
-    +class "<<RuntimeException>>\nTransactionException" as TransactionException {
+    +class "<<RuntimeException>>\n**final** TransactionException" as TransactionException <<green>> {
         +TransactionException (String message)
         +TransactionException (String message, Throwable cause)
     }
@@ -110,15 +99,11 @@ package "org.eclipse.keyple.card.generic" as generic {
 
 ' == LAYOUT ==
 
-GenericExtensionService ..> GenericCardSelection #C_LINK : create >
+GenericExtensionService ..> GenericCardSelectionExtension #C_LINK : create >
 GenericExtensionService ..> CardTransactionManager #C_LINK : create >
 
-GenericCardSelection +-- FileOccurrence
-GenericCardSelection ..> FileOccurrence #C_USE : use >
-GenericCardSelection +-- FileControlInformation
-GenericCardSelection ..> FileControlInformation #C_USE : use >
-
-CardTransactionManager ..> TransactionException #C_LINK : throw >
+CardTransactionManager ..> ChannelControl #C_USE : use >
+CardTransactionManager ..> TransactionException #C_THROW : throw >
 
 ' == STYLE ==
 

@@ -13,11 +13,10 @@ package org.eclipse.keyple.card.generic;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.calypsonet.terminal.card.spi.ApduRequestSpi;
 import org.eclipse.keyple.core.util.json.JsonUtil;
+import org.eclipse.keypop.card.spi.ApduRequestSpi;
 
 /**
- * (package-private)<br>
  * Implementation of {@link ApduRequestSpi}
  *
  * @since 2.0.0

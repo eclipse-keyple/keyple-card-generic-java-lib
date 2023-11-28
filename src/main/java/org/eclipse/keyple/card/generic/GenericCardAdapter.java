@@ -11,17 +11,17 @@
  ************************************************************************************** */
 package org.eclipse.keyple.card.generic;
 
-import org.calypsonet.terminal.card.CardSelectionResponseApi;
-import org.calypsonet.terminal.card.spi.SmartCardSpi;
-import org.calypsonet.terminal.reader.selection.spi.SmartCard;
+import org.eclipse.keypop.card.CardSelectionResponseApi;
+import org.eclipse.keypop.card.spi.SmartCardSpi;
+import org.eclipse.keypop.reader.selection.spi.IsoSmartCard;
+import org.eclipse.keypop.reader.selection.spi.SmartCard;
 
 /**
- * (package-private)<br>
  * Implementation of a generic {@link SmartCard}.
  *
  * @since 2.0.0
  */
-final class GenericCardAdapter implements SmartCard, SmartCardSpi {
+final class GenericCardAdapter implements IsoSmartCard, SmartCardSpi {
 
   private final byte[] selectApplicationResponse;
   private final String powerOnData;
