@@ -35,8 +35,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - CI: code coverage report when releasing.
 ### Upgraded
-- "Keyple Util Library" to version `2.3.1` by removing the use of deprecated methods.
-- "Keyple Service Resource Library" to version `3.0.0`
+- Calypsonet Terminal Reader API `1.0.0` -> Keypop Reader API `2.0.0`
+- Calypsonet Terminal Card API `1.0.0` -> Keypop Card API `2.0.0`
+- Keyple Util Library `2.1.0` -> `2.3.1`
+- Keyple Service Resource Library `2.0.1` -> `3.0.0`
 
 ## [2.0.2] - 2021-12-17
 ### Fixed
