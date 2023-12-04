@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `GenericCardSelection createCardSelection ()` -> `GenericCardSelectionExtension createGenericCardSelectionExtension()`
   - `CardResourceProfileExtension createCardResourceProfileExtension(GenericCardSelectionExtension 
   genericCardSelectionExtension)`  -> `CardResourceProfileExtension createCardResourceProfileExtension
-  (CardSelector<IsoCardSelector> cardSeletor, GenericCardSelectionExtension genericCardSelectionExtension)`
+  (IsoCardSelector cardSeletor, GenericCardSelectionExtension genericCardSelectionExtension)`
   - `processApdusToByteArrays ()` -> `processApdusToByteArrays (ChannelControl channelControl)`
     and `processApdusToHexStrings ()` -> `processApdusToHexStrings (ChannelControl channelControl)
     The enum `ChannelControl` has been created for this purpose.

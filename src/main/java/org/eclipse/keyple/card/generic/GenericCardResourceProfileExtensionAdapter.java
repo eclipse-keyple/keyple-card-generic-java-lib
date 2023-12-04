@@ -33,7 +33,7 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
   private static final Logger logger =
       LoggerFactory.getLogger(GenericCardResourceProfileExtensionAdapter.class);
   private final GenericCardSelectionExtensionAdapter genericCardSelection;
-  private final CardSelector<IsoCardSelector> cardSelector;
+  private final IsoCardSelector cardSelector;
 
   /**
    * @param cardSelector An ISO card selector.
@@ -41,7 +41,7 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
    * @since 2.0.0
    */
   GenericCardResourceProfileExtensionAdapter(
-      CardSelector<IsoCardSelector> cardSelector,
+      IsoCardSelector cardSelector,
       GenericCardSelectionExtension genericCardSelectionExtension) {
 
     Assert.getInstance().notNull(genericCardSelectionExtension, "genericCardSelectionExtension");

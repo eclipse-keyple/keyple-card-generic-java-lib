@@ -79,7 +79,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
    * @since 2.0.0
    */
   public CardResourceProfileExtension createCardResourceProfileExtension(
-      CardSelector<IsoCardSelector> cardSelector,
+      IsoCardSelector cardSelector,
       GenericCardSelectionExtension genericCardSelectionExtension) {
     return new GenericCardResourceProfileExtensionAdapter(
         cardSelector, genericCardSelectionExtension);
