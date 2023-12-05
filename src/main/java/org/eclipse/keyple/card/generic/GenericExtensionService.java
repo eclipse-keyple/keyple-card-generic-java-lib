@@ -17,7 +17,6 @@ import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension
 import org.eclipse.keypop.card.CardApiProperties;
 import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.ReaderApiProperties;
-import org.eclipse.keypop.reader.selection.CardSelector;
 import org.eclipse.keypop.reader.selection.IsoCardSelector;
 import org.eclipse.keypop.reader.selection.spi.CardSelectionExtension;
 import org.eclipse.keypop.reader.selection.spi.SmartCard;
@@ -79,8 +78,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
    * @since 2.0.0
    */
   public CardResourceProfileExtension createCardResourceProfileExtension(
-      IsoCardSelector cardSelector,
-      GenericCardSelectionExtension genericCardSelectionExtension) {
+      IsoCardSelector cardSelector, GenericCardSelectionExtension genericCardSelectionExtension) {
     return new GenericCardResourceProfileExtensionAdapter(
         cardSelector, genericCardSelectionExtension);
   }

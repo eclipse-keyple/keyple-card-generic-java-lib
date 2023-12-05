@@ -17,7 +17,6 @@ import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.ReaderApiFactory;
 import org.eclipse.keypop.reader.selection.CardSelectionManager;
 import org.eclipse.keypop.reader.selection.CardSelectionResult;
-import org.eclipse.keypop.reader.selection.CardSelector;
 import org.eclipse.keypop.reader.selection.IsoCardSelector;
 import org.eclipse.keypop.reader.selection.spi.SmartCard;
 import org.slf4j.Logger;
@@ -41,8 +40,7 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
    * @since 2.0.0
    */
   GenericCardResourceProfileExtensionAdapter(
-      IsoCardSelector cardSelector,
-      GenericCardSelectionExtension genericCardSelectionExtension) {
+      IsoCardSelector cardSelector, GenericCardSelectionExtension genericCardSelectionExtension) {
 
     Assert.getInstance().notNull(genericCardSelectionExtension, "genericCardSelectionExtension");
 
