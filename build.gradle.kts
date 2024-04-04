@@ -36,8 +36,10 @@ dependencies {
     implementation("org.eclipse.keyple:keyple-service-resource-java-lib:3.0.0")
     implementation("org.eclipse.keyple:keyple-util-java-lib:2.3.1")
     implementation("org.slf4j:slf4j-api:1.7.32")
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.assertj:assertj-core:3.15.0")
+    testImplementation(platform("org.junit:junit-bom:5.10.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.vintage:junit-vintage-engine")
+    testImplementation("org.assertj:assertj-core:3.23.1")
 }
 
 val javaSourceLevel: String by project
