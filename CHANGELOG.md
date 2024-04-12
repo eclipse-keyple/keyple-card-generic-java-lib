@@ -5,9 +5,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [3.0.1] - 2024-04-12
 ### Changed
 - Java source and target levels `1.6` -> `1.8`
 ### Upgraded
+- Keypop Reader API `2.0.0` -> `2.0.1`
+- Keypop Card API `2.0.0` -> `2.0.1`
+- Keyple Common API `2.0.0` -> `2.0.1`
+- Keyple Service Resource Lib `3.0.0` -> `3.0.1`
+- Keyple Util Lib `2.3.1` -> `2.4.0`
 - Gradle `6.8.3` -> `7.6.4`
 
 ## [3.0.0] - 2023-11-28
@@ -64,7 +71,8 @@ This is the initial release.
 It follows the extraction of Keyple 1.0 components contained in the `eclipse-keyple/keyple-java` repository to dedicated repositories.
 It also brings many major API changes.
 
-[unreleased]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.0.0...HEAD
+[unreleased]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.0.1...HEAD
+[3.0.1]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/2.0.2...3.0.0
 [2.0.2]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/2.0.0...2.0.1
