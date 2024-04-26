@@ -43,7 +43,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   CardTransactionManagerAdapter(CardReader reader, SmartCard card) {
     Assert.getInstance().notNull(reader, "reader").notNull(card, "card");
     this.reader = reader;
-    apduRequests = new ArrayList<ApduRequestSpi>();
+    apduRequests = new ArrayList<>();
   }
 
   /**
@@ -100,7 +100,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
       throws TransactionException {
     CardResponseApi cardResponse;
     if (apduRequests.isEmpty()) {
-      return new ArrayList<byte[]>(0);
+      return new ArrayList<>(0);
     }
     try {
       cardResponse =
@@ -111,15 +111,15 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
                       ? org.eclipse.keypop.card.ChannelControl.CLOSE_AFTER
                       : org.eclipse.keypop.card.ChannelControl.KEEP_OPEN);
     } catch (ReaderBrokenCommunicationException e) {
-      throw new TransactionException("Reader communication error.", e);
+      throw new TransactionException("Reader communication error", e);
     } catch (CardBrokenCommunicationException e) {
-      throw new TransactionException("Card communication error.", e);
+      throw new TransactionException("Card communication error", e);
     } catch (UnexpectedStatusWordException e) {
-      throw new TransactionException("Apdu error.", e);
+      throw new TransactionException("Apdu error", e);
     } finally {
       apduRequests.clear();
     }
-    List<byte[]> apduResponsesBytes = new ArrayList<byte[]>();
+    List<byte[]> apduResponsesBytes = new ArrayList<>();
     for (ApduResponseApi apduResponse : cardResponse.getApduResponses()) {
       apduResponsesBytes.add(apduResponse.getApdu());
     }
@@ -135,7 +135,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   public List<String> processApdusToHexStrings(ChannelControl channelControl)
       throws TransactionException {
     List<byte[]> apduResponsesBytes = processApdusToByteArrays(channelControl);
-    List<String> apduResponsesHex = new ArrayList<String>();
+    List<String> apduResponsesHex = new ArrayList<>();
     for (byte[] bytes : apduResponsesBytes) {
       apduResponsesHex.add(HexUtil.toHex(bytes));
     }

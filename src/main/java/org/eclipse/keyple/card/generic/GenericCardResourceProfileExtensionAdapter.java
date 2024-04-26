@@ -67,7 +67,7 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
     try {
       genericCardSelectionResult = genericCardSelectionManager.processCardSelectionScenario(reader);
     } catch (Exception e) {
-      logger.warn("An exception occurred while selecting the card: '{}'.", e.getMessage(), e);
+      logger.error("Card selection failed: {}", e.getMessage(), e);
     }
 
     if (genericCardSelectionResult != null) {
