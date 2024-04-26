@@ -14,7 +14,6 @@ package org.eclipse.keyple.card.generic;
 import java.util.HashSet;
 import java.util.Set;
 import org.eclipse.keypop.card.CardSelectionResponseApi;
-import org.eclipse.keypop.card.ParseException;
 import org.eclipse.keypop.card.spi.*;
 
 /**
@@ -33,7 +32,7 @@ class GenericCardSelectionExtensionAdapter
    * @since 2.0.0
    */
   GenericCardSelectionExtensionAdapter() {
-    successfulSelectionStatusWords = new HashSet<Integer>(1);
+    successfulSelectionStatusWords = new HashSet<>(1);
     successfulSelectionStatusWords.add(DEFAULT_SUCCESSFUL_CODE);
   }
 
@@ -53,7 +52,7 @@ class GenericCardSelectionExtensionAdapter
    * @since 2.0.0
    */
   @Override
-  public SmartCardSpi parse(CardSelectionResponseApi cardSelectionResponse) throws ParseException {
+  public SmartCardSpi parse(CardSelectionResponseApi cardSelectionResponse) {
     return new GenericCardAdapter(cardSelectionResponse);
   }
 

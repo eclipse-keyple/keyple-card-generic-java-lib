@@ -38,7 +38,7 @@ class ApduRequestAdapter implements ApduRequestSpi {
    */
   public ApduRequestAdapter(byte[] apdu) {
     this.apdu = apdu;
-    this.successfulStatusWords = new HashSet<Integer>();
+    this.successfulStatusWords = new HashSet<>();
     this.successfulStatusWords.add(DEFAULT_SUCCESSFUL_CODE);
   }
 
