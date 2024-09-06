@@ -18,6 +18,7 @@ import org.eclipse.keypop.reader.ReaderApiFactory;
 import org.eclipse.keypop.reader.selection.CardSelectionManager;
 import org.eclipse.keypop.reader.selection.CardSelectionResult;
 import org.eclipse.keypop.reader.selection.IsoCardSelector;
+import org.eclipse.keypop.reader.selection.spi.IsoSmartCard;
 import org.eclipse.keypop.reader.selection.spi.SmartCard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,5 +76,18 @@ class GenericCardResourceProfileExtensionAdapter implements CardResourceProfileE
     }
 
     return null;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 3.1.0
+   */
+  @Override
+  public SmartCard matches(SmartCard smartCard) {
+    if (!(smartCard instanceof IsoSmartCard)) {
+      return null;
+    }
+    return smartCard;
   }
 }
