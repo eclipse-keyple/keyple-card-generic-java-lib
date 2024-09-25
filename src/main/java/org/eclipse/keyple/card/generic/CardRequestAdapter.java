@@ -25,7 +25,6 @@ final class CardRequestAdapter implements CardRequestSpi {
 
   private final List<ApduRequestSpi> apduRequests;
   private final boolean stopOnUnsuccessfulStatusWord;
-  private final boolean isStatusCodesVerificationEnabled; // Only for JSON backward compatibility
 
   /**
    * Builds a card request with a list of {@link ApduRequestSpi } and the flag indicating the
@@ -42,7 +41,6 @@ final class CardRequestAdapter implements CardRequestSpi {
   CardRequestAdapter(List<ApduRequestSpi> apduRequests, boolean stopOnUnsuccessfulStatusWord) {
     this.apduRequests = apduRequests;
     this.stopOnUnsuccessfulStatusWord = stopOnUnsuccessfulStatusWord;
-    this.isStatusCodesVerificationEnabled = stopOnUnsuccessfulStatusWord;
   }
 
   /**
