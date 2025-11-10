@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - keyple-card-generic-java-lib - 3.2.+ (2025-11-06)
+    Keyple - keyple-card-generic-java-lib - 3.2.+ (2025-11-10)
 end title
 
 ' == THEME ==
@@ -92,9 +92,9 @@ package "org.eclipse.keyple.card.generic" as generic {
         <color:red><s>KEEP_OPEN
         <color:red><s>CLOSE_AFTER
     }
-    +class "<<RuntimeException>>\n**final** TransactionException" as TransactionException <<green>> {
-        +TransactionException (String message)
-        +TransactionException (String message, Throwable cause)
+    +class "<color:red><s><<RuntimeException>>\n<color:red><s>**final** TransactionException" as TransactionException <<green>> {
+        +<color:red><s>TransactionException (String message)
+        +<color:red><s>TransactionException (String message, Throwable cause)
     }
 }
 
