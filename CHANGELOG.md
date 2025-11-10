@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `CardTransactionManager.processApdusToByteArrays(ChannelControl)` — use `processCommands()` and `getResponsesAsByteArrays()` instead.
 - `CardTransactionManager.processApdusToHexStrings(ChannelControl)` — use `processCommands()` and `getResponsesAsHexStrings()` instead.
 - `ChannelControl` enum — replaced by `org.eclipse.keypop.reader.ChannelControl`.
-- `TransactionException` class — will be removed in a future release.
+- `TransactionException` class — will be removed in a future version.
 ### Fixed
 - Improved error handling in `CardTransactionManagerAdapter` with specific exceptions:
     - `ReaderCommunicationException`
