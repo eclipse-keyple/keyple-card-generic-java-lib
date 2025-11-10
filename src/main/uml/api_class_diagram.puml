@@ -85,8 +85,8 @@ package "org.eclipse.keyple.card.generic" as generic {
         +<color:red><s>List<byte[]> processApdusToByteArrays (ChannelControl channelControl) throws TransactionException
         +<color:red><s>List<String> processApdusToHexStrings (ChannelControl channelControl) throws TransactionException
 
-        +<color:blue>List<byte[]> popResponsesAsByteArrays ()
-        +<color:blue>List<String> popResponsesAsHexStrings ()
+        +<color:blue>List<byte[]> getResponsesAsByteArrays ()
+        +<color:blue>List<String> getResponsesAsHexStrings ()
     }
     +enum "<color:red><s>ChannelControl" as ChannelControl <<green>> {
         <color:red><s>KEEP_OPEN
