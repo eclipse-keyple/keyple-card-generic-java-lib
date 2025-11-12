@@ -15,7 +15,9 @@ package org.eclipse.keyple.card.generic;
  * Policy for managing the physical channel after a card request is executed.
  *
  * @since 3.0.0
+ * @deprecated Will be removed in a future version.
  */
+@Deprecated
 public enum ChannelControl {
 
   /**

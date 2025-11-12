@@ -5,6 +5,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- New methods in `CardTransactionManager`:
+    - `getResponsesAsByteArrays()` — returns the list of APDU responses as byte arrays.
+    - `getResponsesAsHexStrings()` — returns the list of APDU responses as hexadecimal strings.
+- Added support for `org.eclipse.keypop.reader.ChannelControl` in place of the deprecated internal `ChannelControl` enum.
+### Changed
+- `CardTransactionManager` now extends `org.eclipse.keypop.reader.transaction.spi.CardTransactionManager<CardTransactionManager>`.
+- UML diagram updated to reflect version `3.2.+ (2025-11-10)` and new API relationships.
+### Deprecated
+- `CardTransactionManager.processApdusToByteArrays(ChannelControl)` — use `processCommands()` and `getResponsesAsByteArrays()` instead.
+- `CardTransactionManager.processApdusToHexStrings(ChannelControl)` — use `processCommands()` and `getResponsesAsHexStrings()` instead.
+- `ChannelControl` enum — will be removed in a future version.
+- `TransactionException` class — will be removed in a future version.
+### Fixed
+- Improved error handling in `CardTransactionManagerAdapter` with specific exceptions:
+    - `ReaderCommunicationException`
+    - `CardCommunicationException`
+    - `InvalidCardResponseException`
+### Upgraded
+- Keypop Reader API `2.0.1` -> `2.1.0`
+- Keyple Common API `2.0.1` -> `2.0.2`
 
 ## [3.1.3] - 2025-11-12
 ### Fixed

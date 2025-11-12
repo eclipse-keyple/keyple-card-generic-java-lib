@@ -15,7 +15,9 @@ package org.eclipse.keyple.card.generic;
  * Exception when an error or a communication failure with the card or the reader occurs.
  *
  * @since 2.0.0
+ * @deprecated Will be removed in a future version.
  */
+@Deprecated
 public class TransactionException extends RuntimeException {
 
   /**

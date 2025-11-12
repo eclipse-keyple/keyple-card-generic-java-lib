@@ -18,7 +18,10 @@ import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.HexUtil;
 import org.eclipse.keypop.card.*;
 import org.eclipse.keypop.card.spi.ApduRequestSpi;
+import org.eclipse.keypop.reader.CardCommunicationException;
 import org.eclipse.keypop.reader.CardReader;
+import org.eclipse.keypop.reader.InvalidCardResponseException;
+import org.eclipse.keypop.reader.ReaderCommunicationException;
 import org.eclipse.keypop.reader.selection.spi.SmartCard;
 
 /**
@@ -31,6 +34,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
   public static final String APDU_COMMAND = "apduCommand";
   private final CardReader reader;
   private final List<ApduRequestSpi> apduRequests;
+  private List<byte[]> apduResponses;
 
   /**
    * Creates an instance of {@link CardTransactionManager}.
@@ -137,6 +141,66 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
     List<byte[]> apduResponsesBytes = processApdusToByteArrays(channelControl);
     List<String> apduResponsesHex = new ArrayList<>();
     for (byte[] bytes : apduResponsesBytes) {
+      apduResponsesHex.add(HexUtil.toHex(bytes));
+    }
+    return apduResponsesHex;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 3.2.0
+   */
+  @Override
+  public CardTransactionManager processCommands(
+      org.eclipse.keypop.reader.ChannelControl channelControl) {
+    apduResponses = new ArrayList<>();
+    if (apduRequests.isEmpty()) {
+      return this;
+    }
+    CardResponseApi cardResponse;
+    try {
+      cardResponse =
+          ((ProxyReaderApi) reader)
+              .transmitCardRequest(
+                  new CardRequestAdapter(apduRequests, false),
+                  channelControl == org.eclipse.keypop.reader.ChannelControl.CLOSE_AFTER
+                      ? org.eclipse.keypop.card.ChannelControl.CLOSE_AFTER
+                      : org.eclipse.keypop.card.ChannelControl.KEEP_OPEN);
+    } catch (ReaderBrokenCommunicationException e) {
+      throw new ReaderCommunicationException("Reader communication error", e);
+    } catch (CardBrokenCommunicationException e) {
+      throw new CardCommunicationException("Card communication error", e);
+    } catch (UnexpectedStatusWordException e) {
+      throw new InvalidCardResponseException("Apdu error", e);
+    } finally {
+      apduRequests.clear();
+    }
+    for (ApduResponseApi apduResponse : cardResponse.getApduResponses()) {
+      apduResponses.add(apduResponse.getApdu());
+    }
+    return this;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 3.2.0
+   */
+  @Override
+  public List<byte[]> getResponsesAsByteArrays() {
+    return apduResponses;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 3.2.0
+   */
+  @Override
+  public List<String> getResponsesAsHexStrings() {
+    List<String> apduResponsesHex = new ArrayList<>();
+    for (byte[] bytes : apduResponses) {
       apduResponsesHex.add(HexUtil.toHex(bytes));
     }
     return apduResponsesHex;
