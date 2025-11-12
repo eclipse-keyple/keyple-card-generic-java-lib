@@ -72,7 +72,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
 
     Assert.getInstance()
         .notNull(apduCommand, APDU_COMMAND)
-        .isInRange(apduCommand.length, 5, 251, "length");
+        .isInRange(apduCommand.length, 5, 261, "length");
 
     apduRequests.add(new ApduRequestAdapter(apduCommand));
     return this;

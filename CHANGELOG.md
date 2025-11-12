@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Fixed the algorithm for checking the maximum length of a non-extended APDU command when calling `prepareApdu` methods.
+  It was initially limited to **251** bytes, whereas it is actually **261** bytes according to **ISO/IEC 7816-4**:
+  `CLA(1) | INS(1) | P1(1) | P2(1) | [LC(1) | DATA(n<=255) | Le(1)]`
 ### Changed
 - Migrated the CI pipeline from Jenkins to GitHub Actions.
 
