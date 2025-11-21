@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [3.2.0] - 2025-11-21
 ### Added
 - New methods in `CardTransactionManager`:
     - `getResponsesAsByteArrays()` — returns the list of APDU responses as byte arrays.
@@ -114,7 +116,8 @@ This is the initial release.
 It follows the extraction of Keyple 1.0 components contained in the `eclipse-keyple/keyple-java` repository to dedicated repositories.
 It also brings many major API changes.
 
-[unreleased]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.1.3...HEAD
+[unreleased]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.2.0...HEAD
+[3.2.0]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.1.3...3.2.0
 [3.1.3]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.1.2...3.1.3
 [3.1.2]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.1.1...3.1.2
 [3.1.1]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.1.0...3.1.1
