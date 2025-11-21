@@ -14,7 +14,9 @@ package org.eclipse.keyple.card.generic;
 import java.util.List;
 
 /** Provides basic methods to prepare and process APDU exchange with a card. */
-public interface CardTransactionManager {
+public interface CardTransactionManager
+    extends org.eclipse.keypop.reader.transaction.spi.CardTransactionManager<
+        CardTransactionManager> {
 
   /**
    * Prepares an APDU to be transmitted the next time {@link
@@ -64,7 +66,11 @@ public interface CardTransactionManager {
    *     card.
    * @return A not null reference.
    * @throws TransactionException If the communication with the card or the reader has failed.
+   * @since 2.0.0
+   * @deprecated Use {@link #processCommands(org.eclipse.keypop.reader.ChannelControl)} and {@link
+   *     #getResponsesAsByteArrays()} instead.
    */
+  @Deprecated
   List<byte[]> processApdusToByteArrays(ChannelControl channelControl) throws TransactionException;
 
   /**
@@ -79,6 +85,45 @@ public interface CardTransactionManager {
    *     card.
    * @return A not null reference.
    * @throws TransactionException If the communication with the card or the reader has failed.
+   * @since 2.0.0
+   * @deprecated Use {@link #processCommands(org.eclipse.keypop.reader.ChannelControl)} and {@link
+   *     #getResponsesAsHexStrings()} instead.
    */
+  @Deprecated
   List<String> processApdusToHexStrings(ChannelControl channelControl) throws TransactionException;
+
+  /**
+   * Returns the list of responses corresponding to the commands executed by the last call to {@link
+   * #processCommands(org.eclipse.keypop.reader.ChannelControl)}, represented as byte arrays.
+   *
+   * <p>Each element in the returned list represents the response of one command, in the same order
+   * as the commands were prepared. The returned list is never {@code null}. <br>
+   * This method does not alter the internal state of the manager: the list of responses remains
+   * available for later calls until {@link
+   * #processCommands(org.eclipse.keypop.reader.ChannelControl)} is invoked again, at which point it
+   * is replaced by the new set of responses.
+   *
+   * @return A not {@code null} list of byte arrays representing the command responses, in the same
+   *     order as the commands were sent.
+   * @since 3.2.0
+   */
+  List<byte[]> getResponsesAsByteArrays();
+
+  /**
+   * Returns the list of responses corresponding to the commands executed by the last call to {@link
+   * #processCommands(org.eclipse.keypop.reader.ChannelControl)}, represented as hexadecimal
+   * strings.
+   *
+   * <p>Each element in the returned list represents the response of one command, in the same order
+   * as the commands were prepared. The returned list is never {@code null}. <br>
+   * This method does not alter the internal state of the manager: the list of responses remains
+   * available for later calls until {@link
+   * #processCommands(org.eclipse.keypop.reader.ChannelControl)} is invoked again, at which point it
+   * is replaced by the new set of responses.
+   *
+   * @return A not {@code null} list of hexadecimal strings representing the command responses, in
+   *     the same order as the commands were sent.
+   * @since 3.2.0
+   */
+  List<String> getResponsesAsHexStrings();
 }
