@@ -100,6 +100,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
    * @since 2.0.0
    */
   @Override
+  @Deprecated
   public List<byte[]> processApdusToByteArrays(ChannelControl channelControl)
       throws TransactionException {
     CardResponseApi cardResponse;
@@ -136,6 +137,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
    * @since 2.0.0
    */
   @Override
+  @Deprecated
   public List<String> processApdusToHexStrings(ChannelControl channelControl)
       throws TransactionException {
     List<byte[]> apduResponsesBytes = processApdusToByteArrays(channelControl);
