@@ -120,7 +120,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
     } catch (CardBrokenCommunicationException e) {
       throw new TransactionException("Card communication error", e);
     } catch (UnexpectedStatusWordException e) {
-      throw new TransactionException("Apdu error", e);
+      throw new TransactionException("APDU error", e);
     } finally {
       apduRequests.clear();
     }
@@ -174,7 +174,7 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
     } catch (CardBrokenCommunicationException e) {
       throw new CardCommunicationException("Card communication error", e);
     } catch (UnexpectedStatusWordException e) {
-      throw new InvalidCardResponseException("Apdu error", e);
+      throw new InvalidCardResponseException("APDU error", e);
     } finally {
       apduRequests.clear();
     }

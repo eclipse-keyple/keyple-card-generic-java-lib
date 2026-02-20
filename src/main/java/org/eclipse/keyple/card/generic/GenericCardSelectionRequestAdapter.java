@@ -62,6 +62,9 @@ final class GenericCardSelectionRequestAdapter implements CardSelectionRequestSp
    */
   @Override
   public String toString() {
-    return "CARD_SELECTION_REQUEST = " + JsonUtil.toJson(this);
+    return "GenericCardSelectionRequestAdapter{"
+        + "successfulSelectionStatusWords="
+        + JsonUtil.toJson(successfulSelectionStatusWords)
+        + '}';
   }
 }

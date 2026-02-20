@@ -13,6 +13,7 @@ package org.eclipse.keyple.card.generic;
 
 import java.util.HashSet;
 import java.util.Set;
+import org.eclipse.keyple.core.util.HexUtil;
 import org.eclipse.keyple.core.util.json.JsonUtil;
 import org.eclipse.keypop.card.spi.ApduRequestSpi;
 
@@ -102,13 +103,21 @@ class ApduRequestAdapter implements ApduRequestSpi {
   }
 
   /**
-   * Converts the APDU request into a string where the data is encoded in a json format.
+   * {@inheritDoc}
    *
-   * @return A not empty String
    * @since 2.0.0
    */
   @Override
   public String toString() {
-    return "APDU_REQUEST = " + JsonUtil.toJson(this);
+    return "ApduRequestAdapter{"
+        + "apdu='"
+        + HexUtil.toHex(apdu)
+        + '\''
+        + ", successfulStatusWords="
+        + JsonUtil.toJson(successfulStatusWords)
+        + ", info='"
+        + info
+        + '\''
+        + '}';
   }
 }

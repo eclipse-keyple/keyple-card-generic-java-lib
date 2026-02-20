@@ -17,9 +17,10 @@ dependencies {
   implementation("org.eclipse.keypop:keypop-reader-java-api:2.1.0")
   implementation("org.eclipse.keypop:keypop-card-java-api:2.0.1")
   implementation("org.eclipse.keyple:keyple-common-java-api:2.0.2")
-  implementation("org.eclipse.keyple:keyple-service-resource-java-lib:3.1.0")
-  implementation("org.eclipse.keyple:keyple-util-java-lib:2.4.0")
-  implementation("org.slf4j:slf4j-api:1.7.32")
+  implementation("org.eclipse.keyple:keyple-service-resource-java-lib:3.1.1")
+  implementation("org.eclipse.keyple:keyple-util-java-lib:2.4.1")
+  compileOnly("org.slf4j:slf4j-api:1.7.36")
+
   testImplementation(platform("org.junit:junit-bom:5.10.2"))
   testImplementation("org.junit.jupiter:junit-jupiter")
   testImplementation("org.junit.vintage:junit-vintage-engine")

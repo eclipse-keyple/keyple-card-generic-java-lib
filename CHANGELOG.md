@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.1] - 2026-02-20
+### Changed
+- Normalized logging and error messages using Keyple coding standards.
+### Upgraded
+- `keyple-service-resource-java-lib` from `3.1.0` to `3.1.1` (source code not impacted)
+- `keyple-util-java-lib` from `2.4.0` to `2.4.1` (source code not impacted)
+- `slf4j-api` from `1.7.32` to `1.7.36` (`compileOnly`)
+
 ## [3.2.0] - 2025-11-21
 ### Added
 - New methods in `CardTransactionManager`:
@@ -116,7 +124,8 @@ This is the initial release.
 It follows the extraction of Keyple 1.0 components contained in the `eclipse-keyple/keyple-java` repository to dedicated repositories.
 It also brings many major API changes.
 
-[unreleased]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.2.0...HEAD
+[unreleased]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.2.1...HEAD
+[3.2.1]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.2.0...3.2.1
 [3.2.0]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.1.3...3.2.0
 [3.1.3]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.1.2...3.1.3
 [3.1.2]: https://github.com/eclipse-keyple/keyple-card-generic-java-lib/compare/3.1.1...3.1.2

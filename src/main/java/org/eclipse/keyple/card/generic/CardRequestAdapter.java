@@ -62,4 +62,19 @@ final class CardRequestAdapter implements CardRequestSpi {
   public boolean stopOnUnsuccessfulStatusWord() {
     return stopOnUnsuccessfulStatusWord;
   }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 3.2.1
+   */
+  @Override
+  public String toString() {
+    return "CardRequestAdapter{"
+        + "apduRequests="
+        + apduRequests
+        + ", stopOnUnsuccessfulStatusWord="
+        + stopOnUnsuccessfulStatusWord
+        + '}';
+  }
 }
