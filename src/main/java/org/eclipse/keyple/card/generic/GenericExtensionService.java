@@ -15,14 +15,10 @@ import org.eclipse.keyple.core.common.CommonApiProperties;
 import org.eclipse.keyple.core.common.KeypleCardExtension;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keypop.card.CardApiProperties;
-import org.eclipse.keypop.genericcard.CardTransactionManager;
 import org.eclipse.keypop.genericcard.GenericCardApiFactory;
 import org.eclipse.keypop.genericcard.GenericCardSelectionExtension;
-import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.ReaderApiProperties;
 import org.eclipse.keypop.reader.selection.IsoCardSelector;
-import org.eclipse.keypop.reader.selection.spi.CardSelectionExtension;
-import org.eclipse.keypop.reader.selection.spi.SmartCard;
 
 /**
  * Card extension service providing basic access to APDU exchange functions with a card.
@@ -46,7 +42,6 @@ public final class GenericExtensionService implements KeypleCardExtension {
   }
 
   /**
-   *
    * @return A not null reference.
    * @since 4.0.0
    */

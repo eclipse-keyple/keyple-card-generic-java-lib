@@ -25,8 +25,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Implementation of {@link CardResourceProfileExtension} that provides the ability to filter
- * cards of any type.
+ * Implementation of {@link CardResourceProfileExtension} that provides the ability to filter cards
+ * of any type.
  *
  * @since 2.0.0
  */
