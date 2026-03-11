@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 import org.eclipse.keypop.card.CardSelectionResponseApi;
 import org.eclipse.keypop.card.spi.*;
+import org.eclipse.keypop.genericcard.GenericCardSelectionExtension;
 
 /**
  * Implementation of {@link GenericCardSelectionExtension}.

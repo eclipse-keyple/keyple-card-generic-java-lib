@@ -13,6 +13,7 @@ package org.eclipse.keyple.card.generic;
 
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.util.Assert;
+import org.eclipse.keypop.genericcard.GenericCardSelectionExtension;
 import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.ReaderApiFactory;
 import org.eclipse.keypop.reader.selection.CardSelectionManager;
@@ -24,7 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Implementation of {@link CardResourceProfileExtension} that provides the capability to filter
+ * Implementation of {@link CardResourceProfileExtension} that provides the ability to filter
  * cards of any type.
  *
  * @since 2.0.0
