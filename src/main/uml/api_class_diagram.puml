@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - keyple-card-generic-java-lib - 3.2.+ (2025-11-10)
+    Keyple - keyple-card-generic-java-lib - 4.0+ (2026-03-11)
 end title
 
 ' == THEME ==
@@ -58,6 +58,7 @@ legend top
     ** <back:yellow>**keypop-reader-java-api**</back>
     ** <back:cyan>**keyple-common-java-api**</back>
     ** <back:orange>**keyple-service-resource-java-lib**</back>
+    ** <back:pink>**keypop-genericcard-jvm-api**</back>
 end legend
 
 package "org.eclipse.keyple.card.generic" as generic {
@@ -65,48 +66,19 @@ package "org.eclipse.keyple.card.generic" as generic {
         --
         +{static} GenericExtensionService getInstance ()
 
-        +GenericCardSelectionExtension createGenericCardSelectionExtension ()
-        +<back:orange>CardResourceProfileExtension</back> createCardResourceProfileExtension (<back:yellow>IsoCardSelector cardSelector</back>, GenericCardSelectionExtension genericCardSelectionExtension)
-        +CardTransactionManager createCardTransaction (<back:yellow>CardReader</back> cardReader, <back:yellow>SmartCard</back> card)
+        +<back:pink>GenericCardApiFactory</back> createGenericCardApiFactory()
+        +<back:orange>CardResourceProfileExtension</back> createCardResourceProfileExtension (<back:yellow>IsoCardSelector</back> cardSelector, <back:yellow>GenericCardSelectionExtension</back> genericCardSelectionExtension)
 
         -- **KeypleCardExtension** --
         +String getCommonApiVersion ()
         +String getReaderApiVersion ()
         +String getCardApiVersion ()
     }
-    +interface "<<<back:yellow>CardSelectionExtension</back>>>\nGenericCardSelectionExtension" as GenericCardSelectionExtension {
-        +GenericCardSelectionExtension addSuccessfulStatusWord (int statusWord)
-    }
-    +interface "<color:blue><<<back:yellow>CardTransactionManager</back>>></color>\nCardTransactionManager" as CardTransactionManager {
-        +CardTransactionManager prepareApdu (String apduCommand)
-        +CardTransactionManager prepareApdu (byte[] apduCommand)
-        +CardTransactionManager prepareApdu (byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le)
-
-        +<color:red><s>List<byte[]> processApdusToByteArrays (ChannelControl channelControl) throws TransactionException
-        +<color:red><s>List<String> processApdusToHexStrings (ChannelControl channelControl) throws TransactionException
-
-        +<color:blue>List<byte[]> getResponsesAsByteArrays ()
-        +<color:blue>List<String> getResponsesAsHexStrings ()
-    }
-    +enum "<color:red><s>ChannelControl" as ChannelControl <<green>> {
-        <color:red><s>KEEP_OPEN
-        <color:red><s>CLOSE_AFTER
-    }
-    +class "<color:red><s><<RuntimeException>>\n<color:red><s>**final** TransactionException" as TransactionException <<green>> {
-        +<color:red><s>TransactionException (String message)
-        +<color:red><s>TransactionException (String message, Throwable cause)
-    }
 }
 
 ' Associations
 
 ' == LAYOUT ==
-
-GenericExtensionService ..> GenericCardSelectionExtension #C_LINK : create >
-GenericExtensionService ..> CardTransactionManager #C_LINK : create >
-
-CardTransactionManager ..> ChannelControl #C_USE : use >
-CardTransactionManager ..> TransactionException #C_THROW : throw >
 
 ' == STYLE ==
 
