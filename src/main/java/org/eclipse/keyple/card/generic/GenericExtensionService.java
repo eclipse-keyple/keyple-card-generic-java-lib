@@ -45,7 +45,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
    * @return A not null reference.
    * @since 4.0.0
    */
-  public GenericCardApiFactory createGenericCardApiFactory() {
+  public GenericCardApiFactory getGenericCardApiFactory() {
     return new GenericCardApiFactoryAdapter();
   }
 
