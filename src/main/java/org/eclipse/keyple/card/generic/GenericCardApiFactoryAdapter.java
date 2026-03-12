@@ -17,13 +17,28 @@ import org.eclipse.keypop.genericcard.GenericCardSelectionExtension;
 import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.selection.spi.SmartCard;
 
-public class GenericCardApiFactoryAdapter implements GenericCardApiFactory {
+/**
+ * Adapter of {@link GenericCardApiFactory}.
+ *
+ * @since 4.0.0
+ */
+class GenericCardApiFactoryAdapter implements GenericCardApiFactory {
 
+  /**
+   * {@inheritDoc}
+   *
+   * @since 4.0.0
+   */
   @Override
   public GenericCardSelectionExtension createGenericCardSelectionExtension() {
     return new GenericCardSelectionExtensionAdapter();
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * @since 4.0.0
+   */
   @Override
   public CardTransactionManager createCardTransaction(CardReader cardReader, SmartCard card) {
     return new CardTransactionManagerAdapter(cardReader, card);
