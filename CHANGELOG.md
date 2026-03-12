@@ -7,9 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- Added Keypop Generic Card API
-
-### Remove 
+- Migrated to `keypop-genericcard-jvm-api` 1.0.0
+### Removed
 - Removed deprecated enum `ChannelControl`
 - Removed deprecated class `TransactionException`
 
