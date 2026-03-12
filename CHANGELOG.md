@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Added Keypop Generic Card API
+
+### Remove 
+- Removed deprecated enum `ChannelControl`
+- Removed deprecated class `TransactionException`
+
 ## [3.2.1] - 2026-02-20
 ### Changed
 - Normalized logging and error messages using Keyple coding standards.

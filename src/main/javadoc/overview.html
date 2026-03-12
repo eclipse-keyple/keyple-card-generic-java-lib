@@ -10,16 +10,8 @@
 </p>
 <ul>
     <li>
-        Creation of a selection case targeting a specific card to be provided to the <strong>Keyple Selection
-        Service</strong>.<br>
-        {@link org.eclipse.keyple.card.generic.GenericExtensionService#createGenericCardSelectionExtension()}<br>
-        A selection case targets a specific card defined by various filtering options including the expected successful
-        status words.
-    </li>
-    <li>
-        Card transaction manager to perform APDU exchanges with a card.<br>
-        {@link org.eclipse.keyple.card.generic.GenericExtensionService#createCardTransaction(CardReader reader,
-        SmartCard card)}
+        Use {@link org.eclipse.keyple.card.generic.GenericExtensionService#getGenericCardApiFactory()} to retrieve the
+        factory to create the various instance of classes used to manage ISO/IEC 7816 cards.
     </li>
 </ul>
 </body>
