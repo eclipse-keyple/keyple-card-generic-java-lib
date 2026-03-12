@@ -42,6 +42,7 @@ public final class GenericExtensionService implements KeypleCardExtension {
   }
 
   /**
+   * Returns an instance of {@link GenericCardApiFactory}.
    * @return A not null reference.
    * @since 4.0.0
    */
