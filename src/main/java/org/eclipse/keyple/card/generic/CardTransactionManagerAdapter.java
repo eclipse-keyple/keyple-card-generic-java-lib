@@ -18,6 +18,7 @@ import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.HexUtil;
 import org.eclipse.keypop.card.*;
 import org.eclipse.keypop.card.spi.ApduRequestSpi;
+import org.eclipse.keypop.genericcard.CardTransactionManager;
 import org.eclipse.keypop.reader.CardCommunicationException;
 import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.InvalidCardResponseException;
@@ -92,60 +93,6 @@ class CardTransactionManagerAdapter implements CardTransactionManager {
       byte cla, byte ins, byte p1, byte p2, byte[] dataIn, Byte le) {
     apduRequests.add(new ApduRequestAdapter(ApduUtil.build(cla, ins, p1, p2, dataIn, le)));
     return this;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @since 2.0.0
-   */
-  @Override
-  @Deprecated
-  public List<byte[]> processApdusToByteArrays(ChannelControl channelControl)
-      throws TransactionException {
-    CardResponseApi cardResponse;
-    if (apduRequests.isEmpty()) {
-      return new ArrayList<>(0);
-    }
-    try {
-      cardResponse =
-          ((ProxyReaderApi) reader)
-              .transmitCardRequest(
-                  new CardRequestAdapter(apduRequests, false),
-                  channelControl == ChannelControl.CLOSE_AFTER
-                      ? org.eclipse.keypop.card.ChannelControl.CLOSE_AFTER
-                      : org.eclipse.keypop.card.ChannelControl.KEEP_OPEN);
-    } catch (ReaderBrokenCommunicationException e) {
-      throw new TransactionException("Reader communication error", e);
-    } catch (CardBrokenCommunicationException e) {
-      throw new TransactionException("Card communication error", e);
-    } catch (UnexpectedStatusWordException e) {
-      throw new TransactionException("APDU error", e);
-    } finally {
-      apduRequests.clear();
-    }
-    List<byte[]> apduResponsesBytes = new ArrayList<>();
-    for (ApduResponseApi apduResponse : cardResponse.getApduResponses()) {
-      apduResponsesBytes.add(apduResponse.getApdu());
-    }
-    return apduResponsesBytes;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @since 2.0.0
-   */
-  @Override
-  @Deprecated
-  public List<String> processApdusToHexStrings(ChannelControl channelControl)
-      throws TransactionException {
-    List<byte[]> apduResponsesBytes = processApdusToByteArrays(channelControl);
-    List<String> apduResponsesHex = new ArrayList<>();
-    for (byte[] bytes : apduResponsesBytes) {
-      apduResponsesHex.add(HexUtil.toHex(bytes));
-    }
-    return apduResponsesHex;
   }
 
   /**
