@@ -37,7 +37,6 @@ loadScripts(document, 'script');</script>
 <li class="nav-bar-cell1-rev">Class</li>
 <li><a href="class-use/GenericExtensionService.html">Use</a></li>
 <li><a href="package-tree.html">Tree</a></li>
-<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html#class">Help</a></li>
 </ul>
@@ -105,21 +104,10 @@ implements org.eclipse.keyple.core.common.KeypleCardExtension</span></div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createCardResourceProfileExtension(org.eclipse.keypop.reader.selection.IsoCardSelector,org.eclipse.keyple.card.generic.GenericCardSelectionExtension)" class="member-name-link">createCardResourceProfileExtension</a><wbr>(org.eclipse.keypop.reader.selection.IsoCardSelector&nbsp;cardSelector,
- <a href="GenericCardSelectionExtension.html" title="interface in org.eclipse.keyple.card.generic">GenericCardSelectionExtension</a>&nbsp;genericCardSelectionExtension)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createCardResourceProfileExtension(org.eclipse.keypop.reader.selection.IsoCardSelector,org.eclipse.keypop.genericcard.GenericCardSelectionExtension)" class="member-name-link">createCardResourceProfileExtension</a><wbr>(org.eclipse.keypop.reader.selection.IsoCardSelector&nbsp;cardSelector,
+ org.eclipse.keypop.genericcard.GenericCardSelectionExtension&nbsp;genericCardSelectionExtension)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Creates an instance of <code>CardResourceProfileExtension</code> to be provided to the <code>CardResourceService</code>.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="CardTransactionManager.html" title="interface in org.eclipse.keyple.card.generic">CardTransactionManager</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createCardTransaction(org.eclipse.keypop.reader.CardReader,org.eclipse.keypop.reader.selection.spi.SmartCard)" class="member-name-link">createCardTransaction</a><wbr>(org.eclipse.keypop.reader.CardReader&nbsp;reader,
- org.eclipse.keypop.reader.selection.spi.SmartCard&nbsp;card)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Creates an instance of <a href="CardTransactionManager.html" title="interface in org.eclipse.keyple.card.generic"><code>CardTransactionManager</code></a>.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="GenericCardSelectionExtension.html" title="interface in org.eclipse.keyple.card.generic">GenericCardSelectionExtension</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createGenericCardSelectionExtension()" class="member-name-link">createGenericCardSelectionExtension</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Creates an instance of <code>CardSelectionExtension</code>.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCardApiVersion()" class="member-name-link">getCardApiVersion</a>()</code></div>
@@ -127,14 +115,19 @@ implements org.eclipse.keyple.core.common.KeypleCardExtension</span></div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCommonApiVersion()" class="member-name-link">getCommonApiVersion</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"></div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="GenericExtensionService.html" title="class in org.eclipse.keyple.card.generic">GenericExtensionService</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getInstance()" class="member-name-link">getInstance</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>org.eclipse.keypop.genericcard.GenericCardApiFactory</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getGenericCardApiFactory()" class="member-name-link">getGenericCardApiFactory</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns an instance of <code>GenericCardApiFactory</code>.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="GenericExtensionService.html" title="class in org.eclipse.keyple.card.generic">GenericExtensionService</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getInstance()" class="member-name-link">getInstance</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Gets the unique instance of this object.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getReaderApiVersion()" class="member-name-link">getReaderApiVersion</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getReaderApiVersion()" class="member-name-link">getReaderApiVersion</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"></div>
 </div>
 </div>
 </div>
@@ -164,40 +157,23 @@ implements org.eclipse.keyple.core.common.KeypleCardExtension</span></div>
 </section>
 </li>
 <li>
-<section class="detail" id="createGenericCardSelectionExtension()">
-<h3>createGenericCardSelectionExtension</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="GenericCardSelectionExtension.html" title="interface in org.eclipse.keyple.card.generic">GenericCardSelectionExtension</a></span>&nbsp;<span class="element-name">createGenericCardSelectionExtension</span>()</div>
-<div class="block">Creates an instance of <code>CardSelectionExtension</code>.</div>
+<section class="detail" id="getGenericCardApiFactory()">
+<h3>getGenericCardApiFactory</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">org.eclipse.keypop.genericcard.GenericCardApiFactory</span>&nbsp;<span class="element-name">getGenericCardApiFactory</span>()</div>
+<div class="block">Returns an instance of <code>GenericCardApiFactory</code>.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>A not null reference.</dd>
 <dt>Since:</dt>
-<dd>2.0.0</dd>
+<dd>4.0.0</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="createCardTransaction(org.eclipse.keypop.reader.CardReader,org.eclipse.keypop.reader.selection.spi.SmartCard)">
-<h3>createCardTransaction</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="CardTransactionManager.html" title="interface in org.eclipse.keyple.card.generic">CardTransactionManager</a></span>&nbsp;<span class="element-name">createCardTransaction</span><wbr><span class="parameters">(org.eclipse.keypop.reader.CardReader&nbsp;reader,
- org.eclipse.keypop.reader.selection.spi.SmartCard&nbsp;card)</span></div>
-<div class="block">Creates an instance of <a href="CardTransactionManager.html" title="interface in org.eclipse.keyple.card.generic"><code>CardTransactionManager</code></a>.</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>reader</code> - The reader through which the card communicates.</dd>
-<dd><code>card</code> - The initial card data provided by the selection process.</dd>
-<dt>Returns:</dt>
-<dd>A not null reference.</dd>
-<dt>Since:</dt>
-<dd>2.0.0</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="createCardResourceProfileExtension(org.eclipse.keypop.reader.selection.IsoCardSelector,org.eclipse.keyple.card.generic.GenericCardSelectionExtension)">
+<section class="detail" id="createCardResourceProfileExtension(org.eclipse.keypop.reader.selection.IsoCardSelector,org.eclipse.keypop.genericcard.GenericCardSelectionExtension)">
 <h3>createCardResourceProfileExtension</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension</span>&nbsp;<span class="element-name">createCardResourceProfileExtension</span><wbr><span class="parameters">(org.eclipse.keypop.reader.selection.IsoCardSelector&nbsp;cardSelector,
- <a href="GenericCardSelectionExtension.html" title="interface in org.eclipse.keyple.card.generic">GenericCardSelectionExtension</a>&nbsp;genericCardSelectionExtension)</span></div>
+ org.eclipse.keypop.genericcard.GenericCardSelectionExtension&nbsp;genericCardSelectionExtension)</span></div>
 <div class="block">Creates an instance of <code>CardResourceProfileExtension</code> to be provided to the <code>CardResourceService</code>.
 
  <p>The provided argument defines the selection rules to be applied to the card when detected by
